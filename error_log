@@ -1,0 +1,51 @@
+[01-Jun-2017 16:57:23 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'D2LSectionedPage' not found in /home1/pnhp/system/wp-includes/class-wp-hook.php on line 298
+[06-Jun-2017 15:03:57 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'D2LSectionedPage' not found in /home1/pnhp/system/wp-includes/class-wp-hook.php on line 298
+[22-Jun-2017 14:37:14 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'D2LSectionedPage' not found in /home1/pnhp/system/wp-includes/class-wp-hook.php on line 298
+[26-Jun-2017 13:27:37 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, class 'D2LSectionedPage' not found in /home1/pnhp/system/wp-includes/class-wp-hook.php on line 298
+[26-Jun-2017 13:43:25 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[26-Jun-2017 13:44:18 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[26-Jun-2017 13:44:49 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[26-Jun-2017 14:08:43 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[26-Jun-2017 14:08:43 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[26-Jun-2017 14:08:53 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[26-Jun-2017 15:36:31 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[26-Jun-2017 15:36:31 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[27-Jun-2017 14:59:32 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[27-Jun-2017 14:59:33 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[27-Jun-2017 14:59:43 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[27-Jun-2017 20:56:10 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[27-Jun-2017 20:56:11 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[27-Jun-2017 21:01:24 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[27-Jun-2017 21:01:24 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[30-Jun-2017 00:00:15 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[30-Jun-2017 00:00:15 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[02-Jul-2017 00:00:57 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[02-Jul-2017 00:00:57 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[04-Jul-2017 00:00:59 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[04-Jul-2017 00:00:59 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 00:00:19 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[07-Jul-2017 00:00:20 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:18:14 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[07-Jul-2017 15:18:14 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:18:48 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[07-Jul-2017 15:18:48 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:18:54 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[07-Jul-2017 15:18:54 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:21:22 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:21:58 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:22:03 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:22:09 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:36:11 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:36:21 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:36:24 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:36:33 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:36:42 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 15:45:14 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 19:08:16 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[07-Jul-2017 19:08:33 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[10-Jul-2017 00:00:22 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[10-Jul-2017 00:00:22 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[12-Jul-2017 16:19:57 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[12-Jul-2017 16:19:57 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[12-Jul-2017 16:20:10 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
+[12-Jul-2017 16:20:10 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
