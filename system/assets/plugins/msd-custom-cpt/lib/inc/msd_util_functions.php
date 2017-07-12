@@ -35,6 +35,35 @@ if( ! function_exists('msd_is_plugin_active')){
 		return in_array($plugin, (array) get_option('active_plugins', array()));
 	}
 }
+
+if(!function_exists('do_theme_redirect')){
+    function do_theme_redirect($url) {
+        global $post, $wp_query;
+        if (have_posts()) {
+            include($url);
+            die();
+        } else {
+            $wp_query->is_404 = true;
+        }
+    }
+}
+
+if(!function_exists('genesis_test')){
+    function genesis_test(){
+        $theme_info = wp_get_theme();
+
+        $genesis_flavors = array(
+            'genesis',
+            'genesis-trunk',
+        );
+
+        if ( ! in_array( $theme_info->Template, $genesis_flavors ) ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
 /*
  * A useful troubleshooting function. Displays arrays in an easy to follow format in a textarea.
 */
