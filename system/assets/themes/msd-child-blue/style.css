@@ -17,7 +17,7 @@
 
 /* 
 *
-* This theme uses LESS. The actual files are found in ./lib/less and are output to ./lib/css. 
+* This theme uses LESS. The actual files are found in ./lib/scss and are output to ./lib/css.
 * The files are enqueued via functions.php
 *
 */

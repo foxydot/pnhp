@@ -27,9 +27,6 @@ function genesis_msdlab_child_localization_setup(){
 
 // Add the helper functions.
 include_once( get_stylesheet_directory() . '/lib/inc/helper-functions.php' );
-
-// Add the subtitle support functions.
-include_once( get_stylesheet_directory() . '/lib/inc/subtitle-support.php' ); //should this go to plugin?
 include_once( get_stylesheet_directory() . '/lib/inc/msd-functions.php' ); //should this go to plugin?
 
 // Child theme (do not remove).
@@ -59,19 +56,38 @@ add_theme_support( 'genesis-structural-wraps', array(
     'site-inner'
 ) );
 
+/***Tools Plugin**/
+//instantiate sub packages
+if(class_exists('MSDLab_Theme_Tweaks')){
+    $options = array();
+    $ttweaks = new MSDLab_Theme_Tweaks($options);
+}
+if(class_exists('MSDLab_Genesis_Bootstrap')){
+    $options = array();
+    $bootstrappin = new MSDLab_Genesis_Bootstrap($options);
+}
+if(class_exists('MSDLab_Genesis_Tweaks')){
+    $options = array(
+        'preheader' => 'genesis_header_right'
+    );
+    $gtweaks = new MSDLab_Genesis_Tweaks($options);
+}
+if(class_exists('MSDLab_Subtitle_Support')){
+    $options = array();
+    $subtitle_support = new MSDLab_Subtitle_Support($options);
+}
+
 
 /*** HEADER ***/
 add_action('wp_head','msdlab_maybe_wrap_inner');
 add_filter( 'genesis_search_text', 'msdlab_search_text' ); //customizes the serach bar placeholder
 add_filter('genesis_search_button_text', 'msdlab_search_button'); //customize the search form to add fontawesome search button.
-add_action('genesis_header_right','msdlab_pre_header');
 
 /**
  * Move secodary nav into pre-header
  */
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 add_action( 'msdlab_pre_header', 'genesis_do_subnav' );
-add_action('msdlab_pre_header','msdlab_pre_header_sidebar');
 
 remove_action('genesis_header','genesis_do_header' );
 add_action('genesis_header','msdlab_do_header' );
