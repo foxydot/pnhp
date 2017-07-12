@@ -4,7 +4,7 @@
 */
 add_action('wp_enqueue_scripts', 'msdlab_add_styles');
 add_action('wp_enqueue_scripts', 'msdlab_add_scripts');
-add_action('admin_enqueue_scripts','msdlab_add_admin_styles');
+//add_action('admin_enqueue_scripts','msdlab_add_admin_styles');
 
 
 function msdlab_add_styles() {
@@ -59,6 +59,7 @@ function msdlab_add_scripts() {
 }
 function msdlab_add_admin_styles(){
     //use cdn
+    //Do we actually need this? If so, look here: https://rushfrisby.com/using-bootstrap-in-wordpress-admin-panel/
     wp_enqueue_style('bootstrap-style','//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css');
     wp_enqueue_style('font-awesome-style','//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',array('bootstrap-style'),'4.5.0');
 
