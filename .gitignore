@@ -31,16 +31,14 @@ system/wp-content/*
 # Ignore everything in the "plugins" directory, except the plugins you
 # specify (see the commented-out examples for hints on how to do this.)
 system/assets/plugins/*
-!system/assets/plugins/msdlab-ditdat-transfer/
-!system/assets/plugins/msdlab-ninc-custom/
-!system/assets/plugins/msdlab-ninc-pretty-report/
-!system/assets/plugins/ninc-plugin/
+!system/assets/plugins/msd-bootstrap-tools/
+!system/assets/plugins/msd-custom-cpt/
+!system/assets/plugins/msdlab-theme-tools/
 # !system/assets/plugins/my-directory-plugin/
 system/wp-content/plugins/*
-!system/wp-content/plugins/msdlab-ditdat-transfer/
-!system/wp-content/plugins/msdlab-ninc-custom/
-!system/wp-content/plugins/msdlab-ninc-pretty-report/
-!system/wp-content/plugins/ninc-plugin/
+!system/wp-content/plugins/msd-bootstrap-tools/
+!system/wp-content/plugins/msd-custom-cpt/
+!system/wp-content/plugins/msdlab-theme-tools/
 # !system/wp-content/plugins/my-directory-plugin/
 
 # Ignore everything in the "themes" directory, except the themes you
