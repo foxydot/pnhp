@@ -1308,7 +1308,7 @@ class WPAlchemy_MetaBox
         // consider giving a developer access to change this via hooks/callbacks
 
         // include javascript for special functionality
-        ?><style type="text/css"> .wpa_group.tocopy { display:none; }/* <?php print $this->id ?> */</style>
+        ?><style type="text/css"> .wpa_group.tocopy { display:none; }</style>
         <script type="text/javascript">
             /* <![CDATA[ */
             jQuery(function($)
