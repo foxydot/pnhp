@@ -39,21 +39,21 @@ if (!class_exists('MSDSpeakerCPT')) {
         function register_taxonomies(){
 
             $labels = array(
-                'name' => _x( 'Speaker categories', 'speaker-category' ),
-                'singular_name' => _x( 'Speaker category', 'speaker-category' ),
-                'search_items' => _x( 'Search speaker categories', 'speaker-category' ),
-                'popular_items' => _x( 'Popular speaker categories', 'speaker-category' ),
-                'all_items' => _x( 'All speaker categories', 'speaker-category' ),
-                'parent_item' => _x( 'Parent speaker category', 'speaker-category' ),
-                'parent_item_colon' => _x( 'Parent speaker category:', 'speaker-category' ),
-                'edit_item' => _x( 'Edit speaker category', 'speaker-category' ),
-                'update_item' => _x( 'Update speaker category', 'speaker-category' ),
-                'add_new_item' => _x( 'Add new speaker category', 'speaker-category' ),
-                'new_item_name' => _x( 'New speaker category name', 'speaker-category' ),
-                'separate_items_with_commas' => _x( 'Separate speaker categories with commas', 'speaker-category' ),
-                'add_or_remove_items' => _x( 'Add or remove speaker categories', 'speaker-category' ),
-                'choose_from_most_used' => _x( 'Choose from the most used speaker categories', 'speaker-category' ),
-                'menu_name' => _x( 'Speaker categories', 'speaker-category' ),
+                'name' => _x( 'Speaker regions', 'speaker-region' ),
+                'singular_name' => _x( 'Speaker region', 'speaker-region' ),
+                'search_items' => _x( 'Search speaker regions', 'speaker-region' ),
+                'popular_items' => _x( 'Popular speaker regions', 'speaker-region' ),
+                'all_items' => _x( 'All speaker regions', 'speaker-region' ),
+                'parent_item' => _x( 'Parent speaker specialty', 'speaker-region' ),
+                'parent_item_colon' => _x( 'Parent speaker region:', 'speaker-region' ),
+                'edit_item' => _x( 'Edit speaker region', 'speaker-region' ),
+                'update_item' => _x( 'Update speaker region', 'speaker-region' ),
+                'add_new_item' => _x( 'Add new speaker region', 'speaker-region' ),
+                'new_item_name' => _x( 'New speaker region name', 'speaker-region' ),
+                'separate_items_with_commas' => _x( 'Separate speaker regions with commas', 'speaker-region' ),
+                'add_or_remove_items' => _x( 'Add or remove speaker regions', 'speaker-region' ),
+                'choose_from_most_used' => _x( 'Choose from the most used speaker regions', 'speaker-region' ),
+                'menu_name' => _x( 'Speaker regions', 'speaker-region' ),
             );
 
             $args = array(
@@ -63,12 +63,75 @@ if (!class_exists('MSDSpeakerCPT')) {
                 'show_ui' => true,
                 'show_tagcloud' => false,
                 'hierarchical' => true, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
-
-                'rewrite' => array('slug'=>'speaker-category','with_front'=>false),
+                'rewrite' => array('slug'=>'speaker-region','with_front'=>false),
                 'query_var' => true
             );
 
-            register_taxonomy( 'speaker_category', array($this->cpt), $args );
+            register_taxonomy( 'speaker_region', array($this->cpt), $args );
+
+
+            $labels = array(
+                'name' => _x( 'Speaker specialties', 'speaker-specialty' ),
+                'singular_name' => _x( 'Speaker specialty', 'speaker-specialty' ),
+                'search_items' => _x( 'Search speaker specialties', 'speaker-specialty' ),
+                'popular_items' => _x( 'Popular speaker specialties', 'speaker-specialty' ),
+                'all_items' => _x( 'All speaker specialties', 'speaker-specialty' ),
+                'parent_item' => _x( 'Parent speaker specialty', 'speaker-specialty' ),
+                'parent_item_colon' => _x( 'Parent speaker specialty:', 'speaker-specialty' ),
+                'edit_item' => _x( 'Edit speaker specialty', 'speaker-specialty' ),
+                'update_item' => _x( 'Update speaker specialty', 'speaker-specialty' ),
+                'add_new_item' => _x( 'Add new speaker specialty', 'speaker-specialty' ),
+                'new_item_name' => _x( 'New speaker specialty name', 'speaker-specialty' ),
+                'separate_items_with_commas' => _x( 'Separate speaker specialties with commas', 'speaker-specialty' ),
+                'add_or_remove_items' => _x( 'Add or remove speaker specialties', 'speaker-specialty' ),
+                'choose_from_most_used' => _x( 'Choose from the most used speaker specialties', 'speaker-specialty' ),
+                'menu_name' => _x( 'Speaker specialties', 'speaker-specialty' ),
+            );
+
+            $args = array(
+                'labels' => $labels,
+                'public' => true,
+                'show_in_nav_menus' => true,
+                'show_ui' => true,
+                'show_tagcloud' => true,
+                'hierarchical' => false, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
+                'rewrite' => array('slug'=>'speaker-specialty','with_front'=>false),
+                'query_var' => true
+            );
+
+            register_taxonomy( 'speaker_specialty', array($this->cpt), $args );
+
+
+            $labels = array(
+                'name' => _x( 'Speaker topics', 'speaker-topic' ),
+                'singular_name' => _x( 'Speaker topic', 'speaker-topic' ),
+                'search_items' => _x( 'Search speaker topics', 'speaker-topic' ),
+                'popular_items' => _x( 'Popular speaker topics', 'speaker-topic' ),
+                'all_items' => _x( 'All speaker topics', 'speaker-topic' ),
+                'parent_item' => _x( 'Parent speaker specialty', 'speaker-topic' ),
+                'parent_item_colon' => _x( 'Parent speaker topic:', 'speaker-topic' ),
+                'edit_item' => _x( 'Edit speaker topic', 'speaker-topic' ),
+                'update_item' => _x( 'Update speaker topic', 'speaker-topic' ),
+                'add_new_item' => _x( 'Add new speaker topic', 'speaker-topic' ),
+                'new_item_name' => _x( 'New speaker topic name', 'speaker-topic' ),
+                'separate_items_with_commas' => _x( 'Separate speaker topics with commas', 'speaker-topic' ),
+                'add_or_remove_items' => _x( 'Add or remove speaker topics', 'speaker-topic' ),
+                'choose_from_most_used' => _x( 'Choose from the most used speaker topics', 'speaker-topic' ),
+                'menu_name' => _x( 'Speaker topics', 'speaker-topic' ),
+            );
+
+            $args = array(
+                'labels' => $labels,
+                'public' => true,
+                'show_in_nav_menus' => true,
+                'show_ui' => true,
+                'show_tagcloud' => false,
+                'hierarchical' => true, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
+                'rewrite' => array('slug'=>'speaker-topic','with_front'=>false),
+                'query_var' => true
+            );
+
+            register_taxonomy( 'speaker_topic', array($this->cpt), $args );
         }
 		
 		function register_cpt() {
@@ -93,7 +156,7 @@ if (!class_exists('MSDSpeakerCPT')) {
 		        'hierarchical' => false,
 		        'description' => 'Speaker',
 		        'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
-		        'taxonomies' => array( 'speaker_category' ),
+		        'taxonomies' => array( 'speaker_region', 'speaker_specialty', 'speaker_topic' ),
 		        'public' => true,
 		        'show_ui' => true,
 		        'show_in_menu' => true,
@@ -115,7 +178,7 @@ if (!class_exists('MSDSpeakerCPT')) {
 
 
         function register_metaboxes(){
-            global $speaker_info;
+            global $speaker_info,$contact_info;
             $speaker_info = new WPAlchemy_MetaBox(array
             (
                 'id' => '_speaker_information',
@@ -127,6 +190,18 @@ if (!class_exists('MSDSpeakerCPT')) {
                 'autosave' => TRUE,
                 'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
                 'prefix' => '_speaker_' // defaults to NULL
+            ));
+            $contact_info = new WPAlchemy_MetaBox(array
+            (
+                'id' => '_contact_information',
+                'title' => 'Contact Info',
+                'types' => array($this->cpt),
+                'context' => 'normal',
+                'priority' => 'high',
+                'template' => plugin_dir_path(dirname(__FILE__)).'/template/metabox-contact.php',
+                'autosave' => TRUE,
+                'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
+                'prefix' => '_contact_' // defaults to NULL
             ));
         }
 		
@@ -175,7 +250,8 @@ if (!class_exists('MSDSpeakerCPT')) {
 			global $current_screen;
 			if($current_screen->post_type == $this->cpt){
 				?><script type="text/javascript">
-						jQuery('#postdivrich').before(jQuery('#_contact_info_metabox'));
+                    jQuery('#postdivrich').before(jQuery('#_contact_information_metabox'));
+                    jQuery('#_contact_information_metabox').before(jQuery('#_speaker_information_metabox'));
 					</script><?php
 			}
 		}
