@@ -15,7 +15,7 @@
             <?php if($mb->get_the_value() != ''){
                 print '<img src="'.$mb->get_the_value().'">';
             } ?>
-            <?php $group_name = 'feature-img-'. $mb->get_the_index(); ?>
+            <?php $group_name = 'vid-thumb-'. $mb->get_the_index(); ?>
             <?php $wpalchemy_media_access->setGroupName($group_name)->setInsertButtonLabel('Insert This')->setTab('upload'); ?>
             <?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
             <?php echo $wpalchemy_media_access->getButton(array('label' => 'Add Image')); ?>
