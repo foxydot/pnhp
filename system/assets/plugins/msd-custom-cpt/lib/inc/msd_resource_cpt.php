@@ -92,7 +92,7 @@ if (!class_exists('MSDResourceCPT')) {
 		        'labels' => $labels,
 		        'hierarchical' => false,
 		        'description' => 'Resource',
-		        'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
+		        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
 		        'taxonomies' => array( 'resource_category' ),
 		        'public' => true,
 		        'show_ui' => true,
