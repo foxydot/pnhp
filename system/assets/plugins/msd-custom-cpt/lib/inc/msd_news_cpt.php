@@ -148,7 +148,7 @@ if (!class_exists('MSDNewsCPT')) {
 
 
         function register_metaboxes(){
-            global $news_info;
+            global $news_info,$multimedia_info;
             $news_info = new WPAlchemy_MetaBox(array
             (
                 'id' => '_news_information',
@@ -157,6 +157,18 @@ if (!class_exists('MSDNewsCPT')) {
                 'context' => 'normal',
                 'priority' => 'high',
                 'template' => plugin_dir_path(dirname(__FILE__)).'/template/metabox-news.php',
+                'autosave' => TRUE,
+                'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
+                'prefix' => '_news_' // defaults to NULL
+            ));
+            $multimedia_info = new WPAlchemy_MetaBox(array
+            (
+                'id' => '_multimedia_information',
+                'title' => 'Multimedia',
+                'types' => array($this->cpt),
+                'context' => 'normal',
+                'priority' => 'high',
+                'template' => plugin_dir_path(dirname(__FILE__)).'/template/metabox-multimedia.php',
                 'autosave' => TRUE,
                 'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
                 'prefix' => '_news_' // defaults to NULL

@@ -41,7 +41,7 @@ function msdlab_add_scripts() {
         //wp_enqueue_script('bootstrap-jquery',get_stylesheet_directory_uri().'/lib/bootstrap/js/bootstrap.min.js',array('jquery'));
         //responsive menu
         $suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-        wp_enqueue_script( 'genesis-msdlab-child-responsive-menu', get_stylesheet_directory_uri() . "/js/responsive-menus{$suffix}.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
+        wp_enqueue_script( 'genesis-msdlab-child-responsive-menu', get_stylesheet_directory_uri() . "/lib/js/responsive-menus{$suffix}.js", array( 'jquery' ), CHILD_THEME_VERSION, true );
         wp_localize_script(
             'genesis-msdlab-child-responsive-menu',
             'genesis_responsive_menu',
@@ -78,7 +78,7 @@ function genesis_msdlab_child_responsive_menu_settings() {
         'menuClasses'       => array(
             'combine' => array(
                 '.nav-primary',
-                '.nav-header',
+                '.nav-secondary',
             ),
             'others'  => array(),
         ),

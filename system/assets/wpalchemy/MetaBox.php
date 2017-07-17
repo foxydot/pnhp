@@ -5,7 +5,7 @@
  * @copyright   Copyright (c) 2009, Dimas Begunoff, http://farinspace.com
  * @license     http://en.wikipedia.org/wiki/MIT_License The MIT License
  * @package     WPAlchemy
- * @version     1.6.1
+ * @version     1.6.2
  * @link        http://github.com/farinspace/wpalchemy
  * @link        http://farinspace.com
  */
@@ -1300,11 +1300,15 @@ class WPAlchemy_MetaBox
         // must be creating or editing a post or page
         if ( ! self::_is_post() AND ! self::_is_page()) return;
 
+        if(defined('WPALCHEMY_GLOBAL_HEAD')) return;
+
+        define('WPALCHEMY_GLOBAL_HEAD',true);
+
         // todo: you're assuming people will want to use this exact functionality
         // consider giving a developer access to change this via hooks/callbacks
 
         // include javascript for special functionality
-        ?><style type="text/css"> .wpa_group.tocopy { display:none; } </style>
+        ?><style type="text/css"> .wpa_group.tocopy { display:none; }/* <?php print $this->id ?> */</style>
         <script type="text/javascript">
         /* <![CDATA[ */
         jQuery(function($)
@@ -1462,6 +1466,9 @@ class WPAlchemy_MetaBox
         // must be creating or editing a post or page
         if ( ! self::_is_post() AND ! self::_is_page()) return;
 
+        if(defined('WPALCHEMY_GLOBAL_FOOT')) return;
+
+        define('WPALCHEMY_GLOBAL_FOOT',true);
         ?>
         <script type="text/javascript">
         /* <![CDATA[ */

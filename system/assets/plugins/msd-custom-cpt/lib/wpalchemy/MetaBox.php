@@ -5,7 +5,7 @@
  * @copyright   Copyright (c) 2009, Dimas Begunoff, http://farinspace.com
  * @license     http://en.wikipedia.org/wiki/MIT_License The MIT License
  * @package     WPAlchemy
- * @version     1.6.1
+ * @version     1.6.2
  * @link        http://github.com/farinspace/wpalchemy
  * @link        http://farinspace.com
  */
@@ -656,99 +656,99 @@ class WPAlchemy_MetaBox
 
             ?>
             <script type="text/javascript">
-            /* <![CDATA[ */
-            (function($){ /* not using jQuery ondomready, code runs right away in footer */
+                /* <![CDATA[ */
+                (function($){ /* not using jQuery ondomready, code runs right away in footer */
 
-                var mb_id = '<?php echo $this->id; ?>';
-                var mb = $('#' + mb_id + '_metabox');
+                    var mb_id = '<?php echo $this->id; ?>';
+                    var mb = $('#' + mb_id + '_metabox');
 
-                <?php if (WPALCHEMY_LOCK_TOP == $this->lock): ?>
-                <?php if ('side' == $this->context): ?>
-                var id = 'wpalchemy-side-top';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).prependTo('#side-info-column');
-                }
-                <?php else: ?>
-                var id = 'wpalchemy-content-top';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).insertAfter('#postdiv, #postdivrich');
-                }
-                <?php endif; ?>
-                $('#'+id).append(mb);
-                <?php elseif (WPALCHEMY_LOCK_BOTTOM == $this->lock): ?>
-                <?php if ('side' == $this->context): ?>
-                var id = 'wpalchemy-side-bottom';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).appendTo('#side-info-column');
-                }
-                <?php else: ?>
-                if ( ! $('#advanced-sortables').children().length)
-                {
-                    $('#advanced-sortables').css('display','none');
-                }
+                    <?php if (WPALCHEMY_LOCK_TOP == $this->lock): ?>
+                    <?php if ('side' == $this->context): ?>
+                    var id = 'wpalchemy-side-top';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).prependTo('#side-info-column');
+                    }
+                    <?php else: ?>
+                    var id = 'wpalchemy-content-top';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).insertAfter('#postdiv, #postdivrich');
+                    }
+                    <?php endif; ?>
+                    $('#'+id).append(mb);
+                    <?php elseif (WPALCHEMY_LOCK_BOTTOM == $this->lock): ?>
+                    <?php if ('side' == $this->context): ?>
+                    var id = 'wpalchemy-side-bottom';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).appendTo('#side-info-column');
+                    }
+                    <?php else: ?>
+                    if ( ! $('#advanced-sortables').children().length)
+                    {
+                        $('#advanced-sortables').css('display','none');
+                    }
 
-                var id = 'wpalchemy-content-bottom';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).insertAfter('#advanced-sortables');
-                }
-                <?php endif; ?>
-                $('#'+id).append(mb);
-                <?php elseif (WPALCHEMY_LOCK_BEFORE_POST_TITLE == $this->lock): ?>
-                <?php if ('side' != $this->context): ?>
-                var id = 'wpalchemy-content-bpt';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).prependTo('#post-body-content');
-                }
-                $('#'+id).append(mb);
-                <?php endif; ?>
-                <?php elseif (WPALCHEMY_LOCK_AFTER_POST_TITLE == $this->lock): ?>
-                <?php if ('side' != $this->context): ?>
-                var id = 'wpalchemy-content-apt';
-                if ( ! $('#'+id).length)
-                {
-                    $('<div></div>').attr('id',id).insertAfter('#titlediv');
-                }
-                $('#'+id).append(mb);
-                <?php endif; ?>
-                <?php endif; ?>
+                    var id = 'wpalchemy-content-bottom';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).insertAfter('#advanced-sortables');
+                    }
+                    <?php endif; ?>
+                    $('#'+id).append(mb);
+                    <?php elseif (WPALCHEMY_LOCK_BEFORE_POST_TITLE == $this->lock): ?>
+                    <?php if ('side' != $this->context): ?>
+                    var id = 'wpalchemy-content-bpt';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).prependTo('#post-body-content');
+                    }
+                    $('#'+id).append(mb);
+                    <?php endif; ?>
+                    <?php elseif (WPALCHEMY_LOCK_AFTER_POST_TITLE == $this->lock): ?>
+                    <?php if ('side' != $this->context): ?>
+                    var id = 'wpalchemy-content-apt';
+                    if ( ! $('#'+id).length)
+                    {
+                        $('<div></div>').attr('id',id).insertAfter('#titlediv');
+                    }
+                    $('#'+id).append(mb);
+                    <?php endif; ?>
+                    <?php endif; ?>
 
-                <?php if ( ! empty($this->lock)): ?>
-                $('.hndle', mb).css('cursor','pointer');
-                $('.handlediv', mb).remove();
-                <?php endif; ?>
+                    <?php if ( ! empty($this->lock)): ?>
+                    $('.hndle', mb).css('cursor','pointer');
+                    $('.handlediv', mb).remove();
+                    <?php endif; ?>
 
-                <?php if ($this->hide_title): ?>
-                $('.hndle', mb).remove();
-                $('.handlediv', mb).remove();
-                mb.removeClass('closed'); /* start opened */
-                <?php endif; ?>
+                    <?php if ($this->hide_title): ?>
+                    $('.hndle', mb).remove();
+                    $('.handlediv', mb).remove();
+                    mb.removeClass('closed'); /* start opened */
+                    <?php endif; ?>
 
-                <?php if (WPALCHEMY_VIEW_START_OPENED == $this->view): ?>
-                mb.removeClass('closed');
-                <?php elseif (WPALCHEMY_VIEW_START_CLOSED == $this->view): ?>
-                mb.addClass('closed');
-                <?php elseif (WPALCHEMY_VIEW_ALWAYS_OPENED == $this->view): ?>
-                /* todo: need to find a way to add this script block below, load-scripts.php?... */
-                var h3 = mb.children('h3');
-                setTimeout(function(){ h3.unbind('click'); }, 1000);
-                $('.handlediv', mb).remove();
-                mb.removeClass('closed'); /* start opened */
-                $('.hndle', mb).css('cursor','auto');
-                <?php endif; ?>
+                    <?php if (WPALCHEMY_VIEW_START_OPENED == $this->view): ?>
+                    mb.removeClass('closed');
+                    <?php elseif (WPALCHEMY_VIEW_START_CLOSED == $this->view): ?>
+                    mb.addClass('closed');
+                    <?php elseif (WPALCHEMY_VIEW_ALWAYS_OPENED == $this->view): ?>
+                    /* todo: need to find a way to add this script block below, load-scripts.php?... */
+                    var h3 = mb.children('h3');
+                    setTimeout(function(){ h3.unbind('click'); }, 1000);
+                    $('.handlediv', mb).remove();
+                    mb.removeClass('closed'); /* start opened */
+                    $('.hndle', mb).css('cursor','auto');
+                    <?php endif; ?>
 
-                <?php if ($this->hide_screen_option): ?>
+                    <?php if ($this->hide_screen_option): ?>
                     $('.metabox-prefs label[for='+ mb_id +'_metabox-hide]').remove();
-                <?php endif; ?>
+                    <?php endif; ?>
 
-                mb = null;
+                    mb = null;
 
-            })(jQuery);
-            /* ]]> */
+                })(jQuery);
+                /* ]]> */
             </script>
             <?php
 
@@ -1300,152 +1300,156 @@ class WPAlchemy_MetaBox
         // must be creating or editing a post or page
         if ( ! self::_is_post() AND ! self::_is_page()) return;
 
+        if(defined('WPALCHEMY_GLOBAL_HEAD')) return;
+
+        define('WPALCHEMY_GLOBAL_HEAD',true);
+
         // todo: you're assuming people will want to use this exact functionality
         // consider giving a developer access to change this via hooks/callbacks
 
         // include javascript for special functionality
-        ?><style type="text/css"> .wpa_group.tocopy { display:none; } </style>
+        ?><style type="text/css"> .wpa_group.tocopy { display:none; }/* <?php print $this->id ?> */</style>
         <script type="text/javascript">
-        /* <![CDATA[ */
-        jQuery(function($)
-        {
-            $(document).click(function(e)
+            /* <![CDATA[ */
+            jQuery(function($)
             {
-                var elem = $(e.target);
-
-                if (elem.attr('class') && elem.filter('[class*=dodelete]').length)
+                $(document).click(function(e)
                 {
-                    e.preventDefault();
+                    var elem = $(e.target);
 
-                    var p = elem.parents('.postbox'); /*wp*/
-
-                    var the_name = elem.attr('class').match(/dodelete-([a-zA-Z0-9_-]*)/i);
-
-                    the_name = (the_name && the_name[1]) ? the_name[1] : null ;
-
-                    /* todo: expose and allow editing of this message */
-                    if (confirm('This action can not be undone, are you sure?'))
+                    if (elem.attr('class') && elem.filter('[class*=dodelete]').length)
                     {
-                        if (the_name)
+                        e.preventDefault();
+
+                        var p = elem.parents('.postbox'); /*wp*/
+
+                        var the_name = elem.attr('class').match(/dodelete-([a-zA-Z0-9_-]*)/i);
+
+                        the_name = (the_name && the_name[1]) ? the_name[1] : null ;
+
+                        /* todo: expose and allow editing of this message */
+                        if (confirm('This action can not be undone, are you sure?'))
                         {
-                            $('.wpa_group-'+ the_name, p).not('.tocopy').remove();
-                        }
-                        else
-                        {
-                            elem.parents('.wpa_group').remove();
-                        }
-
-                        var the_group = elem.parents('.wpa_group');
-
-                        if(the_group && the_group.attr('class'))
-                        {
-                            the_name = the_group.attr('class').match(/wpa_group-([a-zA-Z0-9_-]*)/i);
-
-                            the_name = (the_name && the_name[1]) ? the_name[1] : null ;
-
-                            checkLoopLimit(the_name);
-                        }
-
-                        $.wpalchemy.trigger('wpa_delete');
-                    }
-                }
-            });
-
-            $('[class*=docopy-]').click(function(e)
-            {
-                e.preventDefault();
-
-                var p = $(this).parents('.postbox'); /*wp*/
-
-                var the_name = $(this).attr('class').match(/docopy-([a-zA-Z0-9_-]*)/i)[1];
-
-                var the_group = $('.wpa_group-'+ the_name +'.tocopy', p).first();
-
-                var the_clone = the_group.clone().removeClass('tocopy last');
-
-                var the_props = ['name', 'id', 'for', 'class'];
-
-                the_group.find('*').each(function(i, elem)
-                {
-                    for (var j = 0; j < the_props.length; j++)
-                    {
-                        var the_prop = $(elem).attr(the_props[j]);
-
-                        if (the_prop)
-                        {
-                            var the_match = the_prop.match(/\[(\d+)\]/i);
-
-                            if (the_match)
+                            if (the_name)
                             {
-                                the_prop = the_prop.replace(the_match[0],'['+ (+the_match[1]+1) +']');
-
-                                $(elem).attr(the_props[j], the_prop);
+                                $('.wpa_group-'+ the_name, p).not('.tocopy').remove();
+                            }
+                            else
+                            {
+                                elem.parents('.wpa_group').remove();
                             }
 
-                            the_match = null;
+                            var the_group = elem.parents('.wpa_group');
 
-                            // todo: this may prove to be too broad of a search
-                            the_match = the_prop.match(/n(\d+)/i);
-
-                            if (the_match)
+                            if(the_group && the_group.attr('class'))
                             {
-                                the_prop = the_prop.replace(the_match[0], 'n' + (+the_match[1]+1));
+                                the_name = the_group.attr('class').match(/wpa_group-([a-zA-Z0-9_-]*)/i);
 
-                                $(elem).attr(the_props[j], the_prop);
+                                the_name = (the_name && the_name[1]) ? the_name[1] : null ;
+
+                                checkLoopLimit(the_name);
                             }
+
+                            $.wpalchemy.trigger('wpa_delete');
                         }
                     }
                 });
 
-                if ($(this).hasClass('ontop'))
+                $('[class*=docopy-]').click(function(e)
                 {
-                    $('.wpa_group-'+ the_name, p).first().before(the_clone);
-                }
-                else
-                {
-                    the_group.before(the_clone);
-                }
+                    e.preventDefault();
 
-                checkLoopLimit(the_name);
+                    var p = $(this).parents('.postbox'); /*wp*/
 
-                $.wpalchemy.trigger('wpa_copy', [the_clone]);
-            });
+                    var the_name = $(this).attr('class').match(/docopy-([a-zA-Z0-9_-]*)/i)[1];
 
-            function checkLoopLimit(name)
-            {
-                var elem = $('.docopy-' + name);
+                    var the_group = $('.wpa_group-'+ the_name +'.tocopy', p).first();
 
-                var the_class = $('.wpa_loop-' + name).attr('class');
+                    var the_clone = the_group.clone().removeClass('tocopy last');
 
-                if (the_class)
-                {
-                    var the_match = the_class.match(/wpa_loop_limit-([0-9]*)/i);
+                    var the_props = ['name', 'id', 'for', 'class'];
 
-                    if (the_match)
+                    the_group.find('*').each(function(i, elem)
                     {
-                        var the_limit = the_match[1];
+                        for (var j = 0; j < the_props.length; j++)
+                        {
+                            var the_prop = $(elem).attr(the_props[j]);
 
-                        if ($('.wpa_group-' + name).not('.wpa_group.tocopy').length >= the_limit)
-                        {
-                            elem.hide();
+                            if (the_prop)
+                            {
+                                var the_match = the_prop.match(/\[(\d+)\]/i);
+
+                                if (the_match)
+                                {
+                                    the_prop = the_prop.replace(the_match[0],'['+ (+the_match[1]+1) +']');
+
+                                    $(elem).attr(the_props[j], the_prop);
+                                }
+
+                                the_match = null;
+
+                                // todo: this may prove to be too broad of a search
+                                the_match = the_prop.match(/n(\d+)/i);
+
+                                if (the_match)
+                                {
+                                    the_prop = the_prop.replace(the_match[0], 'n' + (+the_match[1]+1));
+
+                                    $(elem).attr(the_props[j], the_prop);
+                                }
+                            }
                         }
-                        else
+                    });
+
+                    if ($(this).hasClass('ontop'))
+                    {
+                        $('.wpa_group-'+ the_name, p).first().before(the_clone);
+                    }
+                    else
+                    {
+                        the_group.before(the_clone);
+                    }
+
+                    checkLoopLimit(the_name);
+
+                    $.wpalchemy.trigger('wpa_copy', [the_clone]);
+                });
+
+                function checkLoopLimit(name)
+                {
+                    var elem = $('.docopy-' + name);
+
+                    var the_class = $('.wpa_loop-' + name).attr('class');
+
+                    if (the_class)
+                    {
+                        var the_match = the_class.match(/wpa_loop_limit-([0-9]*)/i);
+
+                        if (the_match)
                         {
-                            elem.show();
+                            var the_limit = the_match[1];
+
+                            if ($('.wpa_group-' + name).not('.wpa_group.tocopy').length >= the_limit)
+                            {
+                                elem.hide();
+                            }
+                            else
+                            {
+                                elem.show();
+                            }
                         }
                     }
                 }
-            }
 
-            /* do an initial limit check, show or hide buttons */
-            $('[class*=docopy-]').each(function()
-            {
-                var the_name = $(this).attr('class').match(/docopy-([a-zA-Z0-9_-]*)/i)[1];
+                /* do an initial limit check, show or hide buttons */
+                $('[class*=docopy-]').each(function()
+                {
+                    var the_name = $(this).attr('class').match(/docopy-([a-zA-Z0-9_-]*)/i)[1];
 
-                checkLoopLimit(the_name);
+                    checkLoopLimit(the_name);
+                });
             });
-        });
-        /* ]]> */
+            /* ]]> */
         </script>
         <?php
     }
@@ -1462,16 +1466,19 @@ class WPAlchemy_MetaBox
         // must be creating or editing a post or page
         if ( ! self::_is_post() AND ! self::_is_page()) return;
 
+        if(defined('WPALCHEMY_GLOBAL_FOOT')) return;
+
+        define('WPALCHEMY_GLOBAL_FOOT',true);
         ?>
         <script type="text/javascript">
-        /* <![CDATA[ */
-        (function($){ /* not using jQuery ondomready, code runs right away in footer */
+            /* <![CDATA[ */
+            (function($){ /* not using jQuery ondomready, code runs right away in footer */
 
-            /* use a global dom element to attach events to */
-            $.wpalchemy = $('<div></div>').attr('id','wpalchemy').appendTo('body');
+                /* use a global dom element to attach events to */
+                $.wpalchemy = $('<div></div>').attr('id','wpalchemy').appendTo('body');
 
-        })(jQuery);
-        /* ]]> */
+            })(jQuery);
+            /* ]]> */
         </script>
         <?php
     }

@@ -4,16 +4,15 @@
 .footer-widgets {
   background-color: #fff;
   clear: both;
-  font-size: 18px;
-  font-size: 1.8rem;
-  padding: 60px 0;
+  font-size: 3.5vw;
+  padding: 3vw;
 }
 
 .footer-widgets {
   background-color: $ltgrey;
   color: $white;
   clear: both;
-  padding: 2rem 0;
+  padding: 0.5vw 0;
   a {
     color: $white;
   }
@@ -23,7 +22,7 @@
   }
 
   .widget {
-    margin: 2rem auto;
+    margin: 0.5vw auto;
     float: none;
     clear: both;
     display: block;
@@ -31,7 +30,7 @@
   }
   .connected-social{
     .social-media{
-      margin: 1rem 0;
+      margin: 0.25vw 0;
       float: none;
       margin: 0 auto;
       a,a:hover{
@@ -45,11 +44,11 @@
         background: $white;
         color: $ltgrey;
         border-radius: 100%;
-        font-size: 2rem;
-        height: 2em;
-        line-height: 2;
-        margin: 10px;
-        width: 2em;
+        font-size: 6vw;
+        height: 9vw;
+        line-height: 1.5;
+        margin: 2vw;
+        width: 9vw;
       }
       a.fa.last-child{
         margin-right: 0;
@@ -111,13 +110,13 @@
   .widget.widget_nav_menu{
     text-align: left;
     ul.menu{
-      width: 75%;
+      width: 90%;
       margin: 0 auto;
-      -moz-column-count: 5;
+      -moz-column-count: 1;
       -moz-column-gap: 30px;
-      -webkit-column-count: 5;
+      -webkit-column-count: 1;
       -webkit-column-gap: 30px;
-      column-count: 5;
+      column-count: 1;
       column-gap: 30px;
       >li{
         -webkit-column-break-inside: avoid;
@@ -148,10 +147,9 @@
 .site-footer {
   background-color: #fff;
   border-top: 1px solid #eee;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 2.5vw;
   line-height: 1;
-  padding: 60px 0;
+  padding: 3vw;
   text-align: center;
 }
 
