@@ -1,7 +1,7 @@
 <?php global $wpalchemy_media_access; ?>
 <table class="form-table">
     <tbody>
-    <?php $mb->the_field('jobtitle'); ?>
+    <?php $mb->the_field('title'); ?>
     <tr valign="top">
         <th scope="row"><label for="<?php $mb->the_name(); ?>">Job Title</label></th>
         <td>
@@ -17,3 +17,15 @@
     </tr>
     </tbody>
 </table>
+
+<?php
+/*
+Contact Info (Chapters?) Should this be State not chapter????
+State Legislation
+Speakers & Media Contacts (How to classify)
+HR 676 Endorements
+    Unions
+    Municipalities
+
+News (on Output)
+*/

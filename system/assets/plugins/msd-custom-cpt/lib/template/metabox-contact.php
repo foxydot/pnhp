@@ -29,6 +29,13 @@
             <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="" /></p>
         </td>
     </tr>
+    <?php $mb->the_field('url'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="<?php $mb->the_name(); ?>">Website</label></th>
+        <td>
+            <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="http://" /></p>
+        </td>
+    </tr>
     <tr>
         <th colspan="2">
             <hr>
@@ -49,6 +56,13 @@
     <?php $mb->the_field('linked_in'); ?>
     <tr valign="top">
         <th scope="row"><label for="<?php $mb->the_name(); ?>"><i class="fa fa-linkedin"></i> Linked In URL</label></th>
+        <td>
+            <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="http://" /></p>
+        </td>
+    </tr>
+    <?php $mb->the_field('facebook'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="<?php $mb->the_name(); ?>"><i class="fa fa-facebook"></i> Facebook URL</label></th>
         <td>
             <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="http://" /></p>
         </td>
