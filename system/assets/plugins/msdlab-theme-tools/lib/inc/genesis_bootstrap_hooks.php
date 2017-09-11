@@ -57,7 +57,7 @@ class MSDLab_Genesis_Bootstrap
         switch ($layout) {
             case 'content-sidebar':
             case 'sidebar-content':
-                $attributes['class'] .= ' col-sm-12';
+                $attributes['class'] .= ' row';
                 break;
             case 'content-sidebar-sidebar':
             case 'sidebar-sidebar-content':
@@ -67,7 +67,7 @@ class MSDLab_Genesis_Bootstrap
                 }
                 break;
             case 'full-width-content':
-                $attributes['class'] .= ' col-md-12';
+                $attributes['class'] .= ' row';
                 break;
         }
         return $attributes;
@@ -81,7 +81,11 @@ class MSDLab_Genesis_Bootstrap
             case 'content-sidebar':
             case 'sidebar-content':
                 foreach($this->options['sidebar'] AS $k => $v){
-                    $attributes['class'] .= ' col-'.$k.'-'.(12-$v);
+                    if($v!=12) {
+                        $attributes['class'] .= ' col-' . $k . '-' . (12 - $v);
+                    } else {
+                        $attributes['class'] .= ' col-' . $k . '-12';
+                    }
                 }
                 break;
             case 'content-sidebar-sidebar':

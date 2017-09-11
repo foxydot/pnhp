@@ -92,7 +92,7 @@ if (!class_exists('MSDTeamCPT')) {
                 'labels' => $labels,
                 'hierarchical' => false,
                 'description' => 'Team',
-                'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
+                'supports' => array( 'title', 'editor', 'thumbnail' ),
                 'taxonomies' => array( 'team_category' ),
                 'public' => true,
                 'show_ui' => true,
@@ -115,11 +115,11 @@ if (!class_exists('MSDTeamCPT')) {
 
 
         function register_metaboxes(){
-            global $team_info;
+            global $team_info,$contact_info;
             $team_info = new WPAlchemy_MetaBox(array
             (
                 'id' => '_team_information',
-                'title' => 'Team Info',
+                'title' => 'Team Member Info',
                 'types' => array($this->cpt),
                 'context' => 'normal',
                 'priority' => 'high',
@@ -127,6 +127,18 @@ if (!class_exists('MSDTeamCPT')) {
                 'autosave' => TRUE,
                 'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
                 'prefix' => '_team_' // defaults to NULL
+            ));
+            $contact_info = new WPAlchemy_MetaBox(array
+            (
+                'id' => '_contact_information',
+                'title' => 'Contact Info',
+                'types' => array($this->cpt),
+                'context' => 'normal',
+                'priority' => 'high',
+                'template' => plugin_dir_path(dirname(__FILE__)).'/template/metabox-contact.php',
+                'autosave' => TRUE,
+                'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
+                'prefix' => '_contact_' // defaults to NULL
             ));
         }
 
@@ -175,7 +187,8 @@ if (!class_exists('MSDTeamCPT')) {
             global $current_screen;
             if($current_screen->post_type == $this->cpt){
                 ?><script type="text/javascript">
-                    jQuery('#postdivrich').before(jQuery('#_contact_info_metabox'));
+                    jQuery('#postdivrich').before(jQuery('#_contact_information_metabox'));
+                    jQuery('#_contact_information_metabox').before(jQuery('#_team_information_metabox'));
                 </script><?php
             }
         }
@@ -268,7 +281,7 @@ if (!class_exists('MSDTeamCPT')) {
         function change_default_title( $title ){
             global $current_screen;
             if  ( $current_screen->post_type == $this->cpt ) {
-                return __('Team Name','team');
+                return __('Team Member Name','team');
             } else {
                 return $title;
             }

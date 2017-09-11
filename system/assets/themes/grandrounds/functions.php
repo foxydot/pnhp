@@ -28,9 +28,11 @@ function genesis_msdlab_child_localization_setup(){
 // Add the helper functions.
 include_once( get_stylesheet_directory() . '/lib/inc/helper-functions.php' );
 include_once( get_stylesheet_directory() . '/lib/inc/msd-functions.php' ); //should this go to plugin?
+include_once( get_stylesheet_directory() . '/lib/inc/page-banner-support.php' );
+new MSDLab_Page_Banner_Support(array());
 
 // Child theme (do not remove).
-define( 'CHILD_THEME_NAME', 'Grand Rounds' );
+define( 'CHILD_THEME_NAME', 'Deitrich' );
 define( 'CHILD_THEME_URL', 'http://msdlab.com/' );
 define( 'CHILD_THEME_VERSION', '2.3.0' );
 
@@ -53,7 +55,8 @@ add_theme_support( 'genesis-structural-wraps', array(
     'nav',
     'subnav',
     'footer',
-    'site-inner'
+    'site-inner',
+    'footer-widgets'
 ) );
 
 /***Tools Plugin**/
@@ -63,12 +66,26 @@ if(class_exists('MSDLab_Theme_Tweaks')){
     $ttweaks = new MSDLab_Theme_Tweaks($options);
 }
 if(class_exists('MSDLab_Genesis_Bootstrap')){
-    $options = array();
+    $options = array(
+        'sidebar' => array(
+            'xs' => 12,
+            'sm' => 12,
+            'md' => 3,
+            'lg' => 3
+        ),
+        'sidebar_alt' => array(
+            'xs' => 0,
+            'sm' => 0,
+            'md' => 3,
+            'lg' => 3
+        ),
+    );
     $bootstrappin = new MSDLab_Genesis_Bootstrap($options);
 }
 if(class_exists('MSDLab_Genesis_Tweaks')){
     $options = array(
-        'preheader' => 'genesis_header_right'
+        'preheader' => 'genesis_header_right',
+        'nav_extras' => array('secondary'=>'search'),
     );
     $gtweaks = new MSDLab_Genesis_Tweaks($options);
 }
@@ -82,6 +99,7 @@ if(class_exists('MSDLab_Subtitle_Support')){
 add_action('wp_head','msdlab_maybe_wrap_inner');
 add_filter( 'genesis_search_text', 'msdlab_search_text' ); //customizes the serach bar placeholder
 add_filter('genesis_search_button_text', 'msdlab_search_button'); //customize the search form to add fontawesome search button.
+//add_filter('genesis_search_form', 'msdlab_sliding_search_form');
 
 /**
  * Move secodary nav into pre-header
@@ -113,12 +131,13 @@ add_filter( 'genesis_post_info', 'msdlab_post_info_filter' );
 //add_action('template_redirect','msdlab_maybe_move_title');
 
 //remove_action('genesis_entry_header','genesis_do_post_title'); //move the title out of the content area
-add_action('msdlab_title_area','msdlab_do_section_title');
+//add_action('msdlab_title_area','msdlab_do_section_title');
+add_action('genesis_header', 'genesis_do_breadcrumbs', 11); //to outside of the loop area
 add_action('genesis_after_header','msdlab_do_title_area');
 
-add_action('genesis_after_header', 'genesis_do_breadcrumbs'); //to outside of the loop area
 //add_action('genesis_before_entry','msd_post_image');//add the image above the entry
 
+add_filter( 'excerpt_length', 'msdlab_excerpt_length', 999 );
 add_filter('excerpt_more', 'msdlab_read_more_link');
 add_filter( 'the_content_more_link', 'msdlab_read_more_link' );
 
@@ -138,7 +157,7 @@ add_theme_support( 'genesis-footer-widgets', 1 ); //adds automatic footer widget
 //add the menu
 //add_action('genesis_before_footer','msdlab_do_footer_menu', 20);
 
-add_action('genesis_before_footer','msdlab_do_footer_widget', 1);
+//add_action('genesis_before_footer','msdlab_do_footer_widget', 1);
 
 remove_action('genesis_footer','genesis_do_footer'); //replace the footer
 add_action('genesis_footer','msdlab_do_social_footer');//with a msdsocial support one

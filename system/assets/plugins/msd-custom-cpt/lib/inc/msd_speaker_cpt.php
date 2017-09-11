@@ -155,7 +155,7 @@ if (!class_exists('MSDSpeakerCPT')) {
 		        'labels' => $labels,
 		        'hierarchical' => false,
 		        'description' => 'Speaker',
-		        'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
+		        'supports' => array( 'title', 'editor', 'thumbnail' ),
 		        'taxonomies' => array( 'speaker_region', 'speaker_specialty', 'speaker_topic' ),
 		        'public' => true,
 		        'show_ui' => true,
