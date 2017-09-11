@@ -24,7 +24,7 @@ function msdlab_maybe_wrap_inner(){
  * Customize search form input
  */
 function msdlab_search_text($text) {
-    $text = esc_attr( 'Search' );
+    $text = "Search";
     return $text;
 }
 
@@ -134,11 +134,6 @@ function msdlab_add_extra_theme_sidebars(){
         'id' => 'pre-header'
     ));
     genesis_register_sidebar(array(
-        'name' => 'Page Footer Widget',
-        'description' => 'Widget on page footer',
-        'id' => 'msdlab_page_footer'
-    ));
-    genesis_register_sidebar(array(
         'name' => 'Blog Sidebar',
         'description' => 'Widgets on the Blog Pages',
         'id' => 'blog'
@@ -149,7 +144,7 @@ function msdlab_add_extra_theme_sidebars(){
  * Customize Breadcrumb output
  */
 function msdlab_breadcrumb_args($args) {
-    $args['home'] = 'ICON';
+    $args['home'] = '';
     $args['labels']['prefix'] = ''; //marks the spot
     $args['sep'] = ' / ';
     return $args;
@@ -216,9 +211,6 @@ function msdlab_do_section_title(){
 }
 
 function msdlab_do_title_area(){
-    if(is_front_page()){
-        return FALSE;
-    }
     global $post;
     $postid = is_admin()?$_GET['post']:$post->ID;
     $template_file = get_post_meta($postid,'_wp_page_template',TRUE);
@@ -284,7 +276,7 @@ function msdlab_get_thumbnail_url($post_id = null, $size = 'post-thumbnail'){
  * Previous next links
  */
 function msdlab_read_more_link() {
-    return '&hellip;&nbsp;<a class="more-link" href="' . get_permalink() . '">Read More <i class="fa fa-angle-right"></i></a>';
+    return '<a class="more-link nobr" href="' . get_permalink() . '">&hellip;read more</a>';
 }
 
 function msdlab_older_link_text($content) {
@@ -373,14 +365,15 @@ function msdlab_do_social_footer(){
     if(has_nav_menu('footer_menu')){$footer_menu .= wp_nav_menu( array( 'theme_location' => 'footer_menu','container_class' => 'menu genesis-nav-menu nav-footer','echo' => FALSE ) );}
 
     if($msd_social && get_option('msdsocial_street')!=''){
-        $address = '| <span itemprop="streetAddress">'.get_option('msdsocial_street').'</span>, <span itemprop="streetAddress">'.get_option('msdsocial_street2').'</span> | <span itemprop="addressLocality">'.get_option('msdsocial_city').'</span>, <span itemprop="addressRegion">'.get_option('msdsocial_state').'</span> <span itemprop="postalCode">'.get_option('msdsocial_zip').'</span> | '.$msd_social->get_digits(true,'');
-        $copyright .= '&copy; Copyright '.date('Y').' '.$msd_social->get_bizname().' &middot; All Rights Reserved ';
+        $address = '<span itemprop="streetAddress">'.get_option('msdsocial_street').'</span>, <span itemprop="addressLocality">'.get_option('msdsocial_city').'</span>, <span itemprop="addressRegion">'.get_option('msdsocial_state').'</span> <span itemprop="postalCode">'.get_option('msdsocial_zip').'</span>'.$msd_social->get_digits(true,'').' &middot; <a href="mailto:'.antispambot(get_option('msdsocial_email')).'">'.antispambot(get_option('msdsocial_email')).'</a>';
+        $copyright .= '&copy;'.date('Y').' '.$msd_social->get_bizname().'';
     } else {
-        $copyright .= '&copy; Copyright '.date('Y').' '.get_bloginfo('name').' &middot; All Rights Reserved ';
+        $copyright .= '&copy;'.date('Y').' '.get_bloginfo('name').'';
     }
     print '<div class="row">';
-    print '<nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
-    print '<div class="social">'.$copyright.' '.$address.'</div>';
+    //print '<nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
+    //print '<div class="social">'.$msd_social->social_media().'</div>';
+    print '<div class="legal">'.$copyright.'</div> <div class="address">'.$address.'</div> <nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
     print '</div>';
     //print '<div class="backtotop"><a href="#pre-header"><i class="fa fa-angle-up"></i></a></div>';
 }

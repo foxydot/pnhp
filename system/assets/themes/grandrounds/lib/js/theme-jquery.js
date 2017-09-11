@@ -3,6 +3,23 @@ jQuery(document).ready(function($) {
     $('*:last-child').addClass('last-child');
     $('*:nth-child(even)').addClass('even');
     $('*:nth-child(odd)').addClass('odd');
+
+    $('li.menu-item.icon').each(function(){
+    	var cont = $(this);
+		var list = $(this).attr('class').split(/\s+/);
+        var link = $(this).find('a');
+        console.log(list);
+        $.each(list, function(index, item) {
+        	console.log(item);
+            if (item.match(/fa-(.*)/)) {
+                //do something
+                link.addClass('fa');
+                link.find('span').addClass('screen-reader-text');
+                link.addClass(item);
+                cont.removeClass(item);
+            }
+        });
+	});
 	
 	var numwidgets = $('#footer-widgets div.widget').length;
 	$('#footer-widgets').addClass('cols-'+numwidgets);
@@ -30,6 +47,10 @@ jQuery(document).ready(function($) {
 	        target.addClass('open');
 	        $(this).html('LESS <i class="fa fa-angle-up"></i>');
 	    }
+	});
+
+	$('.gform_wrapper .gform_body li.gfield').each(function(){
+		$(this).children('label').before($(this).children('.ginput_container'));
 	});
 	
 });
