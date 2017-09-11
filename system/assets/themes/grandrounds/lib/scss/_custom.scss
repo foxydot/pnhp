@@ -1,0 +1,10 @@
+.bannercontent{
+  @include sansserif(1);
+  color: $dkgrey;
+}
+.addborder{
+  border: 0.25em solid $white;
+}
+.nobr{
+  white-space: nowrap;
+}
