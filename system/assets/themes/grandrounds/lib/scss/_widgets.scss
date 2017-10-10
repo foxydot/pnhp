@@ -103,3 +103,26 @@
     }
   }
 }
+
+.widget_recent_entries{
+  .widget-title{
+    @include sansserif(1);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: $dkgrey;
+  }
+  ul{
+    li{
+      line-height: 1.2;
+      a{
+        @include sansserif(0.8);
+        text-decoration: none;
+        color: $dkgrey;
+        &:hover{
+          text-decoration: none;
+          color: $green;
+        }
+      }
+    }
+  }
+}
