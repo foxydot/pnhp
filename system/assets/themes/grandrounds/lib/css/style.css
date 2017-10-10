@@ -1576,11 +1576,13 @@ p.entry-meta {
 .site-footer p {
   margin-bottom: 0; }
 
-.bannercontent {
+.bannertext .entry-title {
   font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
   font-weight: 400;
-  font-size: 1em;
-  color: #666; }
+  font-size: 2em;
+  color: #FFF;
+  text-shadow: 0 0 0.3em #666;
+  margin-bottom: 1em; }
 
 .addborder {
   border: 0.25em solid #FFF; }

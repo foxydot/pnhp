@@ -1,6 +1,10 @@
-.bannercontent{
-  @include sansserif(1);
-  color: $dkgrey;
+.bannertext{
+  .entry-title{
+    @include sansserif(2);
+    color: $white;
+    text-shadow: 0 0 .3em $dkgrey;
+    margin-bottom: 1em;
+  }
 }
 .addborder{
   border: 0.25em solid $white;
