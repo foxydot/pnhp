@@ -54,5 +54,40 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.equalize').matchHeight();
-	
+
+    //do some nifty stuff for the menu
+    $('.widget_advanced_menu .menu>li>.sub-menu>li.current-menu-item,.widget_advanced_menu .menu>li>.sub-menu>li.current-menu-ancestor').addClass('open');
+    $('.widget_advanced_menu .menu>li>.sub-menu>li').prepend(function(){
+        if($(this).hasClass('menu-item-has-children')){
+            if($(this).hasClass('open')){
+                return '<i class="fa fa-minus"></i>';
+            } else {
+                return '<i class="fa fa-plus"></i>';
+            }
+        } else {
+            return '<i class="fa"></i>';
+        }
+    });
+    $('.widget_advanced_menu .menu>li>.sub-menu>li>i.fa').click(function(){
+        var old = $('.widget_advanced_menu .menu>li>.sub-menu>li.open');
+        var cur = $(this).parent();
+        if(cur.hasClass('open')){
+            cur.removeClass('open').find('i').removeClass('fa-plus').addClass(function(){
+                if($(this).parent().hasClass('menu-item-has-children')){
+                    return 'fa-minus';
+                }
+            });
+        } else {
+            old.removeClass('open').find('i').removeClass('fa-minus').addClass(function(){
+                if($(this).parent().hasClass('menu-item-has-children')){
+                    return 'fa-plus';
+                }
+            });
+            cur.addClass('open').find('i').removeClass('fa-plus').addClass(function(){
+                if($(this).parent().hasClass('menu-item-has-children')){
+                    return 'fa-minus';
+                }
+            });
+        }
+    });
 });
