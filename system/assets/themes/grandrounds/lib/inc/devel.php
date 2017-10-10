@@ -19,11 +19,21 @@ if(!function_exists('ts_var')){
     }
 }
 
-//add_action('genesis_footer','my_msdlab_trace_actions');
+add_action('genesis_footer','my_msdlab_trace_actions');
 if(!function_exists('my_msdlab_trace_actions')) {
     function my_msdlab_trace_actions()
     {
         global $wp_filter;
-        ts_var($wp_filter['genesis_footer']);
+        ts_var($wp_filter['genesis_loop']);
+    }
+}
+//add_action('pre_get_posts','msdlab_view_queries',99);
+if(!function_exists('msdlab_view_queries')){
+    function msdlab_view_queries($query){
+        if($query->is_main_query()) {
+            ts_data($wp_query);
+        }
+
+        return $query;
     }
 }

@@ -595,9 +595,9 @@ th:first-child {
 .entry-title {
   font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
   font-weight: 400;
-  font-size: 2em;
-  color: #1b69a6;
-  font-weight: 400; }
+  font-size: 1.2em;
+  color: #1ebab2;
+  font-weight: 800; }
 
 .entry-title a,
 .sidebar .widget-title a {
@@ -1223,7 +1223,8 @@ address {
         font-size: 22px;
         font-size: 2.2rem;
         border-bottom: 0;
-        color: #afb3b5; }
+        color: #afb3b5;
+        display: none; }
       .widget_advanced_menu .menu > li.current-menu-item ul.sub-menu, .widget_advanced_menu .menu > li.current-menu-ancestor ul.sub-menu {
         max-height: 0;
         display: block;
@@ -1297,6 +1298,7 @@ address {
   color: #eee; }
 
 .entry-content strong {
+  font-weight: 600;
   color: #1ebab2; }
 
 /* ## Entry Meta
@@ -1334,20 +1336,21 @@ p.entry-meta {
   display: inline; }
 
 .archive-pagination a {
-  background-color: #fff;
-  color: #333;
+  background-color: #FFF;
+  color: #89b8b2;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1em;
   font-weight: 600;
-  padding: 8px 12px;
-  text-decoration: none; }
+  padding: 0.25em 0.75em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 1em; }
 
 .archive-pagination a:focus,
 .archive-pagination a:hover,
 .archive-pagination .active a {
-  background-color: #c3251d;
+  background-color: #89b8b2;
   color: #fff; }
 
 /* ## Comments
@@ -1585,6 +1588,32 @@ p.entry-meta {
 .nobr {
   white-space: nowrap; }
 
+.sidebar .header-bar {
+  border-top: 1em solid #1ebab2; }
+
+.archive article.type-news {
+  margin-bottom: 0; }
+  .archive article.type-news:nth-child(4n+1) {
+    background-color: #303768; }
+  .archive article.type-news:nth-child(4n+2) {
+    background-color: #1ebab2; }
+  .archive article.type-news:nth-child(4n+3) {
+    background-color: #1b69a6; }
+  .archive article.type-news:nth-child(4n+0) {
+    background-color: #10625e; }
+  .archive article.type-news .entry-header .entry-title, .archive article.type-news .entry-header .entry-subtitle {
+    color: #FFF; }
+    .archive article.type-news .entry-header .entry-title a, .archive article.type-news .entry-header .entry-subtitle a {
+      color: #FFF; }
+  .archive article.type-news .entry-header .entry-subtitle {
+    font-size: 1em; }
+  .archive article.type-news .entry-content {
+    color: #FFF; }
+    .archive article.type-news .entry-content strong, .archive article.type-news .entry-content a {
+      color: #FFF; }
+  .archive article.type-news .entry-footer {
+    display: none; }
+
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
   --------------------------------------------- */
@@ -1597,7 +1626,11 @@ p.entry-meta {
   .menu-toggle,
   .sub-menu-toggle {
     display: none;
-    visibility: hidden; } }
+    visibility: hidden; }
+  .archive main.content article.type-news:hover {
+    opacity: 0.8; }
+  .archive main.content article.type-news .entry-content {
+    display: none; } }
 
 @media only screen and (min-width: 1024px) {
   /* # Defaults
@@ -1769,8 +1802,10 @@ p.entry-meta {
     padding: 2em; }
   /* # Sidebars
   ---------------------------------------------------------------------------------------------------- */
-  .sidebar .widget {
-    padding: 2em 0; }
+  .sidebar {
+    padding-top: 2em; }
+    .sidebar .widget {
+      padding: 1em 0; }
   /* # Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
   .footer-widgets {

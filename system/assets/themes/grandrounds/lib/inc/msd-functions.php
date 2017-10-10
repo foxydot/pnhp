@@ -222,3 +222,9 @@ function remove_empty_p( $content ){
 
     return preg_replace('#<p>(\s|&nbsp;)*+(<br\s*/*>)*(\s|&nbsp;)*</p>#i', '', $content);
 }
+
+add_action('genesis_sidebar','msdlab_add_sidebar_menu_header_bar',6);
+
+function msdlab_add_sidebar_menu_header_bar(){
+    print '<div class="header-bar"> </div>';
+}

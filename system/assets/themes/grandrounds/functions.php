@@ -205,3 +205,7 @@ function genesis_msdlab_child_comments_gravatar( $args ) {
 	return $args;
 
 }
+
+
+remove_theme_support( 'custom-background' );
+remove_theme_support( 'custom-header' );

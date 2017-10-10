@@ -8,3 +8,47 @@
 .nobr{
   white-space: nowrap;
 }
+
+.sidebar{
+  .header-bar{
+    border-top: 1em solid $green;
+  }
+}
+
+.archive{
+  article.type-news{
+    margin-bottom: 0;
+    &:nth-child(4n+1){
+    background-color: $dkblue;
+  }
+    &:nth-child(4n+2){
+      background-color: $green;
+    }
+    &:nth-child(4n+3){
+      background-color: $blue;
+    }
+    &:nth-child(4n+0){
+      background-color: $dkgreen;
+    }
+    .entry-header{
+      .entry-title,.entry-subtitle{
+        color: $white;
+        a{
+          color: $white;
+        }
+      }
+      .entry-subtitle {
+        font-size: 1em;
+      }
+    }
+    .entry-content{
+      color: $white;
+      strong,a{
+        color: $white;
+      }
+    }
+    .entry-footer{
+      display: none;
+    }
+  }
+}

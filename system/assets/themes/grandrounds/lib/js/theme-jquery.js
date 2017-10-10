@@ -52,5 +52,7 @@ jQuery(document).ready(function($) {
 	$('.gform_wrapper .gform_body li.gfield').each(function(){
 		$(this).children('label').before($(this).children('.ginput_container'));
 	});
+
+	$('.equalize').matchHeight();
 	
 });

@@ -87,9 +87,9 @@
 }
 
 .entry-title {
-  @include sansserif(2);
-  color: $blue;
-  font-weight: 400;
+  @include sansserif(1.2);
+  color: $green;
+  font-weight: 800;
 }
 
 .entry-title a,

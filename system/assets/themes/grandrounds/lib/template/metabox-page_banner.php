@@ -10,10 +10,10 @@
     </tr>
     <?php $mb->the_field('banneralign'); ?>
     <tr valign="top">
-        <th scope="row"><label for="banneralign"></label>Banner alignment</th>
+        <th scope="row"><label for="banneralign"></label>Banner text alignment</th>
         <td>
-            <p><input type="radio" name="<?php $mb->the_name(); ?>" value="imageleft"<?php $mb->the_radio_state('imageleft'); ?>/> Image left/text right</p>
-            <p><input type="radio" name="<?php $mb->the_name(); ?>" value="imageright"<?php $mb->the_radio_state('imageright'); ?>/> Image right/text left</p>
+            <p><input type="radio" name="<?php $mb->the_name(); ?>" value="textleft"<?php $mb->the_radio_state('textleft'); ?>/> Text left</p>
+            <p><input type="radio" name="<?php $mb->the_name(); ?>" value="textright"<?php $mb->the_radio_state('textright'); ?>/> Text right</p>
         </td>
     </tr>
     <?php $mb->the_field('bannerimage'); ?>

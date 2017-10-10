@@ -49,6 +49,7 @@ function msdlab_add_scripts() {
             genesis_msdlab_child_responsive_menu_settings()
         );
 
+        wp_enqueue_script('matchHeight',get_stylesheet_directory_uri().'/lib/js/jquery.matchHeight-min.js',array('jquery','bootstrap-jquery'));
         wp_enqueue_script('msd-jquery',get_stylesheet_directory_uri().'/lib/js/theme-jquery.js',array('jquery','bootstrap-jquery'));
 
         if($is_IE){

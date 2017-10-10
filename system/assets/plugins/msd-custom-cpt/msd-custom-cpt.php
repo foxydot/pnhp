@@ -105,22 +105,22 @@ if (!class_exists('MSDCustomCPT')) {
         	requireDir(plugin_dir_path(__FILE__).'/lib/inc');
             //here are some examples to get started with
             if(class_exists('MSDQODCPT')){
-                $this->quote_class = new MSDQODCPT();
+                //$this->quote_class = new MSDQODCPT();
             }
             if(class_exists('MSDNewsCPT')){
                 $this->news_class = new MSDNewsCPT();
             }
             if(class_exists('MSDResourceCPT')){
-                $this->quote_class = new MSDResourceCPT();
+                //$this->quote_class = new MSDResourceCPT();
             }
             if(class_exists('MSDChapterCPT')){
-                $this->quote_class = new MSDChapterCPT();
+                //$this->quote_class = new MSDChapterCPT();
             }
             if(class_exists('MSDSpeakerCPT')){
-                $this->quote_class = new MSDSpeakerCPT();
+                //$this->quote_class = new MSDSpeakerCPT();
             }
             if(class_exists('MSDTeamCPT')){
-                $this->quote_class = new MSDTeamCPT();
+                //$this->quote_class = new MSDTeamCPT();
             }
 
             register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
