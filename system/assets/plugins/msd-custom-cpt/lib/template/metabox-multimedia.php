@@ -1,6 +1,13 @@
 <?php global $wpalchemy_media_access; ?>
 <table class="form-table">
     <tbody>
+    <?php $mb->the_field('hasvideo'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="hasvideo">Has Video?</label></th>
+        <td>
+            <p><input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/></p>
+        </td>
+    </tr>
     <?php $mb->the_field('videourl'); ?>
     <tr valign="top">
         <th scope="row"><label for="videourl">Video URL</label></th>
@@ -30,6 +37,13 @@
     </tr>
     <tr>
         <td colspan="2"><hr></td>
+    </tr>
+    <?php $mb->the_field('hasaudio'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="hasaudio">Has Audio?</label></th>
+        <td>
+            <p><input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/></p>
+        </td>
     </tr>
     <?php $mb->the_field('audiourl'); ?>
     <tr valign="top">

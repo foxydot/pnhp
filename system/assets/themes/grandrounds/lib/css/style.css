@@ -1601,12 +1601,14 @@ p.entry-meta {
     background-color: #1b69a6; }
   .archive article.type-news:nth-child(4n+0) {
     background-color: #10625e; }
-  .archive article.type-news .entry-header .entry-title, .archive article.type-news .entry-header .entry-subtitle {
+  .archive article.type-news .entry-header {
     color: #FFF; }
-    .archive article.type-news .entry-header .entry-title a, .archive article.type-news .entry-header .entry-subtitle a {
+    .archive article.type-news .entry-header .entry-title, .archive article.type-news .entry-header .entry-subtitle {
       color: #FFF; }
-  .archive article.type-news .entry-header .entry-subtitle {
-    font-size: 1em; }
+      .archive article.type-news .entry-header .entry-title a, .archive article.type-news .entry-header .entry-subtitle a {
+        color: #FFF; }
+    .archive article.type-news .entry-header .entry-subtitle {
+      font-size: 1em; }
   .archive article.type-news .entry-content {
     color: #FFF; }
     .archive article.type-news .entry-content strong, .archive article.type-news .entry-content a {
