@@ -31,7 +31,7 @@ if (!class_exists('MSDResourceCPT')) {
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
 			
 			//Filters
-			add_filter( 'pre_get_posts', array(&$this,'custom_query') );
+			//add_filter( 'pre_get_posts', array(&$this,'custom_query') );
 			add_filter( 'enter_title_here', array(&$this,'change_default_title') );
 		}
 
@@ -243,27 +243,41 @@ if (!class_exists('MSDResourceCPT')) {
             $current_screen->add_help_tab( $args );
 
         }
-		
 
-		function custom_query( $query ) {
-			if(!is_admin()){
-				if($query->is_main_query() && $query->is_search){
-					$searchterm = $query->query_vars['s'];
-					// we have to remove the "s" parameter from the query, because it will prevent the posts from being found
-					$query->query_vars['s'] = "";
-					
-					if ($searchterm != "") {
-						$query->set('meta_value',$searchterm);
-						$query->set('meta_compare','LIKE');
-					};
-					$query->set( 'post_type', array('post','page',$this->cpt) );
-					ts_data($query);
-				}
-				elseif( $query->is_main_query() && $query->is_archive ) {
-					$query->set( 'post_type', array('post','page',$this->cpt) );
-				}
-			}
-		}
+
+        function custom_query( $query ) {
+            if(!is_admin()){
+                if($query->is_main_query()) {
+                    $post_types = $query->get('post_type');             // Get the currnet post types in the query
+
+                    if(!is_array($post_types) && !empty($post_types))   // Check that the current posts types are stored as an array
+                        $post_types = explode(',', $post_types);
+
+                    if(empty($post_types))
+                        $post_types = array('post'); // If there are no post types defined, be sure to include posts so that they are not ignored
+
+                    if ($query->is_search) {
+                        $searchterm = $query->query_vars['s'];
+                        // we have to remove the "s" parameter from the query, because it will prevent the posts from being found
+                        $query->query_vars['s'] = "";
+
+                        if ($searchterm != "") {
+                            $query->set('meta_value', $searchterm);
+                            $query->set('meta_compare', 'LIKE');
+                        };
+                        $post_types[] = $this->cpt;                         // Add your custom post type
+
+                    } elseif ($query->is_archive) {
+                        $post_types[] = $this->cpt;                         // Add your custom post type
+                    }
+
+                    $post_types = array_map('trim', $post_types);       // Trim every element, just in case
+                    $post_types = array_filter($post_types);            // Remove any empty elements, just in case
+
+                    $query->set('post_type', $post_types);              // Add the updated list of post types to your query
+                }
+            }
+        }
 
         function change_default_title( $title ){
             global $current_screen;

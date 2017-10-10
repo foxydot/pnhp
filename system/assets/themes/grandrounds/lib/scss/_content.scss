@@ -33,6 +33,7 @@
   color: #eee;
 }
 .entry-content strong{
+  font-weight: 600;
   color: $green;
 }
 
@@ -81,21 +82,22 @@ p.entry-meta {
 }
 
 .archive-pagination a {
-  background-color: #fff;
-  color: #333;
+  background-color: $white;
+  color: $ltgreen;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 1em;
   font-weight: 600;
-  padding: 8px 12px;
+  padding: 0.25em 0.75em;
+  text-align: center;
   text-decoration: none;
+  border-radius: 1em;
 }
 
 .archive-pagination a:focus,
 .archive-pagination a:hover,
 .archive-pagination .active a {
-  background-color: #c3251d;
+  background-color: $ltgreen;
   color: #fff;
 }
 

@@ -79,14 +79,14 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     }
                 }
                 $bannercontent = apply_filters('the_content',$page_banner_metabox->get_the_value('bannercontent'));
-                remove_action('genesis_entry_header','genesis_do_post_title');
+                //remove_action('genesis_entry_header','genesis_do_post_title');
                 global $post;
                 $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
                 print '<div class="banner clearfix '.$banneralign.' '.$bannerclass.'"'.$background.'>';
                 print '<div class="gradient">';
                 print '<div class="wrap">';
                 print '<div class="bannertext">';
-                print genesis_do_post_title();
+                //print genesis_do_post_title();
                 print '<div class="bannercontent">'.$bannercontent.'</div>';
                 print '</div>';
                 print '</div>';

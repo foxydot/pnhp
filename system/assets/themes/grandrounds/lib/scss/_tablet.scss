@@ -17,4 +17,19 @@
     display: none;
     visibility: hidden;
   }
+//TODO: add touch test. We do NOT want this to fire on an actual tablet, because the rollovers won't work.
+  .archive {
+    main.content {
+      article.type-news {
+        &:hover{
+          opacity: 0.8;
+        }
+        .entry-header {
+        }
+        .entry-content {
+          display: none;
+        }
+      }
+    }
+  }
 }
