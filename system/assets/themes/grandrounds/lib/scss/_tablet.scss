@@ -19,6 +19,9 @@
   }
 //TODO: add touch test. We do NOT want this to fire on an actual tablet, because the rollovers won't work.
   .archive {
+    .site-inner>.wrap{
+      padding-right:0;
+    }
     main.content {
       article.type-news {
         &:hover{

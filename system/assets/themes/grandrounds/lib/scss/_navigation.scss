@@ -162,7 +162,8 @@
 }
 
 .genesis-nav-menu .sub-menu {
-  border-top: 1px solid $link;
+  padding-top: 1.5em;
+  border-top: 0px solid $link;
   left: -9999px;
   opacity: 0;
   position: absolute;
@@ -173,22 +174,22 @@
   transition:         opacity .4s ease-in-out;
   width: 200px;
   z-index: 99;
+  background-color: rgba($white,0.7);
 }
 
 .genesis-nav-menu .sub-menu a {
-  background-color: #fff;
-  border: 1px solid $link;
+  border: 0px solid $link;
   border-top: 0;
-  font-size: 14px;
-  font-size: 1.4rem;
-  padding: 20px;
+  font-size: 0.9em;
+  padding: 0.75em 0.5em;
   position: relative;
   width: 200px;
   word-wrap: break-word;
 }
 
 .genesis-nav-menu .sub-menu .sub-menu {
-  margin: -56px 0 0 199px;
+  padding-top: 0em;
+  margin: -2.25em 0 0 200px;
 }
 
 .genesis-nav-menu .menu-item:hover {
@@ -311,11 +312,13 @@
         display: block;
         a{
           text-decoration: none;
-          font-size: 22px;
-          font-size: 2.2rem;
-          border-bottom: 0;
-          color: $medgrey;
-          display: none;
+          font-size: 1em;
+          color: $dkgrey;
+          display: block;
+          font-weight: 900;
+        }
+        >a{
+          text-transform: uppercase;
         }
         ul.sub-menu{
           max-height: 0;
@@ -333,7 +336,6 @@
           max-height: 400px;
         }
         li{
-          border-top: 2px dashed $ltgrey;
           margin: 0;
           &.first-child{
             border-top: 0;
@@ -347,24 +349,23 @@
             cursor: pointer;
           }
           a{
-            color: $medgrey;
+            color: $dkgrey;
             padding: 1rem 0;
             display: inline-block;
             width: 80%;
-            font-size: 18px;
-            font-size: 1.8rem;
+            line-height: 1.2;
+            font-size: 0.8em;
             font-weight: 400;
           }
           &:hover{
-            background: fade($medgrey,10%);
+            color: $green;
             a:hover{
               text-decoration: none;
             }
           }
           >ul.sub-menu{
-            background: $offwhite;
             li{
-              border-top: 2px dashed $ltgrey;
+              border-top: 0px dashed $ltgrey;
               padding-left: 6rem;
             }
           }
