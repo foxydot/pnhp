@@ -42,7 +42,7 @@ function msdlab_news_title_unlink(){
     return false;
 }
 
-add_action('genesis_entry_header','msdlab_multimedia_icons');
+//add_action('genesis_entry_header','msdlab_multimedia_icons',12);
 function msdlab_multimedia_icons(){
     global $post;
     global $multimedia_info;
@@ -53,5 +53,42 @@ function msdlab_multimedia_icons(){
     if($multimedia_info->get_the_value('hasaudio')){
         print '<i class="fa fa-volume-up"><span class="sr-only">This article includes audio</span></i>';
     }
+}
+
+add_action('genesis_sidebar','msdlab_news_category_recents',8);
+function msdlab_news_category_recents(){
+    global $post;
+    $terms = wp_get_post_terms( $post->ID, 'news_category', array(
+        'hide_empty' => false,
+    ) );
+    $term_obj = $terms[0];
+    $args = array(
+        'post_type' => 'news',
+        'showposts' => 5,
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'news_category',
+                'field'    => 'id',
+                'terms'    => $term_obj->term_id,
+            ),
+        ),
+    );
+    $recents = new WP_Query($args);
+    if($recents->have_posts()) {
+        $ret = '<section class="widget widget_recent_entries">
+<div class="widget-wrap">
+<h3 class="widgettitle widget-title">Recent ' . $term_obj->name . ' </h3>
+<ul>';
+//start loop
+        while($recents->have_posts()) {
+            $recents->the_post();
+            $ret .= '
+            <li><a title = "'.$recents->post->post_title.'" href = "'.$recents->post->permalink.'"> '.$recents->post->post_title.' </a></li>';
+        } //end loop
+        $ret .= '</ul></div></section>';
+} //end loop check
+
+    wp_reset_postdata();
+    print $ret;
 }
 genesis();
