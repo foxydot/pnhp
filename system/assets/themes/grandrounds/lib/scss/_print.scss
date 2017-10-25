@@ -1,3 +1,14 @@
-/* Welcome to Compass. Use this file to define print styles.
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+@media print {
+  .archive,.news_category_aggregate{
+    article.type-news{
+      margin-bottom: 2em;
+      width: 100%;
+      float: none;
+      display: block;
+      height: auto;
+      max-height: 100%;
+    }
+  }
+}
+
+
