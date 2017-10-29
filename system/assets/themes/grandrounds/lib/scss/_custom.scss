@@ -59,6 +59,13 @@
 }
 
 .news_category_aggregate{
+  h3.widget-title{
+    font-size: 1em;
+    margin: 0;
+    padding: 0.5em 1em;
+    color: $white;
+    border-top: 1px solid $white;
+  }
   article.type-news{
     max-height: 14em;
     overflow: hidden;
@@ -92,6 +99,92 @@
           width: 1.8em;
         }
     }
+    }
+  }
+  &:nth-child(4n+1){
+    h3.widget-title {
+      background-color: $dkblue;
+    }
+    article.type-news {
+      &:nth-child(3n+1) {
+        background-color: $green;
+      }
+      &:nth-child(3n+2) {
+        background-color: $medgrey;
+      }
+      &:nth-child(3n+0) {
+        background-color: $blue;
+      }
+    }
+  }
+  &:nth-child(4n+2){
+    h3.widget-title {
+      background-color: $medgrey;
+    }
+    article.type-news {
+      &:nth-child(3n+1) {
+        background-color: $blue;
+      }
+      &:nth-child(3n+2) {
+        background-color: $dkblue;
+      }
+      &:nth-child(3n+0) {
+        background-color: $green;
+      }
+    }
+  }
+  &:nth-child(4n+3){
+    h3.widget-title {
+      background-color: $green;
+    }
+    article.type-news {
+      &:nth-child(3n+1) {
+        background-color: $medgrey;
+      }
+      &:nth-child(3n+2) {
+        background-color: $blue;
+      }
+      &:nth-child(3n+0) {
+        background-color: $dkblue;
+      }
+    }
+  }
+  &:nth-child(4n+0){
+    h3.widget-title {
+      background-color: $blue;
+    }
+    article.type-news {
+      &:nth-child(3n+1) {
+        background-color: $dkblue;
+      }
+      &:nth-child(3n+2) {
+        background-color: $green;
+      }
+      &:nth-child(3n+0) {
+        background-color: $medgrey;
+      }
+    }
+  }
+}
+
+.content_modal{
+  .modal-content {
+    border: 0;
+    border-radius: 0;
+    .modal-header,.modal-body,.modal-footer{
+      font-size: 1.6em;
+      border: 0;
+      .entry-title,.entry-subtitle,strong,b{
+        color: $dkblue;
+      }
+      .entry-title{
+        font-size: 1.8em;
+        font-weight: 600;
+      }
+      .entry-subtitle{
+        font-size: 1.2em;
+        font-weight: 400;
+      }
     }
   }
 }

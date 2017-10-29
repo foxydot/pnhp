@@ -1637,6 +1637,13 @@ p.entry-meta {
   .archive article.type-news .entry-footer, .news_category_aggregate article.type-news .entry-footer {
     display: none; }
 
+.news_category_aggregate h3.widget-title {
+  font-size: 1em;
+  margin: 0;
+  padding: 0.5em 1em;
+  color: #FFF;
+  border-top: 1px solid #FFF; }
+
 .news_category_aggregate article.type-news {
   max-height: 14em;
   overflow: hidden; }
@@ -1667,6 +1674,69 @@ p.entry-meta {
       .news_category_aggregate article.type-news.open .entry-footer a {
         width: 1.8em; }
 
+.news_category_aggregate:nth-child(4n+1) h3.widget-title {
+  background-color: #404c7f; }
+
+.news_category_aggregate:nth-child(4n+1) article.type-news:nth-child(3n+1) {
+  background-color: #4bbfbf; }
+
+.news_category_aggregate:nth-child(4n+1) article.type-news:nth-child(3n+2) {
+  background-color: #a6aaad; }
+
+.news_category_aggregate:nth-child(4n+1) article.type-news:nth-child(3n+0) {
+  background-color: #1b69a6; }
+
+.news_category_aggregate:nth-child(4n+2) h3.widget-title {
+  background-color: #a6aaad; }
+
+.news_category_aggregate:nth-child(4n+2) article.type-news:nth-child(3n+1) {
+  background-color: #1b69a6; }
+
+.news_category_aggregate:nth-child(4n+2) article.type-news:nth-child(3n+2) {
+  background-color: #404c7f; }
+
+.news_category_aggregate:nth-child(4n+2) article.type-news:nth-child(3n+0) {
+  background-color: #4bbfbf; }
+
+.news_category_aggregate:nth-child(4n+3) h3.widget-title {
+  background-color: #4bbfbf; }
+
+.news_category_aggregate:nth-child(4n+3) article.type-news:nth-child(3n+1) {
+  background-color: #a6aaad; }
+
+.news_category_aggregate:nth-child(4n+3) article.type-news:nth-child(3n+2) {
+  background-color: #1b69a6; }
+
+.news_category_aggregate:nth-child(4n+3) article.type-news:nth-child(3n+0) {
+  background-color: #404c7f; }
+
+.news_category_aggregate:nth-child(4n+0) h3.widget-title {
+  background-color: #1b69a6; }
+
+.news_category_aggregate:nth-child(4n+0) article.type-news:nth-child(3n+1) {
+  background-color: #404c7f; }
+
+.news_category_aggregate:nth-child(4n+0) article.type-news:nth-child(3n+2) {
+  background-color: #4bbfbf; }
+
+.news_category_aggregate:nth-child(4n+0) article.type-news:nth-child(3n+0) {
+  background-color: #a6aaad; }
+
+.content_modal .modal-content {
+  border: 0;
+  border-radius: 0; }
+  .content_modal .modal-content .modal-header, .content_modal .modal-content .modal-body, .content_modal .modal-content .modal-footer {
+    font-size: 1.6em;
+    border: 0; }
+    .content_modal .modal-content .modal-header .entry-title, .content_modal .modal-content .modal-header .entry-subtitle, .content_modal .modal-content .modal-header strong, .content_modal .modal-content .modal-header b, .content_modal .modal-content .modal-body .entry-title, .content_modal .modal-content .modal-body .entry-subtitle, .content_modal .modal-content .modal-body strong, .content_modal .modal-content .modal-body b, .content_modal .modal-content .modal-footer .entry-title, .content_modal .modal-content .modal-footer .entry-subtitle, .content_modal .modal-content .modal-footer strong, .content_modal .modal-content .modal-footer b {
+      color: #404c7f; }
+    .content_modal .modal-content .modal-header .entry-title, .content_modal .modal-content .modal-body .entry-title, .content_modal .modal-content .modal-footer .entry-title {
+      font-size: 1.8em;
+      font-weight: 600; }
+    .content_modal .modal-content .modal-header .entry-subtitle, .content_modal .modal-content .modal-body .entry-subtitle, .content_modal .modal-content .modal-footer .entry-subtitle {
+      font-size: 1.2em;
+      font-weight: 400; }
+
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
   --------------------------------------------- */
@@ -1680,12 +1750,18 @@ p.entry-meta {
   .sub-menu-toggle {
     display: none;
     visibility: hidden; }
-  .archive .site-inner > .wrap {
+  .archive .site-inner > .wrap, .page.latest-news .site-inner > .wrap {
     padding-right: 0; }
-  .archive main.content article.type-news:hover {
-    opacity: 0.8; }
+  .archive main.content article.type-news, .page.latest-news main.content article.type-news {
+    cursor: pointer; }
+    .archive main.content article.type-news:hover, .page.latest-news main.content article.type-news:hover {
+      opacity: 0.8; }
   .archive main.content article.type-news .entry-content {
-    display: none; } }
+    display: none; }
+  .modal-dialog {
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px auto; } }
 
 @media only screen and (min-width: 1024px) {
   /* # Defaults
@@ -1979,6 +2055,11 @@ p.entry-meta {
   .site-footer p {
     margin-bottom: 0; } }
 
-/* Welcome to Compass. Use this file to define print styles.
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+@media print {
+  .archive article.type-news, .news_category_aggregate article.type-news {
+    margin-bottom: 2em;
+    width: 100%;
+    float: none;
+    display: block;
+    height: auto;
+    max-height: 100%; } }

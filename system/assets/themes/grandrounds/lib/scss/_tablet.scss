@@ -18,21 +18,35 @@
     visibility: hidden;
   }
 //TODO: add touch test. We do NOT want this to fire on an actual tablet, because the rollovers won't work.
-  .archive {
+  .archive,.page.latest-news {
     .site-inner>.wrap{
       padding-right:0;
     }
     main.content {
       article.type-news {
+        cursor: pointer;
         &:hover{
           opacity: 0.8;
         }
         .entry-header {
         }
         .entry-content {
-          display: none;
         }
       }
     }
+  }
+  .archive {
+     main.content {
+       article.type-news {
+         .entry-content {
+           display: none;
+         }
+       }
+     }
+   }
+  .modal-dialog {
+    width: 80%;
+    max-width: 1000px;
+    margin: 30px auto;
   }
 }
