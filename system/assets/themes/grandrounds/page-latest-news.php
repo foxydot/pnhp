@@ -16,7 +16,9 @@ function msdlab_news_recents_aggregated(){
         'taxonomy' => 'news_category',
         'hide_empty' => false,
     ) );
+    $allowed_terms = array('articles-of-interest','members-in-the-news','quote-of-the-day','state-single-payer-news');
     foreach ($terms as $term_obj){
+        if(!in_array($term_obj->slug,$allowed_terms)){ continue; }
         $args = array(
             'post_type' => 'news',
             'showposts' => 3,
