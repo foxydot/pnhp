@@ -111,7 +111,7 @@ if (!class_exists('MSDCustomCPT')) {
                 $this->news_class = new MSDNewsCPT();
             }
             if(class_exists('MSDResourceCPT')){
-                //$this->quote_class = new MSDResourceCPT();
+                $this->quote_class = new MSDResourceCPT();
             }
             if(class_exists('MSDChapterCPT')){
                 //$this->quote_class = new MSDChapterCPT();
