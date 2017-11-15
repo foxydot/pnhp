@@ -82,14 +82,14 @@ $states = array('ALABAMA'=>"AL",
             <input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/> List as Media Contact Only
         </td>
     </tr>
-    <?php $mb->the_field('state'); ?>
     <tr valign="top">
         <th scope="row"><label for="<?php $mb->the_name(); ?>">State(s)</label></th>
         <td>
             <ul style="column-count: 3;">
                 <?php foreach($states AS $state => $st){ ?>
+                    <?php $mb->the_field('state'); ?>
                     <li>
-                        <input type="checkbox" name="<?php $mb->the_name(); ?>" value="<?php print $st; ?>"<?php $mb->the_checkbox_state($st); ?>/> <?php print ucwords(strtolower($state)); ?>
+                        <input type="checkbox" name="<?php $mb->the_name(); ?>[]" value="<?php print $st; ?>"<?php $mb->the_checkbox_state($st); ?>/> <?php print ucwords(strtolower($state)); ?>
                     </li>
                 <?php } ?>
             </ul>
