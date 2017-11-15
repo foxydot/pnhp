@@ -111,16 +111,16 @@ if (!class_exists('MSDCustomCPT')) {
                 $this->news_class = new MSDNewsCPT();
             }
             if(class_exists('MSDResourceCPT')){
-                $this->quote_class = new MSDResourceCPT();
+                $this->resource_class = new MSDResourceCPT();
             }
             if(class_exists('MSDChapterCPT')){
-                //$this->quote_class = new MSDChapterCPT();
+                //$this->chapter_class = new MSDChapterCPT();
             }
             if(class_exists('MSDSpeakerCPT')){
-                //$this->quote_class = new MSDSpeakerCPT();
+                $this->speaker_class = new MSDSpeakerCPT();
             }
             if(class_exists('MSDTeamCPT')){
-                //$this->quote_class = new MSDTeamCPT();
+                //$this->team_class = new MSDTeamCPT();
             }
 
             register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
