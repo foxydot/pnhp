@@ -42,18 +42,6 @@ function msdlab_news_title_unlink(){
     return false;
 }
 
-//add_action('genesis_entry_header','msdlab_multimedia_icons',12);
-function msdlab_multimedia_icons(){
-    global $post;
-    global $multimedia_info;
-    $multimedia_info->the_meta($post->ID);
-    if($multimedia_info->get_the_value('hasvideo')){
-        print '<i class="fa fa-video-camera"><span class="sr-only">This article includes video</span></i>';
-    }
-    if($multimedia_info->get_the_value('hasaudio')){
-        print '<i class="fa fa-volume-up"><span class="sr-only">This article includes audio</span></i>';
-    }
-}
 
 add_action('genesis_sidebar','msdlab_news_category_recents',8);
 function msdlab_news_category_recents(){
