@@ -27,11 +27,11 @@ if (!class_exists('MSDResourceCPT')) {
 			add_action('admin_footer',array(&$this,'info_footer_hook') );
 			// important: note the priority of 99, the js needs to be placed after tinymce loads
 			add_action('admin_print_footer_scripts',array(&$this,'print_footer_scripts'),99);
-            add_action('template_redirect', array(&$this,'my_theme_redirect'));
+            //add_action('template_redirect', array(&$this,'my_theme_redirect'));
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
 			
 			//Filters
-			//add_filter( 'pre_get_posts', array(&$this,'custom_query') );
+			add_filter( 'pre_get_posts', array(&$this,'custom_query') );
 			add_filter( 'enter_title_here', array(&$this,'change_default_title') );
 
 
@@ -251,7 +251,11 @@ if (!class_exists('MSDResourceCPT')) {
 
 
         function custom_query( $query ) {
+
             if(!is_admin()){
+                if(is_page()){
+                    return $query;
+                }
                 if($query->is_main_query()) {
                     $post_types = $query->get('post_type');             // Get the currnet post types in the query
 

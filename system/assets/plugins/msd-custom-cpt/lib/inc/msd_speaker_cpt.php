@@ -27,12 +27,16 @@ if (!class_exists('MSDSpeakerCPT')) {
 			add_action('admin_footer',array(&$this,'info_footer_hook') );
 			// important: note the priority of 99, the js needs to be placed after tinymce loads
 			add_action('admin_print_footer_scripts',array(&$this,'print_footer_scripts'),99);
-            add_action('template_redirect', array(&$this,'my_theme_redirect'));
+            //add_action('template_redirect', array(&$this,'my_theme_redirect'));
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
 			
 			//Filters
 			//add_filter( 'pre_get_posts', array(&$this,'custom_query') );
 			add_filter( 'enter_title_here', array(&$this,'change_default_title') );
+
+            //add cols to manage panel
+            add_filter( 'manage_edit-'.$this->cpt.'_columns', array(&$this,'my_edit_columns' ));
+            add_action( 'manage_'.$this->cpt.'_posts_custom_column', array(&$this,'my_manage_columns'), 10, 2 );
 		}
 
 
@@ -323,9 +327,11 @@ if (!class_exists('MSDSpeakerCPT')) {
 
         function custom_query( $query ) {
             if(!is_admin()){
+                if(is_page()){
+                    return $query;
+                }
                 if($query->is_main_query()) {
                     $post_types = $query->get('post_type');             // Get the currnet post types in the query
-
                     if(!is_array($post_types) && !empty($post_types))   // Check that the current posts types are stored as an array
                         $post_types = explode(',', $post_types);
 
@@ -353,6 +359,86 @@ if (!class_exists('MSDSpeakerCPT')) {
                     $query->set('post_type', $post_types);              // Add the updated list of post types to your query
                 }
             }
+        }
+
+
+        function my_edit_columns( $columns ) {
+
+            $columns = array(
+                'cb' => '<input type="checkbox" />',
+                'title' => __( 'Title' ),
+                $this->cpt.'_state' => __( 'State' ),
+                $this->cpt.'_region' => __( 'Region' ),
+                $this->cpt.'_specialty' => __( 'Specialty' ),
+                $this->cpt.'_topic' => __( 'Topic' ),
+                'author' => __( 'Author' ),
+                'date' => __( 'Date' )
+            );
+
+            return $columns;
+        }
+
+        function my_manage_columns( $column, $post_id ) {
+            global $post;
+
+            switch( $column ) {
+                case $this->cpt.'_state' :
+                    $states = get_post_meta($post_id,'_speaker_state',true);
+                    ts_data($states);
+                    break;
+                case $this->cpt.'_region' :
+                case $this->cpt.'_specialty' :
+                case $this->cpt.'_topic' :
+                    $taxonomy = $column;
+                    if ( $taxonomy ) {
+                        $taxonomy_object = get_taxonomy( $taxonomy );
+                        $terms = get_the_terms( $post->ID, $taxonomy );
+                        if ( is_array( $terms ) ) {
+                            $out = array();
+                            foreach ( $terms as $t ) {
+                                $posts_in_term_qv = array();
+                                if ( 'post' != $post->post_type ) {
+                                    $posts_in_term_qv['post_type'] = $post->post_type;
+                                }
+                                if ( $taxonomy_object->query_var ) {
+                                    $posts_in_term_qv[ $taxonomy_object->query_var ] = $t->slug;
+                                } else {
+                                    $posts_in_term_qv['taxonomy'] = $taxonomy;
+                                    $posts_in_term_qv['term'] = $t->slug;
+                                }
+
+                                $label = esc_html( sanitize_term_field( 'name', $t->name, $t->term_id, $taxonomy, 'display' ) );
+                                $out[] = $this->get_edit_link( $posts_in_term_qv, $label );
+                            }
+                            /* translators: used between list items, there is a space after the comma */
+                            echo join( __( ', ' ), $out );
+                        } else {
+                            echo '<span aria-hidden="true">&#8212;</span><span class="screen-reader-text">' . $taxonomy_object->labels->no_terms . '</span>';
+                        }
+                    }
+                    break;
+                default :
+                    break;
+            }
+        }
+
+        function get_edit_link( $args, $label, $class = '' ) {
+            $url = add_query_arg( $args, 'edit.php' );
+
+            $class_html = '';
+            if ( ! empty( $class ) ) {
+                $class_html = sprintf(
+                    ' class="%s"',
+                    esc_attr( $class )
+                );
+            }
+
+            return sprintf(
+                '<a href="%s"%s>%s</a>',
+                esc_url( $url ),
+                $class_html,
+                $label
+            );
         }
 
         function change_default_title( $title ){
