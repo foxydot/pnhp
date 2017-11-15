@@ -384,7 +384,7 @@ if (!class_exists('MSDSpeakerCPT')) {
             switch( $column ) {
                 case $this->cpt.'_state' :
                     $states = get_post_meta($post_id,'_speaker_state',true);
-                    ts_data($states);
+                    print implode(', ',$states);
                     break;
                 case $this->cpt.'_region' :
                 case $this->cpt.'_specialty' :
