@@ -61,7 +61,7 @@ $states = array('ALABAMA'=>"AL",
 print 'Starting Process<br>';
 $args = array(
     'post_type' => 'speaker',
-    'showposts' => -1,
+    'showposts' => -1,juas
 );
 $speakers = new WP_Query($args);
 if($speakers->have_posts()) {

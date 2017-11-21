@@ -1722,6 +1722,27 @@ p.entry-meta {
 .news_category_aggregate:nth-child(4n+0) article.type-news:nth-child(3n+0) {
   background-color: #a6aaad; }
 
+.speaker_aggregate {
+  margin-top: 2em; }
+  .speaker_aggregate article {
+    break-inside: avoid;
+    padding: 0.5em;
+    margin-bottom: 0; }
+    .speaker_aggregate article .entry-header {
+      border: 1px solid #CCC;
+      padding: 1em; }
+      .speaker_aggregate article .entry-header .speaker-headshot {
+        text-align: center; }
+        .speaker_aggregate article .entry-header .speaker-headshot a {
+          display: block;
+          margin: 0 auto; }
+      .speaker_aggregate article .entry-header .entry-title {
+        font-size: 1em; }
+      .speaker_aggregate article .entry-header .entry-subtitle {
+        font-size: 0.9em; }
+      .speaker_aggregate article .entry-header .speaker-meta {
+        font-size: 0.7em; }
+
 .content_modal .modal-content {
   border: 0;
   border-radius: 0; }
