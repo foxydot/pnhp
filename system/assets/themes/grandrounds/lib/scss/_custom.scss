@@ -220,3 +220,20 @@
     }
   }
 }
+
+.element-wrapper{
+  &.officer-intro{
+    padding-top: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-top: 1px solid $ltgrey;
+    display: table;
+    width: 100%;
+    div.img{
+      margin-right: 1em;
+    }
+    h3{
+      color: $blue;
+    }
+  }
+}
