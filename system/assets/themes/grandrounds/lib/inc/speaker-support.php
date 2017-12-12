@@ -96,6 +96,9 @@ function msdlab_speaker_aggregated($options = array()){
     $defaults = array(
         'post_type' => 'speaker',
         'posts-per-page' => 12,
+        'orderby' => 'meta_value',
+        'order' => 'ASC',
+        'meta_key' => '_speaker_alpha',
     );
     $defaults['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
     $args = wp_parse_args($options, $defaults);
