@@ -457,3 +457,26 @@ function msdlab_add_content_modal(){
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->';
 }
+
+function msdlab_do_parent_sidebar(){
+    global $wp_query, $post;
+    switch($post->post_type){
+        case 'speaker':
+            //set parent "page"
+            $parent_page = get_page_by_path('/about-pnhp/speaker-bureau/');
+            $args['page_id'] = $parent_page->ID;
+            break;
+        case 'page':
+        case 'post':
+        default:
+            return;
+    }
+    if(count($args)>0) {
+        $parent_query = new WP_Query($args);
+    }
+    //store main post, switch main post to parent, print out menu, switch back
+    $orig_query = $wp_query;
+    $wp_query = $parent_query;
+    dynamic_sidebar( 'sidebar' );
+    $wp_query = $orig_query;
+}

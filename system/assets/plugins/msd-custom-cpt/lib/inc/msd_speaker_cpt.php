@@ -31,7 +31,7 @@ if (!class_exists('MSDSpeakerCPT')) {
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
 			
 			//Filters
-			//add_filter( 'pre_get_posts', array(&$this,'custom_query') );
+			add_filter( 'pre_get_posts', array(&$this,'custom_query') );
 			add_filter( 'enter_title_here', array(&$this,'change_default_title') );
 
             //add cols to manage panel
@@ -172,7 +172,7 @@ if (!class_exists('MSDSpeakerCPT')) {
 		        'has_archive' => true,
 		        'query_var' => true,
 		        'can_export' => true,
-		        'rewrite' => array('slug'=>'speaker','with_front'=>false),
+		        'rewrite' => array('slug'=>'about/speaker-bureau','with_front'=>false),
 		        'capability_type' => 'post',
                 'menu_icon' => 'dashicons-microphone',
 		    );
@@ -357,6 +357,7 @@ if (!class_exists('MSDSpeakerCPT')) {
                     $post_types = array_filter($post_types);            // Remove any empty elements, just in case
 
                     $query->set('post_type', $post_types);              // Add the updated list of post types to your query
+                    //ts_data($query);
                 }
             }
         }

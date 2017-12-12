@@ -37,6 +37,7 @@
     .entry-header{
       color: $white;
       .entry-title,.entry-subtitle{
+        font-size: 1.2em;
         color: $white;
         a{
           color: $white;
@@ -162,6 +163,37 @@
       }
       &:nth-child(3n+0) {
         background-color: $medgrey;
+      }
+    }
+  }
+}
+
+.speaker_aggregate{
+  margin-top:2em;
+  //column-count: 1;
+  //column-gap: 0;
+  article{
+    break-inside: avoid;
+    padding: 0.5em;
+    margin-bottom: 0;
+    .entry-header{
+      border: 1px solid $ltgrey;
+      padding: 1em;
+      .speaker-headshot{
+        text-align: center;
+        a{
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      .entry-title{
+        font-size: 1em;
+      }
+      .entry-subtitle{
+        font-size: 0.9em;
+      }
+      .speaker-meta{
+        font-size: 0.7em;
       }
     }
   }

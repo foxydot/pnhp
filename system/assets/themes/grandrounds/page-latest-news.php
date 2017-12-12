@@ -6,12 +6,13 @@ function msdlab_add_news_scripts()
 }
 add_action('msdlab_title_area','msdlab_news_cleanup');
 //add_action('genesis_entry_header','msdlab_multimedia_icons',12);
-
+//add_filter('')
 remove_all_actions('genesis_loop');
 add_action('genesis_loop','msdlab_news_recents_aggregated',11);
 function msdlab_news_recents_aggregated(){
     add_filter('genesis_attr_entry','msdlab_news_entry_attr');
     add_action('genesis_entry_header','msdlab_multimedia_icons');
+    //Do I need to strip away links in these? add_filter('the_content','msdlab_strip_long_links');
     $terms = get_terms( array(
         'taxonomy' => 'news_category',
         'hide_empty' => false,
