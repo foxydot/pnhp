@@ -147,9 +147,24 @@ function msdlab_is_speaker_page($post_id = null){
     return false;
 }
 
-function msdlab_speaker_taxonomy_banner(){
-    $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
-    $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-'.$taxonomy.'.png';
+function msdlab_speaker_banner(){
+    global $page_banner_metabox;
+    //default to the image used for the main speaker bureau page
+    $speakers_bureau_page = get_page_by_path('/about-pnhp/speaker-bureau/');
+    $page_banner_metabox->the_meta($speakers_bureau_page->ID);
+    $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
+    if(!$bannerimage){
+        if(has_post_thumbnail()){
+            $bannerimage = get_the_post_thumbnail_url();
+        }
+    }
+    //check if we should look for a taxonomy banner
+    if(is_archive()){
+        $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
+        if(file_exists(get_stylesheet_directory().'/lib/images/banner-'.$taxonomy.'.png')) {
+            $bannerimage = get_stylesheet_directory_uri() . '/lib/images/banner-' . $taxonomy . '.png';
+        }
+    }
     $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
     add_filter('genesis_post_title_text','msdlab_speaker_page_title');
     add_filter('genesis_link_post_title','msdlab_speaker_title_unlink');
@@ -166,8 +181,10 @@ function msdlab_speaker_taxonomy_banner(){
     remove_filter('genesis_post_title_text','msdlab_speaker_page_title');
 }
 function msdlab_speaker_page_title($title){
+    if(is_archive()){
     $title = single_term_title('',false);
     return $title;
+}
 }
 function msdlab_speaker_title_unlink(){
     return false;
@@ -180,3 +197,40 @@ function msdlab_speaker_aggregate_wrapper_open(){
 function msdlab_speaker_aggregate_wrapper_close(){
     print '</div></section>';
 }
+
+    function msdlab_speaker_filter_tags(){
+        $regions = array('northeast', 'midwest', 'south', 'west');
+        $specialties = get_terms(array(
+            'taxonomy' => 'speaker_specialty',
+        ));
+        $topic = get_terms(array(
+            'taxonomy' => 'speaker_topic',
+        ));
+        print '<section class="speaker-filters">
+<h3 class="widget-title">View speakers by:</h3>
+        <select id="region-select" class="region">
+        <option value="">All Regions</option>';
+        foreach($regions AS $region){
+            $r = $region;
+            $rs[] = '<option value="/speaker-region/'.$r.'">'.ucwords($r).'</option>';
+        }
+        print implode('',$rs);
+        print '</select>
+        <select id="specialty-select" class="specialty">
+        <option value="">All Specialties</option>';
+        foreach($specialties AS $specialty){
+            $s = $specialty->slug;
+            $ss[] = '<option value="/speaker-specialty/'.$s.'">'.ucwords($s).'</option>';
+        }
+        print implode('',$ss);
+        print '</select>
+        <select id="topic-select" class="topic">
+        <option value="">All Topics</option>';
+        foreach($topics AS $topic){
+            $t = $topic->slug;
+            $ts[] = '<option value="/speaker-topic/'.$t.'">'.ucwords($t).'</option>';
+        }
+        print implode('',$ts);
+        print '</select>
+</section>';
+    }

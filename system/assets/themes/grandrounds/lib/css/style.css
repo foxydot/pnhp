@@ -180,7 +180,7 @@ h1 {
 h2 {
   font-size: 30px;
   font-size: 3rem;
-  color: #4bbfbf; }
+  color: #1b69a6; }
 
 h3 {
   font-size: 24px;
@@ -593,9 +593,6 @@ th:first-child {
   font-size: 2rem; }
 
 .entry-title {
-  font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 1.2em;
   color: #4bbfbf;
   font-weight: 800; }
 
@@ -1625,6 +1622,7 @@ p.entry-meta {
   .archive article.type-news .entry-header, .news_category_aggregate article.type-news .entry-header {
     color: #FFF; }
     .archive article.type-news .entry-header .entry-title, .archive article.type-news .entry-header .entry-subtitle, .news_category_aggregate article.type-news .entry-header .entry-title, .news_category_aggregate article.type-news .entry-header .entry-subtitle {
+      font-size: 1.2em;
       color: #FFF; }
       .archive article.type-news .entry-header .entry-title a, .archive article.type-news .entry-header .entry-subtitle a, .news_category_aggregate article.type-news .entry-header .entry-title a, .news_category_aggregate article.type-news .entry-header .entry-subtitle a {
         color: #FFF; }
