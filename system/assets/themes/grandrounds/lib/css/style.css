@@ -1756,6 +1756,18 @@ p.entry-meta {
       font-size: 1.2em;
       font-weight: 400; }
 
+.element-wrapper.officer-intro {
+  padding-top: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-top: 1px solid #CCC;
+  display: table;
+  width: 100%; }
+  .element-wrapper.officer-intro div.img {
+    margin-right: 1em; }
+  .element-wrapper.officer-intro h3 {
+    color: #1b69a6; }
+
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
   --------------------------------------------- */
