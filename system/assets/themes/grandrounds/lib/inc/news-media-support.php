@@ -28,7 +28,12 @@ $attr['class'] .= ' col-xs-12 col-sm-6 col-md-4';
 return $attr;
 }
 
-function msdlab_news_media_runner(){
+add_shortcode('media_runner','msdlab_news_media_runner');
+
+function msdlab_news_media_runner($atts = array()){
+    extract( shortcode_atts( array(
+        'title' => 'Recent Videos',
+    ), $atts ) );
     global $post;
     $id = $post->post_name.'-runner';
         $args = array(
@@ -52,7 +57,7 @@ function msdlab_news_media_runner(){
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
             print '<section class="news_media_runner multi clearfix">
-<h3 class="widgettitle widget-title">Recent Videos </h3>
+<h3 class="widgettitle widget-title">'.$title.'</h3>
 <div class="carousel slide" id="'.$id.'">
     <div class="carousel-inner">';
 //start loop
