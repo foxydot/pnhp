@@ -8,6 +8,7 @@ add_action('msdlab_title_area','msdlab_news_cleanup');
 //add_action('genesis_entry_header','msdlab_multimedia_icons',12);
 //add_filter('')
 remove_all_actions('genesis_loop');
+add_action('genesis_loop','msdlab_news_media_runner',11);
 add_action('genesis_loop','msdlab_news_recents_aggregated',11);
 function msdlab_news_recents_aggregated(){
     add_filter('genesis_attr_entry','msdlab_news_entry_attr');
