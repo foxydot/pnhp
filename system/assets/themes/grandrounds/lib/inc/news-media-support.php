@@ -52,6 +52,7 @@ function msdlab_news_media_runner(){
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
             print '<section class="news_media_runner multi clearfix">
+<h3 class="widgettitle widget-title">Recent Videos </h3>
 <div class="carousel slide" id="'.$id.'">
     <div class="carousel-inner">';
 //start loop
