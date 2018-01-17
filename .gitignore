@@ -34,11 +34,13 @@ system/assets/plugins/*
 !system/assets/plugins/msd-bootstrap-tools/
 !system/assets/plugins/msd-custom-cpt/
 !system/assets/plugins/msdlab-theme-tools/
+!system/assets/plugins/msdlab_transfer_tools/
 # !system/assets/plugins/my-directory-plugin/
 system/wp-content/plugins/*
 !system/wp-content/plugins/msd-bootstrap-tools/
 !system/wp-content/plugins/msd-custom-cpt/
 !system/wp-content/plugins/msdlab-theme-tools/
+!system/wp-content/plugins/msdlab_transfer_tools/
 # !system/wp-content/plugins/my-directory-plugin/
 
 # Ignore everything in the "themes" directory, except the themes you
