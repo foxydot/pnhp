@@ -1770,29 +1770,40 @@ p.entry-meta {
 
 /* Type-1 */
 .multi .carousel-inner .item .video {
-  height: 140px;
+  height: 200px;
   padding: 0;
-  border: 1px solid #FFF; }
+  border: 1px solid #FFF;
+  position: relative;
+  background-color: rgba(166, 170, 173, 0.8);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
   .multi .carousel-inner .item .video iframe {
-    max-height: 140px; }
-  .multi .carousel-inner .item .video a {
+    max-height: 200px; }
+  .multi .carousel-inner .item .video .video-title {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #FFF;
+    max-height: 3em;
     display: block;
-    background-color: rgba(27, 105, 166, 0.8);
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.6em; }
-    .multi .carousel-inner .item .video a .video-title {
-      background-color: rgba(0, 0, 0, 0.3);
-      color: #FFF;
-      max-height: 3em;
-      display: block;
-      overflow: hidden;
-      border: 0; }
+    overflow: hidden;
+    border: 0;
+    font-size: 1em;
+    padding: 0.5em; }
+  .multi .carousel-inner .item .video a {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
     .multi .carousel-inner .item .video a i {
-      color: rgba(0, 0, 0, 0.8);
-      font-size: 4em; }
+      position: absolute;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 4em;
+      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
     .multi .carousel-inner .item .video a:hover i {
       color: #f00; }
 
@@ -1806,11 +1817,16 @@ p.entry-meta {
   left: -25%; }
 
 .multi .carousel-control {
-  width: 4%; }
+  width: 2%; }
 
 .multi .carousel-control.left, .multi .carousel-control.right {
-  margin-left: 15px;
   background-image: none; }
+
+.multi .carousel-control.left {
+  margin-left: 0.5em; }
+
+.multi .carousel-control.right {
+  margin-right: 0.5em; }
 
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
@@ -1837,6 +1853,10 @@ p.entry-meta {
     width: 80%;
     max-width: 1000px;
     margin: 30px auto; } }
+
+.full-width-content article {
+  padding-left: 0;
+  padding-right: 0; }
 
 @media only screen and (min-width: 1024px) {
   /* # Defaults
