@@ -127,7 +127,7 @@ li {
 hr {
   border: 0;
   border-collapse: collapse;
-  border-top: 1px solid #EEE;
+  border-top: 1px solid #CCC;
   clear: both;
   margin: 1em 0; }
 
@@ -262,13 +262,13 @@ figure {
   clear: left; }
 
 .gallery img {
-  border: 1px solid #EEE;
+  border: 1px solid #CCC;
   height: auto;
   padding: 4px; }
 
 .gallery img:focus,
 .gallery img:hover {
-  border: 1px solid #EEE; }
+  border: 1px solid #CCC; }
 
 /* ## Forms
 --------------------------------------------- */
@@ -375,14 +375,14 @@ table {
   word-break: break-all; }
 
 tbody {
-  border-bottom: 1px solid #EEE; }
+  border-bottom: 1px solid #CCC; }
 
 td,
 th {
   text-align: left; }
 
 td {
-  border-top: 1px solid #EEE;
+  border-top: 1px solid #CCC;
   padding: 6px; }
 
 th {
@@ -609,8 +609,11 @@ th:first-child {
   font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
   font-weight: 400;
   font-size: 1.6em;
-  color: #1b69a6;
-  margin-bottom: 20px; }
+  margin: 0;
+  padding: 0.5em 1em;
+  color: #FFF;
+  border-top: 1px solid #FFF;
+  background-color: #4bbfbf; }
 
 /* ## WordPress
 --------------------------------------------- */
@@ -988,12 +991,15 @@ address {
       padding: 1em;
       min-height: 40vw;
       position: relative; }
-      .page-title-area .banner .gradient .wrap .bannertext {
-        position: absolute;
-        bottom: 0; }
-        .page-title-area .banner .gradient .wrap .bannertext h1.entry-title {
-          color: #FFF;
-          text-shadow: #666 0 0 0.25em; }
+      .page-title-area .banner .gradient .wrap {
+        min-height: 40vw;
+        position: relative; }
+        .page-title-area .banner .gradient .wrap .bannertext {
+          position: absolute;
+          bottom: 0; }
+          .page-title-area .banner .gradient .wrap .bannertext h1.entry-title {
+            color: #FFF;
+            text-shadow: #666 0 0 0.25em; }
     .page-title-area .banner.textleft .bannertext {
       float: right; }
     .page-title-area .banner.textright .bannertext {
@@ -1592,13 +1598,119 @@ p.entry-meta {
 .site-footer p {
   margin-bottom: 0; }
 
-.bannertext .entry-title {
-  font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 2em;
+.page-template-page-sectioned .site-container .site-inner {
+  display: none; }
+
+.sectioned-page-wrapper {
+  position: relative;
+  z-index: 10; }
+  .sectioned-page-wrapper .section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    position: relative; }
+    .sectioned-page-wrapper .section .section-title {
+      margin-top: 2em;
+      margin-bottom: 2em; }
+      .sectioned-page-wrapper .section .section-title h3 {
+        text-align: center;
+        text-transform: uppercase; }
+    .sectioned-page-wrapper .section .section-body {
+      font-size: 1.6em; }
+      .sectioned-page-wrapper .section .section-body > .wrap {
+        padding: 1em; }
+        .sectioned-page-wrapper .section .section-body > .wrap > .row {
+          display: flex;
+          align-items: center; }
+        .sectioned-page-wrapper .section .section-body > .wrap img {
+          margin-bottom: 0; }
+        .sectioned-page-wrapper .section .section-body > .wrap a, .sectioned-page-wrapper .section .section-body > .wrap a:link, .sectioned-page-wrapper .section .section-body > .wrap a:visited {
+          text-decoration: underline; }
+      .sectioned-page-wrapper .section .section-body .section-content {
+        vertical-align: middle; }
+        .sectioned-page-wrapper .section .section-body .section-content h3 {
+          line-height: 1.65;
+          margin-bottom: 0.5em; }
+        .sectioned-page-wrapper .section .section-body .section-content p.last-child {
+          margin-bottom: 0; }
+      .sectioned-page-wrapper .section .section-body .section-footer-area {
+        margin-top: 4em; }
+    .sectioned-page-wrapper .section ul {
+      margin: 0 auto;
+      display: inline-block; }
+      .sectioned-page-wrapper .section ul li {
+        text-align: left;
+        margin-bottom: 0.5em; }
+        .sectioned-page-wrapper .section ul li:before {
+          font-family: FontAwesome;
+          content: '\f058';
+          color: #1b69a6;
+          margin-right: 0.5em; }
+    .sectioned-page-wrapper .section p.lead {
+      font-size: 2.4em; }
+  .sectioned-page-wrapper .section.overlay {
+    padding: 0; }
+    .sectioned-page-wrapper .section.overlay .overlay {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
+      background-attachment: fixed;
+      padding: 8em 0; }
+  .sectioned-page-wrapper .section.bkg-dkgrey {
+    background-color: #666; }
+  .sectioned-page-wrapper .section.bkg-ltgrey {
+    background-color: #CCC; }
+  .sectioned-page-wrapper .section.bkg-ltgreen {
+    background-color: rgba(126, 175, 169, 0.5); }
+  .sectioned-page-wrapper .section.bkg-ltblue {
+    background-color: rgba(70, 157, 225, 0.5); }
+  .sectioned-page-wrapper .section.bkg-offwhite {
+    background-color: #EEE; }
+  .sectioned-page-wrapper .section.bkg-dkgrey .section-body > .wrap, .sectioned-page-wrapper .section.bkg-ltgrey .section-body > .wrap, .sectioned-page-wrapper .section.bkg-ltgreen .section-body > .wrap, .sectioned-page-wrapper .section.bkg-ltblue .section-body > .wrap, .sectioned-page-wrapper .section.bkg-offwhite .section-body > .wrap {
+    border: 0;
+    padding-top: 0;
+    padding-bottom: 0; }
+  .sectioned-page-wrapper .section.text-dkgrey {
+    color: #666; }
+  .sectioned-page-wrapper .section.text-white {
+    color: #EEE; }
+  .sectioned-page-wrapper .section.text-shadow {
+    text-shadow: 0 0 0.5em rgba(102, 102, 102, 0.6); }
+  .sectioned-page-wrapper .section.col-odd-white .column-1, .sectioned-page-wrapper .section.col-odd-white .column-3 {
+    background-color: #FFF;
+    padding: 1em; }
+  .sectioned-page-wrapper .section.col-even-ltgrey .column-2, .sectioned-page-wrapper .section.col-even-ltgrey .column-4 {
+    background-color: #f2f2f2;
+    padding: 1em; }
+  .sectioned-page-wrapper .section.left-align .section-body {
+    text-align: left; }
+  .sectioned-page-wrapper a.fa.fa-angle-down {
+    padding: 10px 15px;
+    color: #FCFCFC;
+    border: 2px solid #EEE;
+    border-radius: 50%;
+    font-size: 24px;
+    margin-top: 100px;
+    transition: all 0.5s; }
+    .sectioned-page-wrapper a.fa.fa-angle-down:hover {
+      background: #1b69a6;
+      color: #EEE;
+      border: 2px solid #1b69a6; }
+  .sectioned-page-wrapper .section.first-child .section-body > .wrap {
+    padding-top: 1em; }
+
+@media only screen and (min-width: 768px) {
+  .sectioned-page-wrapper .section i.fa.fa-plus {
+    margin-top: 0.8em; } }
+
+.bannertext, .bannertext a {
   color: #FFF;
-  text-shadow: 0 0 0.3em #666;
-  margin-bottom: 1em; }
+  text-shadow: 0 0 0.3em #666; }
+  .bannertext .entry-title, .bannertext a .entry-title {
+    font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 2em;
+    color: #FFF;
+    text-shadow: 0 0 0.3em #666;
+    margin-bottom: 1em; }
 
 .addborder {
   border: 0.25em solid #FFF; }
@@ -1636,7 +1748,6 @@ p.entry-meta {
     display: none; }
 
 .news_category_aggregate h3.widget-title, .news_media_runner h3.widget-title {
-  font-size: 1em;
   margin: 0;
   padding: 0.5em 1em;
   color: #FFF;
@@ -1828,6 +1939,24 @@ p.entry-meta {
 .multi .carousel-control.right {
   margin-right: 0.5em; }
 
+.widget.news-widget .wrap {
+  padding: 0; }
+
+.widget.news-widget dl dt {
+  font-size: 0.7em;
+  margin-top: 0.5em;
+  font-weight: 400; }
+  .widget.news-widget dl dt a {
+    text-decoration: none !important;
+    color: #404c7f; }
+
+.widget.news-widget dl dd {
+  font-size: 0.85em;
+  margin-bottom: 0.5em;
+  font-weight: 700; }
+  .widget.news-widget dl dd a {
+    text-decoration: none; }
+
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
   --------------------------------------------- */
@@ -1868,7 +1997,7 @@ p.entry-meta {
     padding: 0; }
     .site-inner .wrap .content-sidebar-wrap {
       display: flex; }
-  .site-header > .wrap, .site-inner > .wrap, .page-footer-widget > .wrap, .footer-widgets > .wrap, .site-footer > .wrap {
+  .site-header > .wrap, .site-inner > .wrap, .page-footer-widget > .wrap, .footer-widgets > .wrap, .site-footer > .wrap, .section-body > .wrap {
     border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
     padding-left: 2em;
@@ -2020,6 +2149,8 @@ p.entry-meta {
     text-align: right; }
   .page-title-area .banner .gradient {
     min-height: 400px; }
+    .page-title-area .banner .gradient .wrap {
+      min-height: 400px; }
   /* # Nav
   ---------------------------------------------------------------------------------------------------- */
   /* # Content

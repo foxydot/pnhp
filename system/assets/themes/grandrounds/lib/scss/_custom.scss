@@ -1,4 +1,6 @@
-.bannertext{
+.bannertext, .bannertext a{
+  color: $white;
+  text-shadow: 0 0 .3em $dkgrey;
   .entry-title{
     @include sansserif(2);
     color: $white;
@@ -61,7 +63,7 @@
 
 .news_category_aggregate,.news_media_runner{
   h3.widget-title{
-    font-size: 1em;
+    //font-size: 1em;
     margin: 0;
     padding: 0.5em 1em;
     color: $white;
@@ -311,3 +313,28 @@
     margin-right:0.5em;
   }
   }
+
+.widget.news-widget{
+  .wrap{
+    padding: 0;
+  }
+  dl{
+    dt{
+      font-size: 0.7em;
+      margin-top: 0.5em;
+      font-weight: 400;
+      a{
+        text-decoration: none !important;
+        color: $dkblue;
+      }
+    }
+    dd{
+      font-size: 0.85em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+}

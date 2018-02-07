@@ -57,7 +57,7 @@ function msdlab_news_media_runner($atts = array()){
         );
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
-            print '<section class="news_media_runner multi clearfix">
+            $ret[] = '<section class="news_media_runner multi clearfix">
 <h3 class="widgettitle widget-title">'.$title.'</h3>
 <div class="carousel slide" id="'.$id.'">
     <div class="carousel-inner">';
@@ -89,22 +89,22 @@ function msdlab_news_media_runner($atts = array()){
                         'col-sm-'.(12/$perslide),
                     );
                     if($i==0 || $i % $perslide == 0){
-                        print '<div class="'.implode(' ',$item_class).'">';
+                        $ret[] =  '<div class="'.implode(' ',$item_class).'">';
                     }
-                    print '<div class="'.implode(' ',$video_class).'" src="'.$url.'"'.$bkg.'>';
+                    $ret[] = '<div class="'.implode(' ',$video_class).'" src="'.$url.'"'.$bkg.'>';
                 if($embedded_video = wp_oembed_get( $url, $oembed_args )) {
-                    print $embedded_video;
+                    $ret[] =  $embedded_video;
                 } else {
-                    print '<h3 class="video-title">'.$post->post_title.'</h3>
+                    $ret[] =  '<h3 class="video-title">'.$post->post_title.'</h3>
                     <a href="'.$url.'" target="_blank" title="External Link" class="video-link"><i class="fa fa-youtube-play"></i></a>';
                 }
-                    print '</div>';
+                    $ret[] =  '</div>';
                     if($i % $perslide == ($perslide - 1)){
-                        print '</div>';
+                        $ret[] =  '</div>';
                     }
                     $i++;
             } //end loop
-            print '</div>
+            $ret[] =  '</div>
       <a class="left carousel-control" href="#'.$id.'" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
       <a class="right carousel-control" href="#'.$id.'" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
     </div>
@@ -117,4 +117,5 @@ interval: false});
 </script>
 ';
         } //end loop check
+    return implode("\n",$ret);
 }
