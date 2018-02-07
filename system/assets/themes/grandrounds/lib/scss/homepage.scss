@@ -13,14 +13,21 @@
 }
 
 @media only screen and (min-width: 768px) {
-
+  .page-title-area .banner .gradient{
+    background: linear-gradient(to right, rgba($dkgrey,0.75) 0%,rgba($dkgrey,0.5) 40%,rgba($dkgrey,0.0) 60%);
+    background-attachment: fixed;
+    .bannertext {
+      max-width: 33%;
+    }
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .page-title-area .banner .wrap .gradient{
+    background: linear-gradient(to right, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.0) 60%);
+    background-attachment: fixed;
     .bannertext {
-      margin-top: 12em;
-      padding-right: 6em;
+      max-width: 40%;
     }
   }
   .sidebar{

@@ -33,6 +33,7 @@ add_shortcode('media_runner','msdlab_news_media_runner');
 function msdlab_news_media_runner($atts = array()){
     extract( shortcode_atts( array(
         'title' => 'Recent Videos',
+        'perslide' => 3,
     ), $atts ) );
     global $post;
     $id = $post->post_name.'-runner';
@@ -56,17 +57,19 @@ function msdlab_news_media_runner($atts = array()){
         );
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
-            print '<section class="news_media_runner multi clearfix">
+            $ret[] = '<section class="news_media_runner multi clearfix">
 <h3 class="widgettitle widget-title">'.$title.'</h3>
 <div class="carousel slide" id="'.$id.'">
     <div class="carousel-inner">';
 //start loop
             $i = 0;
             $oembed_args = array(
-                'height'    => 140,
-                'width'     => 240,
+                //'height'    => 200,
+                'width'     => 350,
 
             );
+            if(wp_is_mobile()){$perslide = 1;}
+
             while($recents->have_posts()) {
                 $recents->the_post();
                 $item_class = array(
@@ -75,28 +78,33 @@ function msdlab_news_media_runner($atts = array()){
                 if($i==0){$item_class[] = 'active';}
 
                 $url = get_post_meta($post->ID,'_news_videourl',true);
-
+                $bkg = '';
+                if($thumb = get_post_meta($post->ID, '_news_videothumb', true)){
+                    $bkg = ' style="background-image:url('.$thumb.')"';
+                }
                     $video_class = array(
                         'video',
                         'post-id-'.$post->ID,
-                        'col-xs-3'
+                        'col-xs-12',
+                        'col-sm-'.(12/$perslide),
                     );
-                    if($i==0 || $i % 4 == 0){
-                        print '<div class="'.implode(' ',$item_class).'">';
+                    if($i==0 || $i % $perslide == 0){
+                        $ret[] =  '<div class="'.implode(' ',$item_class).'">';
                     }
-                    print '<div class="'.implode(' ',$video_class).'" src="'.$url.'">';
+                    $ret[] = '<div class="'.implode(' ',$video_class).'" src="'.$url.'"'.$bkg.'>';
                 if($embedded_video = wp_oembed_get( $url, $oembed_args )) {
-                    print $embedded_video;
+                    $ret[] =  $embedded_video;
                 } else {
-                    print '<a href="'.$url.'" target="_blank" title="External Link"><div class="video-title">'.$post->post_title.'</div><i class="fa fa-youtube-play"></i></a>';
+                    $ret[] =  '<h3 class="video-title">'.$post->post_title.'</h3>
+                    <a href="'.$url.'" target="_blank" title="External Link" class="video-link"><i class="fa fa-youtube-play"></i></a>';
                 }
-                    print '</div>';
-                    if($i % 4 == 3){
-                        print '</div>';
+                    $ret[] =  '</div>';
+                    if($i % $perslide == ($perslide - 1)){
+                        $ret[] =  '</div>';
                     }
                     $i++;
             } //end loop
-            print '</div>
+            $ret[] =  '</div>
       <a class="left carousel-control" href="#'.$id.'" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
       <a class="right carousel-control" href="#'.$id.'" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
     </div>
@@ -109,4 +117,5 @@ interval: false});
 </script>
 ';
         } //end loop check
+    return implode("\n",$ret);
 }

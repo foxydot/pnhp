@@ -18,7 +18,7 @@
     }
   }
 
-  .site-header, .site-inner, .page-footer-widget, .footer-widgets, .site-footer{
+  .site-header, .site-inner, .page-footer-widget, .footer-widgets, .site-footer, .section-body{
     >.wrap{
       border-left: 1px solid $ltgrey;
       border-right: 1px solid $ltgrey;
@@ -259,7 +259,7 @@
         .gradient {
           min-height: 400px;
           .wrap{
-
+            min-height: 400px;
         }
       }
     }
