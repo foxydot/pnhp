@@ -36,8 +36,6 @@
       >.wrap{
         padding: 1em;
         >.row{
-          display: flex;
-          align-items: center;
         }
         img{
           margin-bottom: 0;
@@ -47,7 +45,6 @@
         }
       }
       .section-content{
-        vertical-align: middle;
         h3{
           line-height: 1.65;
           margin-bottom: 0.5em;
@@ -162,6 +159,17 @@
 @media only screen and (min-width: 768px) {
   .sectioned-page-wrapper {
     .section{
+      .section-body{
+        >.wrap{
+          >.row{
+            display: flex;
+            align-items: center;
+          }
+        }
+        .section-content{
+          vertical-align: middle;
+        }
+      }
       i.fa.fa-plus{
         margin-top: 0.8em;
       }
