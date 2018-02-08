@@ -33,13 +33,14 @@ add_shortcode('media_runner','msdlab_news_media_runner');
 function msdlab_news_media_runner($atts = array()){
     extract( shortcode_atts( array(
         'title' => 'Recent Videos',
+        'count' => 12,
         'perslide' => 3,
     ), $atts ) );
     global $post;
     $id = $post->post_name.'-runner';
         $args = array(
             'post_type' => 'news',
-            'showposts' => 12,
+            'showposts' => $count,
             'meta_query' => array(
                 'relation' => 'AND',
                 'url' => array(

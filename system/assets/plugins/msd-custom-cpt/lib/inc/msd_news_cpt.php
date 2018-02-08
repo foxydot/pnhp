@@ -415,7 +415,7 @@ if (!class_exists('MSDNewsCPT')) {
 
         function news_shortcode_handler($atts, $content){
             extract(shortcode_atts( array(
-                    'title' => 'News',
+                'title' => 'News',
                 'count' => 5,
                 $this->cpt.'_category' => false,
                 $this->cpt.'_tag' => false,
