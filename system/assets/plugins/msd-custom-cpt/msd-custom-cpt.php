@@ -114,7 +114,7 @@ if (!class_exists('MSDCustomCPT')) {
                 $this->resource_class = new MSDResourceCPT();
             }
             if(class_exists('MSDChapterCPT')){
-                //$this->chapter_class = new MSDChapterCPT();
+                $this->chapter_class = new MSDChapterCPT();
             }
             if(class_exists('MSDSpeakerCPT')){
                 $this->speaker_class = new MSDSpeakerCPT();
