@@ -33,27 +33,30 @@ if (!class_exists('MSDChapterCPT')) {
 			//Filters
 			//add_filter( 'pre_get_posts', array(&$this,'custom_query') );
 			add_filter( 'enter_title_here', array(&$this,'change_default_title') );
+
+			//shortcodes
+            add_shortcode('chapter-map',array(&$this,'map_shortcode_handler'));
 		}
 
 
         function register_taxonomies(){
 
             $labels = array(
-                'name' => _x( 'Chapter categories', 'chapter-category' ),
-                'singular_name' => _x( 'Chapter category', 'chapter-category' ),
-                'search_items' => _x( 'Search chapter categories', 'chapter-category' ),
-                'popular_items' => _x( 'Popular chapter categories', 'chapter-category' ),
-                'all_items' => _x( 'All chapter categories', 'chapter-category' ),
-                'parent_item' => _x( 'Parent chapter category', 'chapter-category' ),
-                'parent_item_colon' => _x( 'Parent chapter category:', 'chapter-category' ),
-                'edit_item' => _x( 'Edit chapter category', 'chapter-category' ),
-                'update_item' => _x( 'Update chapter category', 'chapter-category' ),
-                'add_new_item' => _x( 'Add new chapter category', 'chapter-category' ),
-                'new_item_name' => _x( 'New chapter category name', 'chapter-category' ),
-                'separate_items_with_commas' => _x( 'Separate chapter categories with commas', 'chapter-category' ),
-                'add_or_remove_items' => _x( 'Add or remove chapter categories', 'chapter-category' ),
-                'choose_from_most_used' => _x( 'Choose from the most used chapter categories', 'chapter-category' ),
-                'menu_name' => _x( 'Chapter categories', 'chapter-category' ),
+                'name' => _x( 'Chapter states', 'chapter-state' ),
+                'singular_name' => _x( 'Chapter state', 'chapter-state' ),
+                'search_items' => _x( 'Search chapter states', 'chapter-state' ),
+                'popular_items' => _x( 'Popular chapter states', 'chapter-state' ),
+                'all_items' => _x( 'All chapter states', 'chapter-state' ),
+                'parent_item' => _x( 'Parent chapter state', 'chapter-state' ),
+                'parent_item_colon' => _x( 'Parent chapter state:', 'chapter-state' ),
+                'edit_item' => _x( 'Edit chapter state', 'chapter-state' ),
+                'update_item' => _x( 'Update chapter state', 'chapter-state' ),
+                'add_new_item' => _x( 'Add new chapter state', 'chapter-state' ),
+                'new_item_name' => _x( 'New chapter state name', 'chapter-state' ),
+                'separate_items_with_commas' => _x( 'Separate chapter states with commas', 'chapter-state' ),
+                'add_or_remove_items' => _x( 'Add or remove chapter states', 'chapter-state' ),
+                'choose_from_most_used' => _x( 'Choose from the most used chapter states', 'chapter-state' ),
+                'menu_name' => _x( 'Chapter states', 'chapter-state' ),
             );
 
             $args = array(
@@ -62,14 +65,15 @@ if (!class_exists('MSDChapterCPT')) {
                 'show_in_nav_menus' => true,
                 'show_ui' => true,
                 'show_tagcloud' => false,
-                'hierarchical' => true, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
+                'hierarchical' => true,
 
-                'rewrite' => array('slug'=>'chapter-category','with_front'=>false),
+                'rewrite' => array('slug'=>'chapter-state','with_front'=>false),
                 'query_var' => true
             );
 
-            register_taxonomy( 'chapter_category', array($this->cpt), $args );
+            register_taxonomy( 'chapter_state', array($this->cpt), $args );
         }
+
 		
 		function register_cpt() {
 		
@@ -93,7 +97,7 @@ if (!class_exists('MSDChapterCPT')) {
 		        'hierarchical' => false,
 		        'description' => 'Chapter',
 		        'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
-		        'taxonomies' => array( 'chapter_category' ),
+		        'taxonomies' => array( 'chapter_state' ),
 		        'public' => true,
 		        'show_ui' => true,
 		        'show_in_menu' => true,
@@ -289,6 +293,44 @@ if (!class_exists('MSDChapterCPT')) {
             } else {
                 return $title;
             }
+        }
+
+        function map_shortcode_handler($atts){
+            extract(shortcode_atts( array(
+                'title' => 'Find Members In Your Area',
+            ), $atts ));
+            $title = '<h3 class="widget-title">'.$title.'</h3>';
+            $javascript = "<script>
+//Makes sure the hovered state is always on top preventing overlap.
+jQuery(document).ready(function($){
+    /*$('svg.map g:not(#Layer_1)').hover(function(){
+        $('svg.map').append(this);
+    });*/
+    $('svg.map g:not(#Layer_1)').each(function(){
+        $(this).find('path').append('<text x=\"20\" y=\"20\" font-family=\"sans-serif\" font-size=\"0.8em\" fill=\"white\">' + $(this).attr('id') + '</text>');
+    });
+});
+
+//Gets and displays the state's ID which is also its name. 
+function getid(obj){
+  var stateId = (obj.id);
+  var stateName = stateId.replace(\"_\",\" \"); //swiches out the dash for a space to display a cleaner state name
+  var stateDisplay = document.getElementById('stateDisplay');
+  stateDisplay.textContent = stateName;
+}
+
+function outmouse(obj){}
+
+//document.getElementById(\"stateInput\").onchange = function() {selectState};
+
+function selectState() {
+  var stateSelect = document.getElementById('stateInput').value;
+  var stateId = document.getElementById(stateSelect);
+  stateId.getElementsByTagName('PATH')[0].className = 'stateSelected';
+}
+</script>";
+            $svg = '<div class="chapter-finder">'.file_get_contents(dirname(__FILE__).'/chapter_finder.svg').'</div>';
+            return $javascript.$title.$svg;
         }
 
         function cpt_display(){

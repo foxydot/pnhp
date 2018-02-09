@@ -338,3 +338,29 @@
     }
   }
 }
+
+.chapter-finder{
+  .map {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: auto;
+  }
+
+  .state{
+    z-index: 0;
+    position: relative;
+    transition: all ease .3s;
+    fill-rule:evenodd;
+    clip-rule:evenodd;
+    fill:$ltgreen;
+    stroke: $white;
+  }
+
+  .state:hover {
+    fill: $ltblue;
+    cursor: pointer;
+  }
+
+
+}

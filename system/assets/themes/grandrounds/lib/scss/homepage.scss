@@ -20,6 +20,20 @@
       max-width: 33%;
     }
   }
+    .sectioned-page-wrapper {
+      .section.section-news{
+        .section-body{
+          >.wrap {
+            > .row {
+              align-items: flex-start;
+            }
+          }
+        }
+        i.fa.fa-plus{
+          margin-top: 0.8em;
+        }
+      }
+    }
 }
 
 @media only screen and (min-width: 1024px) {
