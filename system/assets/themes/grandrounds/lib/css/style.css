@@ -1699,7 +1699,9 @@ p.entry-meta {
   .sectioned-page-wrapper .section .section-body .section-content {
     vertical-align: middle; }
   .sectioned-page-wrapper .section i.fa.fa-plus {
-    margin-top: 0.8em; } }
+    margin-top: 0.8em; }
+  .sectioned-page-wrapper .section.top-align .section-body > .wrap > .row {
+    align-items: flex-start; } }
 
 .bannertext, .bannertext a {
   color: #FFF;
