@@ -174,5 +174,14 @@
         margin-top: 0.8em;
       }
     }
+   .section.top-align{
+      .section-body{
+        >.wrap {
+          > .row {
+            align-items: flex-start;
+          }
+        }
+      }
+    }
   }
 }
