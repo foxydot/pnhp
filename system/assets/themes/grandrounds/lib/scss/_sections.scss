@@ -24,8 +24,13 @@
     padding: 0;
     position: relative;
     .section-title{
-      margin-top: 2em;
-      margin-bottom: 2em;
+      margin: 0;
+      padding: 0;
+      >.wrap{
+        padding: 1em;
+        border-left: 1px solid $ltgrey;
+        border-right: 1px solid $ltgrey;
+      }
       h3 {
         text-align: center;
         text-transform: uppercase;
@@ -103,6 +108,9 @@
       border: 0;
       padding-top: 0;
       padding-bottom: 0;
+    }
+    .section-title>.wrap{
+      border: 0;
     }
   }
 

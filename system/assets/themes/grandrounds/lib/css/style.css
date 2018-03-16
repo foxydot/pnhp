@@ -1610,8 +1610,12 @@ p.entry-meta {
     padding: 0;
     position: relative; }
     .sectioned-page-wrapper .section .section-title {
-      margin-top: 2em;
-      margin-bottom: 2em; }
+      margin: 0;
+      padding: 0; }
+      .sectioned-page-wrapper .section .section-title > .wrap {
+        padding: 1em;
+        border-left: 1px solid #CCC;
+        border-right: 1px solid #CCC; }
       .sectioned-page-wrapper .section .section-title h3 {
         text-align: center;
         text-transform: uppercase; }
@@ -1663,6 +1667,8 @@ p.entry-meta {
     border: 0;
     padding-top: 0;
     padding-bottom: 0; }
+  .sectioned-page-wrapper .section.bkg-dkgrey .section-title > .wrap, .sectioned-page-wrapper .section.bkg-ltgrey .section-title > .wrap, .sectioned-page-wrapper .section.bkg-ltgreen .section-title > .wrap, .sectioned-page-wrapper .section.bkg-ltblue .section-title > .wrap, .sectioned-page-wrapper .section.bkg-offwhite .section-title > .wrap {
+    border: 0; }
   .sectioned-page-wrapper .section.text-dkgrey {
     color: #666; }
   .sectioned-page-wrapper .section.text-white {
