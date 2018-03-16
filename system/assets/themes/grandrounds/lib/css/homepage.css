@@ -30,17 +30,19 @@
     text-decoration: none; }
 
 @media only screen and (min-width: 768px) {
-  .page-title-area .banner .gradient {
+  .page-title-area .banner .gradient, .page-title-area .ls-inner {
     background: linear-gradient(to right, rgba(102, 102, 102, 0.75) 0%, rgba(102, 102, 102, 0.5) 40%, rgba(102, 102, 102, 0) 60%);
     background-attachment: fixed; }
-    .page-title-area .banner .gradient .bannertext {
-      max-width: 33%; } }
+    .page-title-area .banner .gradient .bannertext, .page-title-area .ls-inner .bannertext {
+      max-width: 33%; }
+  .page-title-area .ls-wrapper > .ls-layer {
+    white-space: normal; } }
 
 @media only screen and (min-width: 1024px) {
-  .page-title-area .banner .wrap .gradient {
+  .page-title-area .banner .wrap .gradient, .page-title-area .ls-inner {
     background: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 60%);
     background-attachment: fixed; }
-    .page-title-area .banner .wrap .gradient .bannertext {
+    .page-title-area .banner .wrap .gradient .bannertext, .page-title-area .ls-inner .bannertext {
       max-width: 40%; }
   .sidebar {
     padding-right: 2em; } }

@@ -71,27 +71,32 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     return;
                 }
                 $bannerclass = $page_banner_metabox->get_the_value('bannerclass');
-                $banneralign = $page_banner_metabox->get_the_value('banneralign');
-                $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
-                if(!$bannerimage){
-                    if(has_post_thumbnail()){
-                        $bannerimage = get_the_post_thumbnail_url();
+                $bannerslider = $page_banner_metabox->get_the_value('bannerslider');
+                if($bannerslider > 0 && class_exists('LS_Sliders')){ //it's a slider
+                    layerslider($bannerslider);
+                } else { //it's not a slider
+                    $banneralign = $page_banner_metabox->get_the_value('banneralign');
+                    $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
+                    if (!$bannerimage) {
+                        if (has_post_thumbnail()) {
+                            $bannerimage = get_the_post_thumbnail_url();
+                        }
                     }
+                    $bannercontent = apply_filters('the_content', $page_banner_metabox->get_the_value('bannercontent'));
+                    //remove_action('genesis_entry_header','genesis_do_post_title');
+                    global $post;
+                    $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : '';
+                    print '<div class="banner clearfix ' . $banneralign . ' ' . $bannerclass . '"' . $background . '>';
+                    print '<div class="gradient">';
+                    print '<div class="wrap">';
+                    print '<div class="bannertext">';
+                    //print genesis_do_post_title();
+                    print '<div class="bannercontent">' . $bannercontent . '</div>';
+                    print '</div>';
+                    print '</div>';
+                    print '</div>';
+                    print '</div>';
                 }
-                $bannercontent = apply_filters('the_content',$page_banner_metabox->get_the_value('bannercontent'));
-                //remove_action('genesis_entry_header','genesis_do_post_title');
-                global $post;
-                $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
-                print '<div class="banner clearfix '.$banneralign.' '.$bannerclass.'"'.$background.'>';
-                print '<div class="gradient">';
-                print '<div class="wrap">';
-                print '<div class="bannertext">';
-                //print genesis_do_post_title();
-                print '<div class="bannercontent">'.$bannercontent.'</div>';
-                print '</div>';
-                print '</div>';
-                print '</div>';
-                print '</div>';
             } else {
                 genesis_do_post_title();
             }
