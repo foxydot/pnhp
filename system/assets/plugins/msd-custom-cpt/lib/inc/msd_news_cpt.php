@@ -426,7 +426,17 @@ if (!class_exists('MSDNewsCPT')) {
                     'showposts' => $count,
 
                 );
-                if(${$this->cpt.'_category'}) {
+            $item_template = '<dt><span class="news-category">%term_list%</span> <span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
+
+            $patterns = array(
+                '|%term_list%|i',
+                '|%date%|i',
+                '|%permalink%|i',
+                '|%title%|i',
+                '|%publication%|i',
+            );
+
+            if(${$this->cpt.'_category'}) {
                     $class = $this->cpt.'_category'.${$this->cpt.'_category'};
                     $args['tax_query'] = array(
                         array(
@@ -435,6 +445,11 @@ if (!class_exists('MSDNewsCPT')) {
                             'terms'    => ${$this->cpt.'_category'},
                         ),
                     );
+                    switch(${$this->cpt.'_category'}){
+                        case 'quote-of-the-day':
+                            $item_template = '<dt><span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
+                            break;
+                    }
                 } elseif (${$this->cpt.'_tag'}) {
                     $class = $this->cpt.'_tag'.${$this->cpt.'_tag'};
                     $args['tax_query'] = array(
@@ -466,7 +481,13 @@ if (!class_exists('MSDNewsCPT')) {
                     ob_start();
                     while($recents->have_posts()) {
                         $recents->the_post();
-                        print '<dt><span class="news-category">'.get_the_term_list($post->ID,$this->cpt.'_category').'</span> <span class="date">'.get_the_date().'</span></dt><dd><a href="'.get_the_permalink().'">'.get_the_title().'</a></dd>';
+                        $replacements = array(
+                            get_the_term_list($post->ID,$this->cpt.'_category'),
+                            get_the_date(),
+                            get_the_permalink(),
+                            get_the_title(),
+                        );
+                        print preg_replace($patterns,$replacements,$item_template);
                     } //end loop
                     $ret[] = ob_get_contents();
                     ob_end_clean();
