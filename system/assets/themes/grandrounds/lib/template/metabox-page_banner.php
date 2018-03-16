@@ -8,6 +8,26 @@
             <p><input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/> Use page banner?</p>
         </td>
     </tr>
+    <?php if(class_exists('LS_Sliders')){ ?>
+        <?php $mb->the_field('bannerslider');
+        //get all sliders for options
+        $sliders = LS_Sliders::find($filters);
+        foreach($sliders AS $slider){
+            $option[] = '<option value="'.$slider['id'].'"'.selected( $mb->get_the_value(), $slider['id'], 0).'>'.$slider['name'].'</option>';
+        }
+        $options = implode("\n",$option);
+        ?>
+
+        <tr valign="top">
+        <th scope="row"><label for="bannerslider"></label></th>
+        <td>
+            <p><select name="<?php $mb->the_name(); ?>">
+                    <option value="0">Static</option>
+                    <?php print $options; ?>
+                </select></p>
+        </td>
+    </tr>
+    <?php } ?>
     <?php $mb->the_field('banneralign'); ?>
     <tr valign="top">
         <th scope="row"><label for="banneralign"></label>Banner text alignment</th>
