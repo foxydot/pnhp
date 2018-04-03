@@ -299,7 +299,9 @@ if (!class_exists('MSDChapterCPT')) {
             extract(shortcode_atts( array(
                 'title' => 'Find Members In Your Area',
             ), $atts ));
-            $title = '<h3 class="widget-title">'.$title.'</h3>';
+            if(strlen($title)>0) {
+                $title = '<h3 class="widget-title">' . $title . '</h3>';
+            }
             $javascript = "<script>
 //Makes sure the hovered state is always on top preventing overlap.
 jQuery(document).ready(function($){
