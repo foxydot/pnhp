@@ -46,7 +46,9 @@
           margin-bottom: 0;
         }
         a,a:link,a:visited{
-          text-decoration: underline;
+          &:not('.button') {
+            text-decoration: underline;
+          }
         }
       }
       .section-content{
