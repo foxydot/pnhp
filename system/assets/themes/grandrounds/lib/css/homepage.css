@@ -29,6 +29,9 @@
   .entry-content .col-md-4 a {
     text-decoration: none; }
 
+.sectioned-page-wrapper .section.section-social-media {
+  padding: 2em 0; }
+
 @media only screen and (min-width: 768px) {
   .page-title-area .banner .gradient, .page-title-area .ls-inner {
     background: linear-gradient(to right, rgba(102, 102, 102, 0.75) 0%, rgba(102, 102, 102, 0.5) 40%, rgba(102, 102, 102, 0) 60%);
