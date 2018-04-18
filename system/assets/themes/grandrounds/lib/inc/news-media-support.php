@@ -24,8 +24,13 @@ print '<i class="fa fa-volume-up"><span class="sr-only">This article includes au
 }
 
 function msdlab_news_entry_attr($attr){
-$attr['class'] .= ' col-xs-12 col-sm-6 col-md-4';
-return $attr;
+    global $post;
+    if(has_term( 'highlighted-research', 'news_category', $post )){
+        $attr['class'] .= ' col-xs-12 col-sm-12 col-md-8';
+    } else {
+        $attr['class'] .= ' col-xs-12 col-sm-6 col-md-4';
+    }
+    return $attr;
 }
 
 add_shortcode('media_runner','msdlab_news_media_runner');
