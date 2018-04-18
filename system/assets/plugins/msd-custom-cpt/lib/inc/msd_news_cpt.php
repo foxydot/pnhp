@@ -186,7 +186,10 @@ if (!class_exists('MSDNewsCPT')) {
         
 		function add_admin_scripts() {
 			global $current_screen;
-			if($current_screen->post_type == $this->cpt){
+            if($current_screen->post_type == $this->cpt){
+                wp_enqueue_script('bootstrap-jquery','//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',array('jquery'),$this->ver,TRUE);
+                wp_enqueue_script('timepicker-jquery',plugin_dir_url(dirname(__FILE__)).'/js/jquery.timepicker.min.js',array('jquery'),$this->ver,FALSE);
+                wp_enqueue_script( 'jquery-ui-datepicker' );
 			}
 		}
 		

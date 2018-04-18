@@ -4,7 +4,7 @@ add_action('msdlab_title_area','msdlab_news_cleanup');
 add_action('msdlab_title_area','msdlab_news_category_banner');
 function msdlab_news_category_banner(){
     $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
-    $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-news-category-'.$bannerclass.'.png';
+    $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-news-category-'.$bannerclass.'.jpg';
     $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
     add_filter('genesis_post_title_text','msdlab_news_page_title');
     add_filter('genesis_link_post_title','msdlab_news_title_unlink');
