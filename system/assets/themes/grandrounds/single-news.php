@@ -44,12 +44,17 @@ function msdlab_news_title_unlink(){
 
 
 add_action('genesis_sidebar','msdlab_news_category_recents',8);
-function msdlab_news_category_recents(){
+function msdlab_news_category_recents(){ //fix to use parent category
     global $post;
-    $terms = wp_get_post_terms( $post->ID, 'news_category', array(
-        'hide_empty' => false,
-    ) );
-    $term_obj = $terms[0];
+    if (has_term('highlighted-research', 'news_category', $post)) {
+        $term_id = 213;
+    } else {
+        $terms = wp_get_post_terms($post->ID, 'news_category', array(
+            'hide_empty' => false,
+        ));
+        $term_obj = $terms[0];
+        $term_id = $term_obj->term_id;
+    }
     $args = array(
         'post_type' => 'news',
         'showposts' => 5,
@@ -57,7 +62,7 @@ function msdlab_news_category_recents(){
             array(
                 'taxonomy' => 'news_category',
                 'field'    => 'id',
-                'terms'    => $term_obj->term_id,
+                'terms'    => $term_id,
             ),
         ),
     );
@@ -78,5 +83,29 @@ function msdlab_news_category_recents(){
 
     wp_reset_postdata();
     print $ret;
+}
+add_action('genesis_after_entry_content','msdlab_add_media_coverage');
+function msdlab_add_media_coverage(){
+    global $post, $news_info, $multimedia_info, $wpalchemy_media_access;
+    $news_info->the_meta();
+    // loop a set of field groups
+    if($news_info->have_fields('articles')) {
+        $ret[] = '<div class="media-coverage"><h2>Media Coverage</h2>';
+        while ($news_info->have_fields('articles')) {
+            $newsurl = $news_info->get_the_value('newsurl');
+            $newstitle = $news_info->get_the_value('newstitle');
+            $newsauthor = $news_info->get_the_value('newsauthor');
+            $newspub = $news_info->get_the_value('newspub');
+            $newsdate = $news_info->get_the_value('newsdate');
+            $newstease = $news_info->get_the_value('newstease');
+            $ret[] = '<div class="media-article">';
+            $ret[] = '<h3 class="media-title"><a href="'.$newsurl.'" target="_blank">'.$newstitle.'</a></h3>';
+            $ret[] = '<p class="meta">'.$newsauthor.', '.$newspub.', Published: '.$newsdate.'</p>';
+            $ret[] = '<p class="teaser">'.$newstease.' <a href="'.$newsurl.'" target="_blank" class="read-more">Read More</a></p>';
+            $ret[] = '</div>';
+        }
+        $ret[] = '</div>';
+    }
+    print implode("\n",$ret);
 }
 genesis();

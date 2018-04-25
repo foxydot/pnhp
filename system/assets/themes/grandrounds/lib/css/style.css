@@ -1625,7 +1625,7 @@ p.entry-meta {
         padding: 1em; }
         .sectioned-page-wrapper .section .section-body > .wrap img {
           margin-bottom: 0; }
-        .sectioned-page-wrapper .section .section-body > .wrap a:not('.button'), .sectioned-page-wrapper .section .section-body > .wrap a:link:not('.button'), .sectioned-page-wrapper .section .section-body > .wrap a:visited:not('.button') {
+        .sectioned-page-wrapper .section .section-body > .wrap a:not(.button), .sectioned-page-wrapper .section .section-body > .wrap a:link:not(.button), .sectioned-page-wrapper .section .section-body > .wrap a:visited:not(.button) {
           text-decoration: underline; }
       .sectioned-page-wrapper .section .section-body .section-content h3 {
         line-height: 1.65;
@@ -1840,6 +1840,28 @@ p.entry-meta {
 .news_category_aggregate:nth-child(4n+0) article.type-news:nth-child(3n+0), .news_media_runner:nth-child(4n+0) article.type-news:nth-child(3n+0) {
   background-color: #a6aaad; }
 
+.single-news .media-coverage .media-article {
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 1em;
+  margin-bottom: 1em; }
+  .single-news .media-coverage .media-article h3.media-title a {
+    color: #149e94;
+    text-decoration: none; }
+    .single-news .media-coverage .media-article h3.media-title a:hover {
+      text-decoration: underline; }
+  .single-news .media-coverage .media-article p.meta {
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 0.5em; }
+  .single-news .media-coverage .media-article p.teaser a.read-more {
+    display: block;
+    color: #149e94;
+    font-weight: bold;
+    text-decoration: none; }
+    .single-news .media-coverage .media-article p.teaser a.read-more:after {
+      font-family: FontAwesome;
+      content: ' \f18e'; }
+
 .speaker_aggregate {
   margin-top: 2em; }
   .speaker_aggregate article {
@@ -2006,6 +2028,8 @@ p.entry-meta {
       opacity: 0.8; }
   .archive main.content article.type-news .entry-content {
     display: none; }
+  .archive main.content article.type-news.news_category-highlighted-research .entry-content {
+    display: block; }
   .modal-dialog {
     width: 80%;
     max-width: 1000px;

@@ -2,13 +2,16 @@
 
 function msdlab_news_cleanup()
 {
-remove_action('genesis_before_loop', 'genesis_do_cpt_archive_title_description');
-remove_action('genesis_before_loop', 'genesis_do_date_archive_title');
-remove_action('genesis_before_loop', 'genesis_do_blog_template_heading');
-remove_action('genesis_before_loop', 'genesis_do_posts_page_heading');
-remove_action('genesis_before_loop', 'genesis_do_taxonomy_title_description', 15);
-remove_action('genesis_before_loop', 'genesis_do_author_title_description', 15);
-remove_action('genesis_before_loop', 'genesis_do_author_box_archive', 15);
+    remove_action('genesis_before_loop', 'genesis_do_cpt_archive_title_description');
+    remove_action('genesis_before_loop', 'genesis_do_date_archive_title');
+    remove_action('genesis_before_loop', 'genesis_do_blog_template_heading');
+    remove_action('genesis_before_loop', 'genesis_do_posts_page_heading');
+    remove_action('genesis_before_loop', 'genesis_do_taxonomy_title_description', 15);
+    remove_action('genesis_before_loop', 'genesis_do_author_title_description', 15);
+    remove_action('genesis_before_loop', 'genesis_do_author_box_archive', 15);
+    remove_action('genesis_entry_content','genesis_do_post_content', 10);
+    add_action('genesis_entry_content','msdlab_maybe_do_news_excerpt', 10);
+    add_action('genesis_entry_header', 'msdlab_maybe_do_featured_image', 8);
 }
 
 function msdlab_multimedia_icons(){
@@ -124,4 +127,47 @@ interval: false});
 ';
         } //end loop check
     return implode("\n",$ret);
+}
+
+function msdlab_maybe_do_news_excerpt()
+{
+    global $post;
+    if (has_term('highlighted-research', 'news_category', $post)) {
+        the_excerpt();
+    }
+}
+
+function msdlab_maybe_do_featured_image(){
+    global $post;
+    if (has_term('highlighted-research', 'news_category', $post)) {
+        $img = genesis_get_image( array(
+            'format'  => 'html',
+            'size'    => 'full',
+            'context' => 'archive',
+            'attr'    => genesis_parse_attr( 'entry-image', array(
+                'alt' => get_the_title(),
+            ) ),
+        ) );
+
+        if ( ! empty( $img ) ) {
+
+            genesis_markup( array(
+                'open'    => '<a %s>',
+                'close'   => '</a>',
+                'content' => wp_make_content_images_responsive( $img ),
+                'context' => 'entry-image-link',
+            ) );
+
+        }
+    }
+}
+
+function msdlab_maybe_equalize_attr($attr){
+    global $post;
+    if (has_term('highlighted-research', 'news_category', $post)) {
+        $$attr['class'] .= ' highlighted';
+    } //else {
+        $attr = msdlab_equalize_attr($attr);
+    //}
+    return $attr;
 }

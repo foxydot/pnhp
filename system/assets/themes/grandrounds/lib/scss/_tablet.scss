@@ -41,6 +41,11 @@
          .entry-content {
            display: none;
          }
+         &.news_category-highlighted-research{
+           .entry-content {
+             display: block;
+           }
+         }
        }
      }
    }

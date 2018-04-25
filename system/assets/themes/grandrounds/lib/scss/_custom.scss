@@ -171,6 +171,42 @@
   }
 }
 
+.single-news{
+  .media-coverage{
+    .media-article{
+      border-bottom: 1px solid $ltgrey;
+      padding-bottom: 1em;
+      margin-bottom: 1em;
+      h3.media-title{
+        a{
+          color: $green;
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+      p.meta{
+        font-size: 0.9em;
+        font-style: italic;
+        margin-bottom: 0.5em;
+      }
+      p.teaser{
+        a.read-more{
+          display: block;
+          color: $green;
+          font-weight: bold;
+          text-decoration: none;
+          &:after{
+            font-family: FontAwesome;
+            content: ' \f18e';
+          }
+        }
+      }
+    }
+  }
+}
+
 .speaker_aggregate{
   margin-top:2em;
   //column-count: 1;

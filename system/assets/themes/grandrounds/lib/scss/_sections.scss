@@ -46,7 +46,7 @@
           margin-bottom: 0;
         }
         a,a:link,a:visited{
-          &:not('.button') {
+          &:not(.button) {
             text-decoration: underline;
           }
         }
