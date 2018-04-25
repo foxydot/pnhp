@@ -28,7 +28,7 @@ function msdlab_news_title_unlink(){
     return false;
 }
 add_filter('genesis_attr_entry','msdlab_news_entry_attr');
-add_filter('genesis_attr_entry','msdlab_equalize_attr');
+add_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
 
 add_action('genesis_entry_header','msdlab_multimedia_icons');
 genesis();
