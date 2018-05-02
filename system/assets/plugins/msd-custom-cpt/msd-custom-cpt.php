@@ -122,6 +122,9 @@ if (!class_exists('MSDCustomCPT')) {
             if(class_exists('MSDTeamCPT')){
                 //$this->team_class = new MSDTeamCPT();
             }
+            if(class_exists('MSDMemberResourceCPT')){
+                $this->resource_class = new MSDMemberResourceCPT();
+            }
 
             register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
