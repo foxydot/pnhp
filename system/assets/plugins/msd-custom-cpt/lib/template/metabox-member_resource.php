@@ -11,25 +11,19 @@
             </td>
         </tr>
         <tr>
-            <?php $mb->the_field('mr_url'); ?>
-
-            <th scope="row"><label for="<?php $mb->the_name(); ?>">URL to News Article</label></th>
+            <?php $mb->the_field('mr_file'); ?>
+            <th scope="row"><label for="<?php $mb->the_name(); ?>">File</label></th>
             <td>
-                <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="http://" /></p>
+                <?php $group_name = 'mr_file-'. $mb->get_the_index(); ?>
+                <?php $wpalchemy_media_access->setGroupName($group_name)->setInsertButtonLabel('Insert This')->setTab('upload'); ?>
+                <?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
+                <?php echo $wpalchemy_media_access->getButton(array('label' => 'Add File')); ?>
             </td>
         </tr>
         <tr>
             <?php $mb->the_field('mr_author'); ?>
 
             <th scope="row"><label for="<?php $mb->the_name(); ?>">Author</label></th>
-            <td>
-                <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="" /></p>
-            </td>
-        </tr>
-        <tr>
-            <?php $mb->the_field('mr_pub'); ?>
-
-            <th scope="row"><label for="<?php $mb->the_name(); ?>">Publication</label></th>
             <td>
                 <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="" /></p>
             </td>
