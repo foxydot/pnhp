@@ -1,3 +1,4 @@
+<?php global $wpalchemy_media_access; ?>
 <table class="form-table">
 
     <?php while($mb->have_fields_and_multi('files')): ?>
