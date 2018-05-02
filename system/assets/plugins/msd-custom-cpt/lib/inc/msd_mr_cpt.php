@@ -2,7 +2,7 @@
 if (!class_exists('MSDMemberResourceCPT')) {
 	class MSDMemberResourceCPT {
 		//Properties
-		var $cpt = 'member_resource';
+		var $cpt = 'member-resources';
 		//Methods
 	    /**
 	    * PHP 4 Compatible Constructor
@@ -72,11 +72,11 @@ if (!class_exists('MSDMemberResourceCPT')) {
                 'show_tagcloud' => false,
                 'hierarchical' => true, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
 
-                'rewrite' => array('slug'=>'member_resource-category','with_front'=>false),
+                'rewrite' => array('slug'=>'member-resources-category','with_front'=>false),
                 'query_var' => true
             );
 
-            register_taxonomy( 'member_resource_category', array($this->cpt), $args );
+            register_taxonomy( 'member_resources_category', array($this->cpt), $args );
 
 
             $labels = array(
@@ -105,11 +105,11 @@ if (!class_exists('MSDMemberResourceCPT')) {
                 'show_tagcloud' => true,
                 'hierarchical' => false,
 
-                'rewrite' => array('slug'=>'member_resource-tag','with_front'=>false),
+                'rewrite' => array('slug'=>'member-resources-tag','with_front'=>false),
                 'query_var' => true
             );
 
-            register_taxonomy( 'member_resource_tag', array($this->cpt), $args );
+            register_taxonomy( 'member_resources_tag', array($this->cpt), $args );
         }
 		
 		function register_cpt() {
@@ -134,7 +134,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		        'hierarchical' => false,
 		        'description' => 'Member Resource',
                 'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail' ),
-		        'taxonomies' => array( 'member_resource_category', 'member_resource_tag' ),
+		        'taxonomies' => array( 'member_resources_category', 'member_resources_tag' ),
 		        'public' => true,
 		        'show_ui' => true,
 		        'show_in_menu' => true,
@@ -146,7 +146,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		        'has_archive' => true,
 		        'query_var' => true,
 		        'can_export' => true,
-		        'rewrite' => array('slug'=>'member_resource','with_front'=>false),
+		        'rewrite' => array('slug'=>'member-resources','with_front'=>false),
 		        'capability_type' => 'post',
                 'menu_icon' => 'dashicons-portfolio',
 		    );

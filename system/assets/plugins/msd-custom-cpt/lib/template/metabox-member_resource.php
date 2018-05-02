@@ -1,12 +1,12 @@
 <?php global $wpalchemy_media_access; ?>
 <table class="form-table">
 
-    <?php while($mb->have_fields_and_multi('files')): ?>
+    <?php while($mb->have_fields_and_multi('memberresource')): ?>
     <?php $mb->the_group_open('tbody'); ?>
         <tr>
             <?php $mb->the_field('mr_title'); ?>
 
-            <th scope="row"><label for="<?php $mb->the_name(); ?>">Title of News Article</label></th>
+            <th scope="row"><label for="<?php $mb->the_name(); ?>">Title of Resource</label></th>
             <td>
                 <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="" /></p>
             </td>
@@ -58,7 +58,7 @@
         <th scope="row">
         </th>
         <td>
-            <p><a href="#" class="docopy-files button">Add File</a></p>
+            <p><a href="#" class="docopy-memberresource button">Add File</a></p>
         </td>
     </tr>
 
