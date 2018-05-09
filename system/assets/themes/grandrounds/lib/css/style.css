@@ -2000,12 +2000,44 @@ p.entry-meta {
   transition: all ease .3s;
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #02b0a3;
+  fill: rgba(2, 176, 163, 0.8);
   stroke: #FFF; }
 
 .chapter-finder .state:hover {
-  fill: #afd2f0;
+  fill: rgba(175, 210, 240, 0.8);
   cursor: pointer; }
+
+.chapter-finder #california .state, .chapter-finder #new-york .state, .chapter-finder #north-carolina .state, .chapter-finder #oregon .state, .chapter-finder #pennsylvania .state, .chapter-finder #tennessee .state, .chapter-finder #washington .state {
+  fill: #02b0a3; }
+  .chapter-finder #california .state:hover, .chapter-finder #new-york .state:hover, .chapter-finder #north-carolina .state:hover, .chapter-finder #oregon .state:hover, .chapter-finder #pennsylvania .state:hover, .chapter-finder #tennessee .state:hover, .chapter-finder #washington .state:hover {
+    fill: #afd2f0; }
+
+.chapter-finder #alabama .state, .chapter-finder #connecticut .state, .chapter-finder #delaware .state, .chapter-finder #florida .state, .chapter-finder #hawaii .state, .chapter-finder #idaho .state, .chapter-finder #iowa .state, .chapter-finder #mississippi .state, .chapter-finder #utah .state {
+  fill: rgba(2, 176, 163, 0.6); }
+  .chapter-finder #alabama .state:hover, .chapter-finder #connecticut .state:hover, .chapter-finder #delaware .state:hover, .chapter-finder #florida .state:hover, .chapter-finder #hawaii .state:hover, .chapter-finder #idaho .state:hover, .chapter-finder #iowa .state:hover, .chapter-finder #mississippi .state:hover, .chapter-finder #utah .state:hover {
+    fill: rgba(175, 210, 240, 0.6); }
+
+.chapter-finder #arizona .state, .chapter-finder #arkansas .state, .chapter-finder #kansas .state, .chapter-finder #montana .state, .chapter-finder #nebraska .state, .chapter-finder #north-dakota .state, .chapter-finder #oklahoma .state, .chapter-finder #south-dakota .state, .chapter-finder #wyoming .state {
+  fill: rgba(2, 176, 163, 0.4); }
+  .chapter-finder #arizona .state:hover, .chapter-finder #arkansas .state:hover, .chapter-finder #kansas .state:hover, .chapter-finder #montana .state:hover, .chapter-finder #nebraska .state:hover, .chapter-finder #north-dakota .state:hover, .chapter-finder #oklahoma .state:hover, .chapter-finder #south-dakota .state:hover, .chapter-finder #wyoming .state:hover {
+    fill: rgba(175, 210, 240, 0.4); }
+
+.chapter-finder-legend {
+  margin-left: 25%; }
+  .chapter-finder-legend span.def {
+    display: block; }
+    .chapter-finder-legend span.def span.sample {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      margin-right: 1em;
+      background-color: rgba(2, 176, 163, 0.8); }
+      .chapter-finder-legend span.def span.sample.nope {
+        background-color: rgba(2, 176, 163, 0.4); }
+      .chapter-finder-legend span.def span.sample.multiple {
+        background-color: #02b0a3; }
+      .chapter-finder-legend span.def span.sample.members {
+        background-color: rgba(2, 176, 163, 0.6); }
 
 @media only screen and (min-width: 768px) {
   /* Accessible Menu

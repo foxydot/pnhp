@@ -332,7 +332,13 @@ function selectState() {
 }
 </script>";
             $svg = '<div class="chapter-finder">'.file_get_contents(dirname(__FILE__).'/chapter_finder.svg').'</div>';
-            return $javascript.$title.$svg;
+            $legend = '<div class="chapter-finder-legend">
+    <span class="def"><span class="sample multiple"></span> Multiple PNHP Chapters</span>
+    <span class="def"><span class="sample chapter"></span> Active PNHP Chapter</span>
+    <span class="def"><span class="sample members"></span> Active PNHP Members</span>
+    <span class="def"><span class="sample nope"></span> Email Us for More Information</span>
+</div>';
+            return $javascript.$title.$svg.$legend;
         }
 
         function cpt_display(){
