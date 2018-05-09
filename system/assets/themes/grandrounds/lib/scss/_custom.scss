@@ -390,14 +390,56 @@
     transition: all ease .3s;
     fill-rule:evenodd;
     clip-rule:evenodd;
-    fill:$ltgreen;
+    fill:rgba($ltgreen,0.8);
     stroke: $white;
   }
 
   .state:hover {
-    fill: $ltblue;
+    fill: rgba($ltblue,0.8);
     cursor: pointer;
   }
-
-
+  #california, #new-york, #north-carolina, #oregon, #pennsylvania, #tennessee, #washington {
+    .state {
+      fill: rgba($ltgreen,1);
+      &:hover{
+        fill: rgba($ltblue,1);
+      }
+    }
+  }
+  #alaska, #colorado, #georgia, #illinois, #indiana, #kentucky, #louisiana, #maine, #maryland, #massachusetts, #michigan, #minnesota, #missouri, #nevada, #new-hampshire, #new-jersey, #new-mexico, #ohio, #puerto-rico, #rhode-island, #south-carolina, #texas, #vermont, #virginia, #washington-dc, #west-virginia, #wisconsin{
+    .state{
+    }
+  }
+  #alabama, #connecticut, #delaware, #florida, #hawaii, #idaho, #iowa, #mississippi, #utah{
+    .state{
+      fill: rgba($ltgreen,0.6);
+      &:hover{
+        fill: rgba($ltblue,0.6);
+      }
+    }
+  }
+  #arizona, #arkansas, #kansas, #montana, #nebraska, #north-dakota, #oklahoma, #south-dakota, #wyoming{
+    .state{
+      fill: rgba($ltgreen,0.4);
+      &:hover{
+        fill: rgba($ltblue,0.4);
+      }
+    }
+  }
+}
+.chapter-finder-legend{
+  margin-left: 25%;
+  span.def{
+    display: block;
+    span.sample{
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      margin-right: 1em;
+      background-color: rgba($ltgreen,0.8);
+      &.nope{background-color: rgba($ltgreen,0.4);}
+      &.multiple{background-color: rgba($ltgreen,1);}
+      &.members{background-color: rgba($ltgreen,0.6);}
+    }
+  }
 }
