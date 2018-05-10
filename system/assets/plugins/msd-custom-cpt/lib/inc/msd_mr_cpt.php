@@ -72,7 +72,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
                 'show_tagcloud' => false,
                 'hierarchical' => true, //we want a "category" style taxonomy, but may have to restrict selection via a dropdown or something.
 
-                'rewrite' => array('slug'=>'member-resources-category','with_front'=>false),
+                'rewrite' => array('slug'=>'member-resources','with_front'=>false),
                 'query_var' => true
             );
 
