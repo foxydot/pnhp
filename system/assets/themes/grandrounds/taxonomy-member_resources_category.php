@@ -56,13 +56,15 @@ function msdlab_mr_challenge(){
         case "slideshow":
         case "webinar":
             //check for cookie
-            if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
-                //if cookie not exist, display input and die
-                if ($login_message) {
-                    print '<div classs="alert">' . $login_message . '</div>';
+            if(!is_user_logged_in()) {
+                if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
+                    //if cookie not exist, display input and die
+                    if ($login_message) {
+                        print '<div classs="alert">' . $login_message . '</div>';
+                    }
+                    msdlab_mr_login_form();
+                    return false;
                 }
-                msdlab_mr_login_form();
-                return false;
             }
             //else, add the content to the entries
             add_action('genesis_entry_content', 'msdlab_mr_content');
