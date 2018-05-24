@@ -146,7 +146,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		        'has_archive' => true,
 		        'query_var' => true,
 		        'can_export' => true,
-		        'rewrite' => array('slug'=>'member-resources','with_front'=>false),
+		        'rewrite' => array('slug'=>'member-resource','with_front'=>false),
 		        'capability_type' => 'post',
                 'menu_icon' => 'dashicons-portfolio',
 		    );
@@ -497,6 +497,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
                     //display content here
                 } else {
                     //display for aggregate here
+                    
                 }
             }
         }
