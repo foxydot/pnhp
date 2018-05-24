@@ -7,7 +7,7 @@ function msdlab_mr_cookie(){
     //check password against md5
     if(isset($_POST['member_key'])){
         $path = '/';
-        $host = PHP_URL_HOST;
+        $host = parse_url(get_option('siteurl'), PHP_URL_HOST);
         $expiry = strtotime('+1 month');
         $member_key = md5($_POST['member_key']);
         $key = 'ccbee73cd81c7f42405e1920409247ec';
