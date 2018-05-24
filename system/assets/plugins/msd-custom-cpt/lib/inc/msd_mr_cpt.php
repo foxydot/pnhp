@@ -133,7 +133,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		        'labels' => $labels,
 		        'hierarchical' => false,
 		        'description' => 'Member Resource',
-                'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail' ),
+                'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail',  ),
 		        'taxonomies' => array( 'member_resources_category', 'member_resources_tag' ),
 		        'public' => true,
 		        'show_ui' => true,
