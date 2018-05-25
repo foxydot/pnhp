@@ -42,7 +42,8 @@ function msdlab_mr_info(){
     if(strlen($intro_text) > 0){
         $ret[] = '<div class="archive-intro-text">'.$intro_text.'</div>';
     }
-    print implode("/n",$ret);
+    if(count($ret) > 0)
+    print '<div class="member_resources_category_header">'.implode("/n",$ret).'</div>';
 }
 function msdlab_mr_challenge(){
     global $post,$wpalchemy_media_access,$member_resource_info;
@@ -52,9 +53,8 @@ function msdlab_mr_challenge(){
 
     switch($cat_slug) { // first check for cookie
         case "newsletter":
-            ;
-        case "slideshow":
-        case "webinar":
+        case "slideshows":
+        case "webinars":
             //check for cookie
             if(!is_user_logged_in()) {
                 if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
@@ -108,9 +108,27 @@ function msdlab_mr_content(){
                 }
             }
             break;
-        case "slideshow":
+        case "slideshows":
+            print '<h3>'.get_the_title().'</h3>';
+            foreach($mr AS $ctr => $r){
+                print '<div class="slide_resource_wrapper">';
+                if($r['file']){
+                    print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
+                } else {
+                    print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                }
+                if($r['tease']){
+                    print '<div>';
+                    print '<div class="member-resource-teaser">'.$r['tease'].'</div>';
+                    print '</div>';
+                }
+                if($r['file']){
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                }
+                print '</div>';
+            }
             break;
-        case "webinar":
+        case "webinars":
             break;
     }
 }
