@@ -340,8 +340,8 @@ if (!class_exists('MSDMemberResourceCPT')) {
 
             switch( $column ) {
                 /* If displaying the 'logo' column. */
-                case $this->cpt.'_category' :
-                case $this->cpt.'_tag' :
+                case 'member_resources_category' :
+                case 'member_resources_tag' :
                     $taxonomy = $column;
                     if ( $taxonomy ) {
                         $taxonomy_object = get_taxonomy( $taxonomy );
