@@ -113,8 +113,9 @@ function msdlab_mr_content(){
             if(strlen(get_the_content())>0){
                 print '<div class="entry-content">'.apply_filters('the_content',get_the_content()).'</div>';
             }
+            print '<div class="row">';
             foreach($mr AS $ctr => $r){
-                print '<div class="slide_resource_wrapper">';
+                print '<div class="slide_resource_wrapper col-xs-12 col-sm-6 col-md-4">';
                 if($r['file']){
                     print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
                 } else {
@@ -130,6 +131,7 @@ function msdlab_mr_content(){
                 }
                 print '</div>';
             }
+            print '</div>';
             break;
         case "webinars":
             break;

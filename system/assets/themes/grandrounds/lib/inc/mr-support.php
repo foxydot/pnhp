@@ -31,13 +31,3 @@ function msdlab_mr_cleanup()
     add_action('genesis_entry_header', 'msdlab_maybe_do_featured_image', 8);
 }
 
-
-function msdlab_mr_entry_attr($attr){
-    global $post;
-    if(has_term( 'highlighted-research', 'member_resources_category', $post )){
-        $attr['class'] .= ' col-xs-12 col-sm-12 col-md-8';
-    } else {
-        $attr['class'] .= ' col-xs-12 col-sm-6 col-md-4';
-    }
-    return $attr;
-}
