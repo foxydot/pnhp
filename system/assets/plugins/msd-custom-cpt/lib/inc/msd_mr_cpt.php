@@ -326,8 +326,8 @@ if (!class_exists('MSDMemberResourceCPT')) {
             $columns = array(
                 'cb' => '<input type="checkbox" />',
                 'title' => __( 'Title' ),
-                $this->cpt.'_category' => __( 'Categories' ),
-                $this->cpt.'_tag' => __( 'Tags' ),
+                'member_resources_category' => __( 'Categories' ),
+                'member_resources_tag' => __( 'Tags' ),
                 'author' => __( 'Author' ),
                 'date' => __( 'Date' )
             );
