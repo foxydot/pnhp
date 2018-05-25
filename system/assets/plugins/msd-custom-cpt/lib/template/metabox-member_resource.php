@@ -13,7 +13,7 @@
         </tr>
         <tr>
             <?php $mb->the_field('mr_file'); ?>
-            <th scope="row"><label for="<?php $mb->the_name(); ?>">File</label></th>
+            <th scope="row"><label for="<?php $mb->the_name(); ?>">File (or URL)</label></th>
             <td>
                 <?php $group_name = 'mr_file-'. $mb->get_the_index(); ?>
                 <?php $wpalchemy_media_access->setGroupName($group_name)->setInsertButtonLabel('Insert This')->setTab('upload'); ?>
