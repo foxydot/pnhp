@@ -443,7 +443,19 @@
     }
   }
 }
-
-.member_resources_category_header{
-  padding: 2em 0;
+.tax-member_resources_category {
+  .member_resources_category_header {
+    padding: 2em 0;
+  }
+  article{
+    padding: 0;
+  }
+  .slide_resource_wrapper {
+    margin-bottom: 2em;
+  }
+  .member-resource-teaser {
+    p.last-child {
+      margin-bottom: 0;
+    }
+  }
 }

@@ -110,6 +110,9 @@ function msdlab_mr_content(){
             break;
         case "slideshows":
             print '<h3>'.get_the_title().'</h3>';
+            if(strlen(get_the_content())>0){
+                print '<div class="entry-content">'.apply_filters('the_content',get_the_content()).'</div>';
+            }
             foreach($mr AS $ctr => $r){
                 print '<div class="slide_resource_wrapper">';
                 if($r['file']){
