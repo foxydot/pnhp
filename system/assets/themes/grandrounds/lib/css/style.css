@@ -2039,8 +2039,17 @@ p.entry-meta {
       .chapter-finder-legend span.def span.sample.members {
         background-color: rgba(2, 176, 163, 0.6); }
 
-.member_resources_category_header {
+.tax-member_resources_category .member_resources_category_header {
   padding: 2em 0; }
+
+.tax-member_resources_category article {
+  padding: 0; }
+
+.tax-member_resources_category .slide_resource_wrapper {
+  margin-bottom: 2em; }
+
+.tax-member_resources_category .member-resource-teaser p.last-child {
+  margin-bottom: 0; }
 
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
