@@ -7,6 +7,8 @@ add_action('genesis_loop','msdlab_mr_info',8);
 add_action('genesis_loop','msdlab_mr_challenge',9);
 add_action('msdlab_title_area','msdlab_news_cleanup');
 add_action('msdlab_title_area','msdlab_mr_category_banner');
+add_filter('genesis_attr_entry','msdlab_mr_entry_attr');
+
 function msdlab_mr_category_banner(){
     $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
     $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-mr-category-'.$bannerclass.'.jpg';
@@ -54,7 +56,6 @@ function msdlab_mr_challenge(){
     switch($cat_slug) { // first check for cookie
         case "newsletter":
         case "slideshows":
-        case "webinars":
             //check for cookie
             if(!is_user_logged_in()) {
                 if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
@@ -69,6 +70,7 @@ function msdlab_mr_challenge(){
             //else, add the content to the entries
             add_action('genesis_entry_content', 'msdlab_mr_content');
             break;
+        case "webinars":
         default:
             add_action('genesis_entry_content', 'msdlab_mr_content');
             break;
@@ -134,15 +136,55 @@ function msdlab_mr_content(){
             print '</div>';
             break;
         case "webinars":
+            print '<div class="row">';
+            foreach($mr AS $ctr => $r){
+                print '<div class="webinar-resource_wrapper col-xs-12 col-sm-6 col-md-4">';
+                if($r['file'])
+                if($r['file']){
+                    print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
+                } else {
+                    print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                }
+                if($r['tease']){
+                    print '<div>';
+                    print '<div class="member-resource-teaser">'.$r['tease'].'</div>';
+                    print '</div>';
+                }
+                if($r['file']){
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                }
+                print '</div>';
+            }
+            print '</div>';
             break;
     }
+}
+
+function msdlab_mr_entry_attr($attr){
+    global $post;
+    $obj = get_queried_object();
+    $cat_slug = $obj->slug;
+
+    switch($cat_slug) { // first check for cookie
+        case "newsletter":
+            if(strtotime(get_the_date()) > strtotime("-6 month")){
+                $attr['class'] .= ' new-item highlight';
+            }
+            break;
+        case "slideshows":
+            break;
+        case "webinars":
+        default:
+            break;
+    }
+    return $attr;
 }
 
 function msdlab_mr_login_form(){
     ?>
     <form id="member_login_form" method="post">
         <label for="member_key">Login to continue</label>
-        <input id="member_key" name="member_key" type="password" />
+        <input id="member_key" name="member_key" type="password" placeholder="member password" />
         <input type="submit" />
     </form>
 <?php

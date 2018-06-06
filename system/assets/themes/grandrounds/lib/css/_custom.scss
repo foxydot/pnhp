@@ -449,6 +449,18 @@
   }
   article{
     padding: 0;
+    &.highlight{
+      border: 1px solid $green;
+      background: rgba($green, 0.1);
+      padding: 1em;
+    }
+    &.new-item{
+      .member-resource-title:before{
+        content: 'NEW!  ';
+        font-weight: 800;
+        color: $red;
+      }
+    }
   }
   .slide_resource_wrapper {
     margin-bottom: 2em;
