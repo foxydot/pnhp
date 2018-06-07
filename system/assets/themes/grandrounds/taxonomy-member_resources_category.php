@@ -54,7 +54,6 @@ function msdlab_mr_challenge(){
     switch($cat_slug) { // first check for cookie
         case "newsletter":
         case "slideshows":
-        case "webinars":
             //check for cookie
             if(!is_user_logged_in()) {
                 if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
@@ -69,6 +68,7 @@ function msdlab_mr_challenge(){
             //else, add the content to the entries
             add_action('genesis_entry_content', 'msdlab_mr_content');
             break;
+        case "webinars":
         default:
             add_action('genesis_entry_content', 'msdlab_mr_content');
             break;
@@ -134,6 +134,26 @@ function msdlab_mr_content(){
             print '</div>';
             break;
         case "webinars":
+            print '<div class="row">';
+            foreach($mr AS $ctr => $r){
+                print '<div class="webinar-resource_wrapper col-xs-12 col-sm-6 col-md-4">';
+                if($r['file'])
+                if($r['file']){
+                    print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
+                } else {
+                    print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                }
+                if($r['tease']){
+                    print '<div>';
+                    print '<div class="member-resource-teaser">'.$r['tease'].'</div>';
+                    print '</div>';
+                }
+                if($r['file']){
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                }
+                print '</div>';
+            }
+            print '</div>';
             break;
     }
 }
