@@ -455,8 +455,8 @@
       padding: 1em;
     }
     &.new-item{
-      .member-resource-title:before{
-        content: 'NEW!  ';
+      .member-resource-title:after{
+        content: '  NEW!  ';
         font-weight: 800;
         color: $red;
       }

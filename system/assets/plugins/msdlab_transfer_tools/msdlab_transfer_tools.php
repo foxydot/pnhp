@@ -97,6 +97,9 @@ if (!class_exists('MSDTransferTools')) {
             if(class_exists('Convert_Media')){
                 $this->media_class = new Convert_Media();
             }
+            if(class_exists('Other_Presentations')){
+                $this->media_class = new Other_Presentations();
+            }
         }
         /**
          * @desc Loads the options. Responsible for handling upgrades and default option values.
@@ -237,6 +240,15 @@ if (!class_exists('MSDTransferTools')) {
                             console.log(response);
                         });
                     });
+                    $('.other_presentations').click(function(){
+                        var data = {
+                            action: 'other_presentations',
+                        };
+                        jQuery.post(ajaxurl, data, function(response) {
+                            $('.response1').html(response);
+                            console.log(response);
+                        });
+                    });
                 });
             </script>
             <div class="wrap">
@@ -248,6 +260,10 @@ if (!class_exists('MSDTransferTools')) {
                 <dl>
                     <dt>Transfer Media:</dt>
                     <dd><input type="number" id="media_start"></input> <button class="media">Go</button></dd>
+                </dl>
+                <dl>
+                    <dt>Other Presentations:</dt>
+                    <dd><button class="other_presentations">Go</button></dd>
                 </dl>
                 <div class="response1"></div>
             </div>
