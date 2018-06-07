@@ -275,18 +275,19 @@ figure {
 input,
 select,
 textarea {
-  background-color: rgba(238, 238, 238, 0);
-  border: 1px solid #EEE;
+  background-color: rgba(20, 158, 148, 0.1);
+  border: 1px solid #149e94;
   color: #333;
   font-size: 18px;
   font-size: 1.8rem;
   font-weight: 400;
   padding: 16px;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 0.5em; }
 
 input:focus,
 textarea:focus {
-  border: 1px solid #EEE;
+  border: 1px solid #149e94;
   outline: none; }
 
 input[type="checkbox"],
@@ -854,7 +855,7 @@ address {
     font-weight: 400;
     font-size: 1em; }
     .site-inner .gform_wrapper .gform_body li.gfield {
-      background: rgba(238, 238, 238, 0); }
+      background: rgba(20, 158, 148, 0.1); }
       .site-inner .gform_wrapper .gform_body li.gfield label {
         padding: 0 1em;
         font-size: 0.7em;
@@ -1199,7 +1200,7 @@ address {
     width: 0em;
     position: relative;
     font-size: 1.4rem;
-    background: rgba(238, 238, 238, 0);
+    background: rgba(20, 158, 148, 0.1);
     border: 0;
     padding: 0.5em 0em 0.5em 1.5em; }
     .pre-header .nav-secondary ul li.right.search .search-form input[type="search"]:focus {
@@ -1349,7 +1350,8 @@ p.entry-meta {
 --------------------------------------------- */
 .pagination {
   clear: both;
-  margin: 40px 0; }
+  padding: 1em 0;
+  display: block; }
 
 .adjacent-entry-pagination {
   margin-bottom: 0; }
@@ -2044,6 +2046,14 @@ p.entry-meta {
 
 .tax-member_resources_category article {
   padding: 0; }
+  .tax-member_resources_category article.highlight {
+    border: 1px solid #149e94;
+    background: rgba(20, 158, 148, 0.1);
+    padding: 1em; }
+  .tax-member_resources_category article.new-item .member-resource-title:after {
+    content: '  NEW!  ';
+    font-weight: 800;
+    color: #f00; }
 
 .tax-member_resources_category .slide_resource_wrapper {
   margin-bottom: 2em; }

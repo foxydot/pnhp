@@ -49,3 +49,74 @@
 [12-Jul-2017 16:19:57 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
 [12-Jul-2017 16:20:10 UTC] PHP Warning:  implode(): Invalid arguments passed in /home1/pnhp/system/assets/plugins/msd-specialty-pages/lib/inc/page-sectioned-functions.php on line 216
 [12-Jul-2017 16:20:10 UTC] PHP Warning:  strpos(): Empty needle in /home1/pnhp/system/assets/plugins/msd_site_settings/msd_site_settings.php on line 193
+[18-Mar-2018 09:33:05 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[18-Mar-2018 09:33:05 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[19-Mar-2018 09:34:44 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[19-Mar-2018 09:34:44 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[29-Mar-2018 21:26:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[29-Mar-2018 21:26:12 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[04-Apr-2018 18:57:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[04-Apr-2018 18:57:46 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[17-Apr-2018 16:25:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 16:25:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 16:25:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 16:25:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:10:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:10:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:10:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:10:15 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:23 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:23 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:23 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:23 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:26 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:26 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:26 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:26 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:56 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:56 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:56 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:11:56 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:12:55 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:12:55 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:12:55 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:12:55 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:14:06 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[17-Apr-2018 18:14:06 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[17-Apr-2018 18:16:36 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[17-Apr-2018 18:16:36 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[17-Apr-2018 18:20:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[17-Apr-2018 18:20:00 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[17-Apr-2018 18:21:40 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:21:40 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:21:40 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:21:40 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 18:21:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[17-Apr-2018 18:21:46 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[17-Apr-2018 19:20:04 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 19:20:04 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 19:20:04 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 19:20:04 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[17-Apr-2018 19:20:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[17-Apr-2018 19:20:08 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[18-Apr-2018 19:25:50 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[18-Apr-2018 19:25:50 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 2 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[18-Apr-2018 19:25:50 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[18-Apr-2018 19:25:50 UTC] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : p in Entity, line: 1 in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/shortcodes.php on line 28
+[18-Apr-2018 19:25:55 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 232
+[18-Apr-2018 19:25:55 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/lib/inc/speaker-support.php on line 236
+[02-May-2018 17:45:05 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/single-news.php on line 109
+[09-May-2018 13:34:57 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/single-news.php on line 109
+[10-May-2018 19:37:29 UTC] PHP Warning:  Error while sending QUERY packet. PID=25169 in /home/msdlabtw/public_html/pnhp/system/wp-includes/wp-db.php on line 1924
+[25-May-2018 00:33:01 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 45
+[25-May-2018 00:33:10 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 45
+[25-May-2018 00:34:08 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 45
+[25-May-2018 13:58:35 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 113
+[25-May-2018 13:59:19 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 113
+[25-May-2018 14:00:30 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[25-May-2018 14:06:20 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[25-May-2018 15:04:28 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[25-May-2018 16:52:55 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[25-May-2018 17:04:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[25-May-2018 17:29:20 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
+[06-Jun-2018 21:47:55 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/msdlabtw/public_html/pnhp/system/assets/themes/grandrounds/taxonomy-member_resources_category.php on line 116
