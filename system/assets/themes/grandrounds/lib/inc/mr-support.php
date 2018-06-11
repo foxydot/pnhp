@@ -40,7 +40,7 @@ function be_grid_loop_query_args( $query ) {
             //do non-additional
             $taxquery = array(
                 array(
-                    'taxonomy' => 'member_resources_tag',
+                    'taxonomy' => 'member_resources_category',
                     'field' => 'slug',
                     'terms' => array( 'additional-slideshows' ),
                     'operator'=> 'NOT IN'
@@ -48,7 +48,6 @@ function be_grid_loop_query_args( $query ) {
             );
 
             $query->set( 'tax_query', $taxquery );
-            // Other Pages
         }
     }
 }
@@ -139,6 +138,7 @@ function msdlab_mr_content(){
     }
     switch($cat_slug) {
         case "newsletter":
+        case "materials-handouts":
             foreach($mr AS $ctr => $r){
                 if($r['file']){
                     print '<h3 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h3>';
@@ -157,13 +157,14 @@ function msdlab_mr_content(){
             }
             break;
         case "slideshows":
+        case "additional-slideshows":
             print '<h3>'.get_the_title().'</h3>';
             if(strlen(get_the_content())>0){
                 print '<div class="entry-content">'.apply_filters('the_content',get_the_content()).'</div>';
             }
             print '<div class="row">';
             foreach($mr AS $ctr => $r){
-                print '<div class="slide_resource_wrapper col-xs-12 col-sm-6 col-md-4">';
+                print '<div class="slide_resource_wrapper equalize col-xs-12 col-sm-6 col-md-4">';
                 if($r['file']){
                     print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
                 } else {
@@ -234,4 +235,13 @@ function msdlab_mr_login_form(){
         <input type="submit" />
     </form>
     <?php
+}
+
+function msdlab_maybe_fake_paginate(){
+    $obj = get_queried_object();
+    $cat_slug = $obj->slug;
+    if($cat_slug != 'slideshows'){
+        return;
+    }
+    print '<a class="button" href="'.get_term_link('additional-slideshows','member_resources_category').'">Additional Slideshows</a>';
 }
