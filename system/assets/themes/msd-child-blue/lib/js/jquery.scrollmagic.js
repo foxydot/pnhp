@@ -542,7 +542,7 @@ Greensock License info at http://www.greensock.com/licensing/
 				return values[about];
 			} else {
 				log(1, "ERROR: option \"" + about + "\" is not available");
-				return;
+
 			}
 		};
 
