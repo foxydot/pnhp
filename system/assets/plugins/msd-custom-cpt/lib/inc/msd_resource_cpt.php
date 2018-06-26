@@ -38,6 +38,8 @@ if (!class_exists('MSDResourceCPT')) {
             //add cols to manage panel
             add_filter( 'manage_edit-'.$this->cpt.'_columns', array(&$this,'my_edit_columns' ));
             add_action( 'manage_'.$this->cpt.'_posts_custom_column', array(&$this,'my_manage_columns'), 10, 2 );
+
+            add_shortcode('faqs',array(&$this,'faq_shortcode_handler'));
 		}
 
 
@@ -359,6 +361,53 @@ if (!class_exists('MSDResourceCPT')) {
                 $class_html,
                 $label
             );
+        }
+
+        function faq_shortcode_handler($atts){
+		    extract(shortcode_atts($atts,array()));
+		    $args = array(
+		            'posts_per_page' => '-1',
+                    'post_type' => $this->cpt,
+                    'order_by' => 'date', // it's also default
+                    'order' => 'ASC', // it's also default
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'resource_category',
+                            'field' => 'slug',
+                            'terms' => array ('faq')
+                        )
+                    )
+                );
+		    $temp_query = new WP_Query($args);
+		    if($temp_query->have_posts()){
+		        $top = $btm = array();
+		        $i=1;
+		        while($temp_query->have_posts()){
+		            $temp_query->the_post();
+		            $t = $b = array();
+		            $t[] = '<div id="'.get_post_field('post_name').'-anchor" class="summary col-xs-12 col-md-4 col-sm-6"><div class="wrapper">';
+		            $t[] = '<h3 class="faq-title">'.get_the_title().'</h3>';
+		            $t[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
+		            $t[] = '<a href="#'.get_post_field('post_name').'" class="button btn">learn more</a>';
+		            $t[] = '</div></div>';
+		            $top[] = implode("\n", $t);
+		            $b[] = '<article class="entry">';
+		            $b[] = '<a id="'.get_post_field('post_name').'"></a>';
+                    $b[] = '<h3 class="faq-title">'.get_the_title().'</h3>';
+                    $b[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
+                    $b[] = apply_filters('the_content',get_the_content());
+                    $b[] = '<a href="#faq-top" class="button btn">back to top</a>';
+                    $b[] = '</article>';
+		            $btm[] = implode("\n", $b);
+                }
+            }
+            wp_reset_postdata();
+		    $ret[] = '<div class="faq-summaries"><a name="faq-top" id="faq-top"></a>';
+		    $ret[] = implode("\n",$top);
+		    $ret[] = '</div><div class="faq-full">';
+		    $ret[] = implode("\n",$btm);
+		    $ret[] = '</div>';
+            return implode("\n",$ret);
         }
 
         function change_default_title( $title ){
