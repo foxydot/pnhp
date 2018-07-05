@@ -615,6 +615,9 @@ th:first-child {
   color: #FFF;
   border-top: 1px solid #FFF;
   background-color: #149e94; }
+  .widget-title a {
+    color: #FFF;
+    text-decoration: none; }
 
 /* ## WordPress
 --------------------------------------------- */
@@ -1629,6 +1632,8 @@ p.entry-meta {
           margin-bottom: 0; }
         .sectioned-page-wrapper .section .section-body > .wrap a:not(.button), .sectioned-page-wrapper .section .section-body > .wrap a:link:not(.button), .sectioned-page-wrapper .section .section-body > .wrap a:visited:not(.button) {
           text-decoration: underline; }
+        .sectioned-page-wrapper .section .section-body > .wrap .widget-title a {
+          text-decoration: none; }
       .sectioned-page-wrapper .section .section-body .section-content h3 {
         line-height: 1.65;
         margin-bottom: 0.5em; }
