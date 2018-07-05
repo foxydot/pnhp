@@ -444,6 +444,7 @@ if (!class_exists('MSDNewsCPT')) {
             );
 
             if(${$this->cpt.'_category'}) {
+                    $link = "/news-category/".${$this->cpt.'_category'};
                     $class = $this->cpt.'_category'.${$this->cpt.'_category'};
                     $args['tax_query'] = array(
                         array(
@@ -453,6 +454,7 @@ if (!class_exists('MSDNewsCPT')) {
                         ),
                     );
                 } elseif (${$this->cpt.'_tag'}) {
+                    $link = "/news-tag/".${$this->cpt.'_category'};
                     $class = $this->cpt.'_tag'.${$this->cpt.'_tag'};
                     $args['tax_query'] = array(
                         array(
@@ -462,6 +464,7 @@ if (!class_exists('MSDNewsCPT')) {
                         ),
                     );
                 } else {
+                    $link = '/latest-news/';
                     $class = $this->cpt.'_all';
                     $args['tax_query'] = array(
                         array(
@@ -476,7 +479,7 @@ if (!class_exists('MSDNewsCPT')) {
                 if($recents->have_posts()) {
                     global $post;
                     $ret[] = '<section class="widget news-widget clearfix '.$class.'">
-<h3 class="widgettitle widget-title">' . $title . ' </h3>
+<h3 class="widgettitle widget-title"><a href="'.$link.'">' . $title . ' </a></h3>
 <div class="wrap">
 <dl class="news-widget-list">';
 //start loop

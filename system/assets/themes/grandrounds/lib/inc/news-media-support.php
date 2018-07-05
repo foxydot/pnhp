@@ -43,6 +43,7 @@ function msdlab_news_media_runner($atts = array()){
         'title' => 'Recent Videos',
         'count' => 12,
         'perslide' => 3,
+        'link' => false,
     ), $atts ) );
     global $post;
     $id = $post->post_name.'-runner';
@@ -66,6 +67,9 @@ function msdlab_news_media_runner($atts = array()){
         );
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
+            if($link){
+                $title = '<a href="'.$link.'">'.$title.'</a>';
+            }
             $ret[] = '<section class="news_media_runner multi clearfix">
 <h3 class="widgettitle widget-title">'.$title.'</h3>
 <div class="carousel slide" id="'.$id.'">
