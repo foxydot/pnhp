@@ -33,21 +33,23 @@ function msdlab_mr_cleanup()
 
 function be_grid_loop_query_args( $query ) {
     if(is_admin()) return $query;
-    if( $query->is_main_query() && $query->is_archive() && $query->query_vars['member_resources_category'] == 'slideshows' ) {
-        // First Page
-        $paged = $query->query_vars['paged'];
-        if( ! $paged ) {
-            //do non-additional
-            $taxquery = array(
-                array(
-                    'taxonomy' => 'member_resources_category',
-                    'field' => 'slug',
-                    'terms' => array( 'additional-slideshows' ),
-                    'operator'=> 'NOT IN'
-                )
-            );
+    if( $query->is_main_query() && $query->is_archive() ) {
+        if($query->query_vars['member_resources_category'] == 'slideshows') {
+            // First Page
+            $paged = $query->query_vars['paged'];
+            if (!$paged) {
+                //do non-additional
+                $taxquery = array(
+                    array(
+                        'taxonomy' => 'member_resources_category',
+                        'field' => 'slug',
+                        'terms' => array('additional-slideshows'),
+                        'operator' => 'NOT IN'
+                    )
+                );
 
-            $query->set( 'tax_query', $taxquery );
+                $query->set('tax_query', $taxquery);
+            }
         }
     }
 }
@@ -93,7 +95,7 @@ function msdlab_mr_info(){
         print '<div class="member_resources_category_header">'.implode("/n",$ret).'</div>';
 }
 function msdlab_mr_challenge(){
-    global $post,$wpalchemy_media_access,$member_resource_info;
+    global $post,$wpalchemy_media_access,$member_resource_info,$subcat;
     global $login_message;
     $obj = get_queried_object();
     $cat_slug = $obj->slug;
@@ -114,6 +116,19 @@ function msdlab_mr_challenge(){
             }
             //else, add the content to the entries
             add_action('genesis_entry_content', 'msdlab_mr_content');
+            break;
+        case "materials-handouts":
+            $tax = 'member_resources_category';
+            $subcats = get_terms( array(
+                'taxonomy' => $tax,
+                'parent'   => 224
+            ) );
+            foreach($subcats AS $sc) {
+                print '<h2>' . $sc->name . '</h2>';
+                if(has_term($sc->term_id,$tax,$r->post_id)) {
+
+                }
+            }
             break;
         case "webinars":
         default:
@@ -138,7 +153,6 @@ function msdlab_mr_content(){
     }
     switch($cat_slug) {
         case "newsletter":
-        case "materials-handouts":
             foreach($mr AS $ctr => $r){
                 if($r['file']){
                     print '<h3 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h3>';
@@ -154,6 +168,24 @@ function msdlab_mr_content(){
                 if($r['file']){
                     print '<a class="btn btn-primary" href="'.$r['file'].'">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
                 }
+            }
+            break;
+        case "materials-handouts":
+            foreach($mr AS $ctr => $r){
+                    if ($r['file']) {
+                        print '<h3 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h3>';
+                    } else {
+                        print '<h3 class="member-resource-title">' . $r['title'] . '</h3>';
+                    }
+                    if ($r['tease']) {
+                        print '<div>';
+                        print '<a class="collapse-btn" data-toggle="collapse" href="#collapse-' . $post->ID . '-' . $ctr . '" role="button" aria-expanded="false" aria-controls="collapse-' . $post->ID . '-' . $ctr . '">In this issue <i class="fa fa-angle-down"><span class="screen-reader-text">expand</span></i></a>';
+                        print '<div class="member-resource-teaser collapse" id="collapse-' . $post->ID . '-' . $ctr . '">' . $r['tease'] . '</div>';
+                        print '</div>';
+                    }
+                    if ($r['file']) {
+                        print '<a class="btn btn-primary" href="' . $r['file'] . '">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
+                    }
             }
             break;
         case "slideshows":
