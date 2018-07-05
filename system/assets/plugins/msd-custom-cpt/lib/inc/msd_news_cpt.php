@@ -420,6 +420,7 @@ if (!class_exists('MSDNewsCPT')) {
             extract(shortcode_atts( array(
                 'title' => 'News',
                 'count' => 5,
+                'showcat' => true,
                 $this->cpt.'_category' => false,
                 $this->cpt.'_tag' => false,
             ), $atts ));
@@ -429,8 +430,11 @@ if (!class_exists('MSDNewsCPT')) {
                     'showposts' => $count,
 
                 );
-            $item_template = '<dt><span class="news-category">%term_list%</span> <span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
-
+                if($showcat) {
+                    $item_template = '<dt><span class="news-category">%term_list%</span> <span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
+                } else {
+                    $item_template = '<dt><span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
+                }
             $patterns = array(
                 '|%term_list%|i',
                 '|%date%|i',
@@ -448,11 +452,6 @@ if (!class_exists('MSDNewsCPT')) {
                             'terms'    => ${$this->cpt.'_category'},
                         ),
                     );
-                    switch(${$this->cpt.'_category'}){
-                        case 'quote-of-the-day':
-                            $item_template = '<dt><span class="date">%date%</span></dt><dd><a href="%permalink%">%title%</a></dd>';
-                            break;
-                    }
                 } elseif (${$this->cpt.'_tag'}) {
                     $class = $this->cpt.'_tag'.${$this->cpt.'_tag'};
                     $args['tax_query'] = array(
