@@ -29,6 +29,12 @@ function msdlab_mr_cleanup()
     remove_action('genesis_before_loop', 'genesis_do_author_box_archive', 15);
     remove_action('genesis_entry_content','genesis_do_post_content', 10);
     add_action('genesis_entry_header', 'msdlab_maybe_do_featured_image', 8);
+
+    $obj = get_queried_object();
+    $cat_slug = $obj->slug;
+    if($cat_slug == 'materials-handouts'){
+        remove_all_actions('genesis_loop');
+    }
 }
 
 function be_grid_loop_query_args( $query ) {
@@ -85,6 +91,7 @@ function msdlab_mr_info(){
     $term = get_queried_object();
     $headline = apply_filters('the_title',get_term_meta( $term->term_id, 'headline', true ));
     $intro_text = apply_filters('the_content',get_term_meta( $term->term_id, 'intro_text', true ));
+    $ret = array();
     if(strlen($headline) > 0){
         $ret[] = '<h3 class="archive-headline">'.$headline.'</h3>';
     }
@@ -124,10 +131,27 @@ function msdlab_mr_challenge(){
                 'parent'   => 224
             ) );
             foreach($subcats AS $sc) {
-                print '<h2>' . $sc->name . '</h2>';
-                if(has_term($sc->term_id,$tax,$r->post_id)) {
-
+                $args = array(
+                    'post_type' => 'member-resources',
+                    'posts_per_page' => -1,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => $tax,
+                            'field'    => 'slug',
+                            'terms'    => $sc->slug,
+                        ),
+                    ),
+                );
+                $subquery{$sc->slug} = new WP_Query($args);
+                //ts_data($subquery{$sc->slug}); //THIS NEEDS WORK
+                if($subquery{$sc->slug}->have_posts()){
+                    //add_action('genesis_entry_content', 'msdlab_mr_content');
+                    print '<h2>' . $sc->name . '</h2>';
+                    while($subquery{$sc->slug}->have_posts()){
+                    }
                 }
+
+                wp_reset_postdata();
             }
             break;
         case "webinars":
@@ -143,6 +167,7 @@ function msdlab_mr_content(){
     //get all the stuff
     $ctr = 0;
     $member_resource_info->the_meta();
+    $mr = array();
     while ($member_resource_info->have_fields('memberresource')) {
         $mr[$ctr]['title'] = $member_resource_info->get_the_value('mr_title') != '' ? $member_resource_info->get_the_value('mr_title') : get_the_title();
         $mr[$ctr]['file'] = $member_resource_info->get_the_value('mr_file') != '' ? $member_resource_info->get_the_value('mr_file') : false;
@@ -176,12 +201,6 @@ function msdlab_mr_content(){
                         print '<h3 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h3>';
                     } else {
                         print '<h3 class="member-resource-title">' . $r['title'] . '</h3>';
-                    }
-                    if ($r['tease']) {
-                        print '<div>';
-                        print '<a class="collapse-btn" data-toggle="collapse" href="#collapse-' . $post->ID . '-' . $ctr . '" role="button" aria-expanded="false" aria-controls="collapse-' . $post->ID . '-' . $ctr . '">In this issue <i class="fa fa-angle-down"><span class="screen-reader-text">expand</span></i></a>';
-                        print '<div class="member-resource-teaser collapse" id="collapse-' . $post->ID . '-' . $ctr . '">' . $r['tease'] . '</div>';
-                        print '</div>';
                     }
                     if ($r['file']) {
                         print '<a class="btn btn-primary" href="' . $r['file'] . '">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
@@ -218,19 +237,20 @@ function msdlab_mr_content(){
             print '<div class="row">';
             foreach($mr AS $ctr => $r){
                 print '<div class="webinar-resource_wrapper col-xs-12 col-sm-6 col-md-4">';
-                if($r['file'])
-                    if($r['file']){
-                        print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
-                    } else {
-                        print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
-                    }
+                if(strstr($r['file'],$_SERVER['SERVER_NAME'])) {
+                    print '<h4 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h4>';
+                } else {
+                    print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                }
                 if($r['tease']){
                     print '<div>';
                     print '<div class="member-resource-teaser">'.$r['tease'].'</div>';
                     print '</div>';
                 }
-                if($r['file']){
+                if(strstr($r['file'],$_SERVER['SERVER_NAME'])){
                     print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                } elseif ($vid = wp_oembed_get($r['file'])){
+                    print $vid;
                 }
                 print '</div>';
             }
