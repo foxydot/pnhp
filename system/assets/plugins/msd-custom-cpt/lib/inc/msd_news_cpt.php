@@ -134,7 +134,7 @@ if (!class_exists('MSDNewsCPT')) {
 		        'hierarchical' => false,
 		        'description' => 'News',
                 'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail' ),
-		        'taxonomies' => array( 'news_category', 'news_tag' ),
+		        'taxonomies' => array( 'news_category', 'news_tag', 'chapter_state' ),
 		        'public' => true,
 		        'show_ui' => true,
 		        'show_in_menu' => true,
@@ -340,6 +340,7 @@ if (!class_exists('MSDNewsCPT')) {
                 'title' => __( 'Title' ),
                 $this->cpt.'_category' => __( 'Categories' ),
                 $this->cpt.'_tag' => __( 'Tags' ),
+                'chapter_state' => __( 'State(s)' ),
                 'author' => __( 'Author' ),
                 'date' => __( 'Date' )
             );
@@ -354,6 +355,7 @@ if (!class_exists('MSDNewsCPT')) {
                 /* If displaying the 'logo' column. */
                 case $this->cpt.'_category' :
                 case $this->cpt.'_tag' :
+                case 'chapter_state':
                     $taxonomy = $column;
                     if ( $taxonomy ) {
                         $taxonomy_object = get_taxonomy( $taxonomy );
