@@ -9,11 +9,6 @@ genesis_markup( array(
 
 do_action( 'genesis_entry_header' );
 
-do_action( 'genesis_before_entry_content' );
-
-
-do_action( 'genesis_after_entry_content' );
-
 do_action( 'genesis_entry_footer' );
 
 genesis_markup( array(

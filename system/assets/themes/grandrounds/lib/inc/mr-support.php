@@ -3,16 +3,18 @@
 add_action('init','msdlab_mr_cookie');
 
 function msdlab_mr_cookie(){
-    global $login_message;
+    global $login_message,$memberpwd;
     //check password against md5
     if(isset($_POST['member_key'])){
         $expiry = strtotime('+1 month');
         $member_key = md5($_POST['member_key']);
         $key = 'ccbee73cd81c7f42405e1920409247ec';
         if($member_key === $key){
+            $memberpwd = true;
             //set cookie
             setcookie( 'member_login', 'member', $expiry, COOKIEPATH, COOKIE_DOMAIN );
         } else {
+            $memberpwd = false;
             $login_message = "Password did not match.";
         }
     }
@@ -102,7 +104,7 @@ function msdlab_mr_info(){
         print '<div class="member_resources_category_header">'.implode("/n",$ret).'</div>';
 }
 function msdlab_mr_challenge(){
-    global $post,$wpalchemy_media_access,$member_resource_info,$subcat;
+    global $memberpwd;
     global $login_message;
     $obj = get_queried_object();
     $cat_slug = $obj->slug;
@@ -111,7 +113,7 @@ function msdlab_mr_challenge(){
         case "newsletter":
         case "slideshows":
             //check for cookie
-            if(!is_user_logged_in()) {
+            if(!is_user_logged_in() && !$memberpwd) {
                 if (!isset($_COOKIE['member_login']) || $_COOKIE['member_login'] != 'member') {
                     //if cookie not exist, display input and die
                     if ($login_message) {

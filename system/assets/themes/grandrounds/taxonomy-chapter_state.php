@@ -8,7 +8,7 @@
 remove_all_actions('msdlab_title_area' );
 add_action('msdlab_title_area','msdlab_news_cleanup');
 add_action('msdlab_title_area','msdlab_chapter_state_banner');
-add_action('genesis_after_loop','msdlab_add_state_news');
+add_action('genesis_after_loop',array('MSDChapterCPT','add_state_news'));
 function msdlab_chapter_state_banner(){
     $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
     $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-chapters.jpg';
@@ -34,12 +34,4 @@ function msdlab_term_page_title($title){
 function msdlab_term_title_unlink(){
     return false;
 }
-function msdlab_add_state_news(){
-
-}
-add_filter('genesis_attr_entry','msdlab_news_entry_attr');
-add_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
-
-add_action('genesis_entry_header','msdlab_multimedia_icons');
-
 genesis();
