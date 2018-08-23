@@ -27,7 +27,7 @@ if (!class_exists('MSDChapterCPT')) {
 			add_action('admin_footer',array(&$this,'info_footer_hook') );
 			// important: note the priority of 99, the js needs to be placed after tinymce loads
 			add_action('admin_print_footer_scripts',array(&$this,'print_footer_scripts'),99);
-            add_action('template_redirect', array(&$this,'my_theme_redirect'));
+            //add_action('template_redirect', array(&$this,'my_theme_redirect'));
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
 			
 			//Filters
@@ -283,7 +283,11 @@ if (!class_exists('MSDChapterCPT')) {
                         $post_types[] = $this->cpt;                         // Add your custom post type
                         $obj = get_queried_object();
                         if($obj->taxonomy == 'chapter_state'){
-                            $query->set('orderby','post_type');
+                            $query->set('orderby',array(
+                                'post_type'      => 'ASC',
+                                'post_date' => 'DESC'
+                            ) );
+                            $post_types = array($this->cpt);
                         }
                     }
 
@@ -422,6 +426,55 @@ function selectState() {
 </div>';
             return $javascript.$title.$svg.$legend;
         }
+
+        function add_state_news(){
+		    $obj = get_queried_object();
+		    $state = $obj->slug;
+		    $ret = array();
+		    $args = array(
+		        'post_type' => 'news',
+                'orderby' => 'post_date',
+                'order' => 'DESC',
+                'tax_query' => array(
+                        array(
+                            'taxonomy' => 'chapter_state',
+                            'terms' => $state,
+                            'field' => 'slug',
+                        )
+                ),
+            );
+		    $news_query = new WP_Query($args);
+		    if($news_query->have_posts()){
+                add_filter('genesis_attr_entry','msdlab_news_entry_attr');
+                add_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
+                add_action('genesis_entry_header','msdlab_multimedia_icons');
+                print '<h2 class="news-title">'.$obj->name.' News</h2>';
+                while($news_query->have_posts()){
+                    $news_query->the_post();
+                    do_action( 'genesis_before_entry' );
+                    genesis_markup( array(
+                        'open'    => '<article %s>',
+                        'context' => 'entry',
+                    ) );
+                    do_action( 'genesis_entry_header' );
+                    do_action( 'genesis_before_entry_content' );
+                    printf( '<div %s>', genesis_attr( 'entry-content' ) );
+                    do_action( 'genesis_entry_content' );
+                    echo '</div>';
+                    do_action( 'genesis_after_entry_content' );
+                    do_action( 'genesis_entry_footer' );
+                    genesis_markup( array(
+                        'close'   => '</article>',
+                        'context' => 'entry',
+                    ) );
+                    do_action( 'genesis_after_entry' );
+                }
+                wp_reset_postdata();
+                remove_filter('genesis_attr_entry','msdlab_news_entry_attr');
+                remove_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
+                remove_filter('genesis_entry_header','msdlab_multimedia_icons');
+            }
+		}
 
         function cpt_display(){
             global $post;
