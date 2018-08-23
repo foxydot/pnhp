@@ -30,7 +30,7 @@ function msdlab_speaker_entry_attr($attr){
 function msdlab_speaker_entry_hdr_img(){
     global $post;
     //setup thumbnail image args to be used with genesis_get_image();
-    $size = 'full-size'; // Change this to whatever add_image_size you want
+    $size = 'headshot-sm'; // Change this to whatever add_image_size you want
     $default_attr = array(
         'class' => "attachment-$size $size",
         'alt'   => $post->post_title,
@@ -91,6 +91,7 @@ function msdlab_add_speaker_scripts()
 function msdlab_speaker_aggregated($options = array()){
     global $wp_query,$speakers;
     add_filter('genesis_attr_entry','msdlab_speaker_entry_attr');
+    add_filter('genesis_post_title_text','msdlab_speaker_link_to_bio');
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_img',8);
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_cats');
     $defaults = array(
@@ -236,4 +237,9 @@ function msdlab_speaker_aggregate_wrapper_close(){
         print implode('',$ts);
         print '</select>
 </section>';
+    }
+
+    function msdlab_speaker_link_to_bio($title_text){
+        global $post;
+        return '<a href="'.get_the_permalink($post).'" title="'.get_the_title($post).'">'.$title_text.'<span class="bio">BIO<i class="fa fa-arrow-circle-right"></i></span></a>';
     }

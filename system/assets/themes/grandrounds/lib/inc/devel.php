@@ -24,7 +24,7 @@ if(!function_exists('my_msdlab_trace_actions')) {
     function my_msdlab_trace_actions()
     {
         global $wp_filter;
-        ts_var($wp_filter['genesis_do_loop']);
+        ts_var($wp_filter['genesis_entry_header']);
     }
 }
 //add_action('pre_get_posts','msdlab_view_queries',99);

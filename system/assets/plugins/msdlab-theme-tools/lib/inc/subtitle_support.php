@@ -59,7 +59,7 @@ if (!class_exists('MSDLab_Subtitle_Support')) {
             if ( strlen( $subtitle ) == 0 )
                 return;
 
-            $subtitle = sprintf( '<h2 class="entry-subtitle">%s</h2>', apply_filters( 'genesis_post_title_text', $subtitle ) );
+            $subtitle = sprintf( '<h2 class="entry-subtitle">%s</h2>', apply_filters( 'msdlab_post_subtitle_text', $subtitle ) );
             echo apply_filters( 'genesis_post_title_output', $subtitle ) . "\n";
 
         }
