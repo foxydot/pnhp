@@ -37,8 +37,8 @@ function msdlab_news_recents_aggregated(){
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
             print '<section class="news_category_aggregate news_category_'.$term_obj->slug.' clearfix">
-<div class="wrap">
-<h3 class="widgettitle widget-title">Recent ' . $term_obj->name . ' </h3>';
+<div class="wrap row row-flex">
+<h3 class="widgettitle widget-title col-md-12">Recent ' . $term_obj->name . ' </h3>';
 //start loop
             while($recents->have_posts()) {
                 $recents->the_post();

@@ -1327,6 +1327,10 @@ address {
   font-weight: 600;
   color: #149e94; }
 
+.entry-content a strong {
+  font-weight: 800;
+  color: #59a1e0; }
+
 /* ## Entry Meta
 --------------------------------------------- */
 p.entry-meta {
@@ -1769,7 +1773,7 @@ p.entry-meta {
 
 .news_category_aggregate article.type-news, .news_media_runner article.type-news {
   max-height: 14em;
-  overflow: hidden; }
+  overflow: scroll; }
   .news_category_aggregate article.type-news .entry-footer, .news_media_runner article.type-news .entry-footer {
     position: absolute;
     bottom: 0;
