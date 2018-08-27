@@ -59,7 +59,7 @@ function msdlab_add_scripts() {
         wp_enqueue_script('tweenmax-jquery',get_stylesheet_directory_uri().'/lib/js/greensock/jquery.gsap.min.js',array('jquery','tweenmax'));
 
         wp_enqueue_script('scroll-magic',get_stylesheet_directory_uri().'/lib/js/jquery.scrollmagic.js',array('jquery','tweenmax'));
-        wp_enqueue_script('collapse',get_stylesheet_directory_uri().'/lib/js/collapse.js',array('jquery'));
+        wp_enqueue_script('collapse',get_stylesheet_directory_uri().'/lib/js/collapse-min.js',array('jquery'));
 
         if($is_IE){
         }
