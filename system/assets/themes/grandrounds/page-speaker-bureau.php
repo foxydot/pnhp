@@ -1,6 +1,7 @@
 <?php
 
-remove_all_actions('genesis_loop');
+remove_action('genesis_entry_header','genesis_do_post_title');
+//remove_all_actions('genesis_loop');
 add_action('genesis_sidebar','msdlab_speaker_filter_tags');
 add_action('genesis_loop','msdlab_speaker_aggregated',11);
 
