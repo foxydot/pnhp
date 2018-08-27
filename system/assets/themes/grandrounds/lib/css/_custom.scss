@@ -498,3 +498,16 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.ui-accordion-header{
+  border-bottom: 1px solid $ltgrey;
+  &:after{
+    content: '+';
+    float: right;
+  }
+  &.ui-accordion-header-active{
+    &:after{
+      content: '-';
+    }
+  }
+}
