@@ -22,8 +22,8 @@
   }
 }
 
-.archive,.news_category_aggregate{
-  article.type-news{
+.archive,.news_category_aggregate,.faq-summaries{
+  article.type-news, .summary{
     margin-bottom: 0;
     &:nth-child(4n+1){
     background-color: $dkblue;
@@ -492,4 +492,9 @@
       margin-bottom: 0;
     }
   }
+}
+
+.row-flex {
+  display: flex;
+  flex-wrap: wrap;
 }

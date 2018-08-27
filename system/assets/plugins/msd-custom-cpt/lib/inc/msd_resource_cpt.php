@@ -364,6 +364,7 @@ if (!class_exists('MSDResourceCPT')) {
         }
 
         function faq_shortcode_handler($atts){
+		    wp_enqueue_style('msd-faq',plugin_dir_url(__FILE__).'../css/faq.css');
 		    extract(shortcode_atts($atts,array()));
 		    $args = array(
 		            'posts_per_page' => '-1',
@@ -385,11 +386,11 @@ if (!class_exists('MSDResourceCPT')) {
 		        while($temp_query->have_posts()){
 		            $temp_query->the_post();
 		            $t = $b = array();
-		            $t[] = '<div id="'.get_post_field('post_name').'-anchor" class="summary col-xs-12 col-md-4 col-sm-6"><div class="wrapper">';
-		            $t[] = '<h3 class="faq-title">'.get_the_title().'</h3>';
+		            $t[] = '<article id="'.get_post_field('post_name').'-anchor" class="'.implode(' ',get_post_class()).' summary col-xs-12 col-md-6 col-sm-6">';
+		            $t[] = '<header class="entry-header"><h1 class="entry-title faq-title">'.get_the_title().'</h1>';
 		            $t[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
 		            $t[] = '<a href="#'.get_post_field('post_name').'" class="button btn">learn more</a>';
-		            $t[] = '</div></div>';
+		            $t[] = '</header></article>';
 		            $top[] = implode("\n", $t);
 		            $b[] = '<article class="entry">';
 		            $b[] = '<a id="'.get_post_field('post_name').'"></a>';
@@ -402,7 +403,7 @@ if (!class_exists('MSDResourceCPT')) {
                 }
             }
             wp_reset_postdata();
-		    $ret[] = '<div class="faq-summaries"><a name="faq-top" id="faq-top"></a>';
+		    $ret[] = '<div class="faq-summaries row row-flex"><a name="faq-top" id="faq-top"></a>';
 		    $ret[] = implode("\n",$top);
 		    $ret[] = '</div><div class="faq-full">';
 		    $ret[] = implode("\n",$btm);
