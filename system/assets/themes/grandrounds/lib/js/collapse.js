@@ -2,7 +2,7 @@
 /**
  * Toggle the visibility of a fieldset using smooth animations
  */
-jQuery.toggleFieldset = function(fieldset) {
+document.toggleFieldset = function(fieldset) {
   if ($(fieldset).is('.collapsed')) {
     // Action div containers are processed separately because of a IE bug
     // that alters the default submit button behavior.
@@ -13,13 +13,13 @@ jQuery.toggleFieldset = function(fieldset) {
       duration: 'fast',
       easing: 'linear',
       complete: function() {
-        jQuery.collapseScrollIntoView(this.parentNode);
+        document.collapseScrollIntoView(this.parentNode);
         this.parentNode.animating = false;
         $('div.action', fieldset).show();
       },
       step: function() {
         // Scroll the fieldset into view
-        jQuery.collapseScrollIntoView(this.parentNode);
+        document.collapseScrollIntoView(this.parentNode);
       }
     });
   }
@@ -35,7 +35,7 @@ jQuery.toggleFieldset = function(fieldset) {
 /**
  * Scroll a given fieldset into view as much as possible.
  */
-jQuery.collapseScrollIntoView = function (node) {
+document.collapseScrollIntoView = function (node) {
   var h = self.innerHeight || document.documentElement.clientHeight || $('body')[0].clientHeight || 0;
   var offset = self.pageYOffset || document.documentElement.scrollTop || $('body')[0].scrollTop || 0;
   var posY = $(node).offset().top;
@@ -49,7 +49,7 @@ jQuery.collapseScrollIntoView = function (node) {
   }
 };
 
-jQuery.behaviors.collapse = function (context) {
+document.behaviors.collapse = function (context) {
   $('fieldset.collapsible > legend:not(.collapse-processed)', context).each(function() {
     var fieldset = $(this.parentNode);
     // Expand if there are errors inside
@@ -65,7 +65,7 @@ jQuery.behaviors.collapse = function (context) {
         // Don't animate multiple times
         if (!fieldset.animating) {
           fieldset.animating = true;
-          jQuery.toggleFieldset(fieldset);
+          document.toggleFieldset(fieldset);
         }
         return false;
       }))
