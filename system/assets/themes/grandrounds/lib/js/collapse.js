@@ -2,7 +2,7 @@
 /**
  * Toggle the visibility of a fieldset using smooth animations
  */
-Drupal.toggleFieldset = function(fieldset) {
+jQuery.toggleFieldset = function(fieldset) {
   if ($(fieldset).is('.collapsed')) {
     // Action div containers are processed separately because of a IE bug
     // that alters the default submit button behavior.
@@ -13,13 +13,13 @@ Drupal.toggleFieldset = function(fieldset) {
       duration: 'fast',
       easing: 'linear',
       complete: function() {
-        Drupal.collapseScrollIntoView(this.parentNode);
+        jQuery.collapseScrollIntoView(this.parentNode);
         this.parentNode.animating = false;
         $('div.action', fieldset).show();
       },
       step: function() {
         // Scroll the fieldset into view
-        Drupal.collapseScrollIntoView(this.parentNode);
+        jQuery.collapseScrollIntoView(this.parentNode);
       }
     });
   }
@@ -35,7 +35,7 @@ Drupal.toggleFieldset = function(fieldset) {
 /**
  * Scroll a given fieldset into view as much as possible.
  */
-Drupal.collapseScrollIntoView = function (node) {
+jQuery.collapseScrollIntoView = function (node) {
   var h = self.innerHeight || document.documentElement.clientHeight || $('body')[0].clientHeight || 0;
   var offset = self.pageYOffset || document.documentElement.scrollTop || $('body')[0].scrollTop || 0;
   var posY = $(node).offset().top;
@@ -49,7 +49,7 @@ Drupal.collapseScrollIntoView = function (node) {
   }
 };
 
-Drupal.behaviors.collapse = function (context) {
+jQuery.behaviors.collapse = function (context) {
   $('fieldset.collapsible > legend:not(.collapse-processed)', context).each(function() {
     var fieldset = $(this.parentNode);
     // Expand if there are errors inside
@@ -65,7 +65,7 @@ Drupal.behaviors.collapse = function (context) {
         // Don't animate multiple times
         if (!fieldset.animating) {
           fieldset.animating = true;
-          Drupal.toggleFieldset(fieldset);
+          jQuery.toggleFieldset(fieldset);
         }
         return false;
       }))
