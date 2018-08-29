@@ -167,7 +167,7 @@ remove_action('genesis_footer','genesis_do_footer'); //replace the footer
 add_action('genesis_footer','msdlab_do_social_footer');//with a msdsocial support one
 
 /*** SITEMAP ***/
-add_action('after_404','msdlab_sitemap');
+//add_action('after_404','msdlab_sitemap');
 
 /*** MEDIA ***/
 /**
