@@ -415,12 +415,22 @@
     stroke: $white;
   }
 
-  .state:hover {
+  .labelbox {
+    fill:rgba($ltgreen,0.8);
+    stroke: rgba($black,0.4);
+  }
+
+  .state:hover, .labelbox:hover {
     fill: rgba($ltblue,0.8);
     cursor: pointer;
   }
+
+  .maplabel {
+    fill: $black;
+  }
+
   #california, #new-york, #north-carolina, #oregon, #pennsylvania, #tennessee, #washington {
-    .state {
+    .state,.labelbox {
       fill: rgba($ltgreen,1);
       &:hover{
         fill: rgba($ltblue,1);
@@ -428,11 +438,11 @@
     }
   }
   #alaska, #colorado, #georgia, #illinois, #indiana, #kentucky, #louisiana, #maine, #maryland, #massachusetts, #michigan, #minnesota, #missouri, #nevada, #new-hampshire, #new-jersey, #new-mexico, #ohio, #puerto-rico, #rhode-island, #south-carolina, #texas, #vermont, #virginia, #washington-dc, #west-virginia, #wisconsin{
-    .state{
+    .state,.labelbox{
     }
   }
   #alabama, #connecticut, #delaware, #florida, #hawaii, #idaho, #iowa, #mississippi, #utah{
-    .state{
+    .state,.labelbox{
       fill: rgba($ltgreen,0.6);
       &:hover{
         fill: rgba($ltblue,0.6);
@@ -440,7 +450,7 @@
     }
   }
   #arizona, #arkansas, #kansas, #montana, #nebraska, #north-dakota, #oklahoma, #south-dakota, #wyoming{
-    .state{
+    .state,.labelbox{
       fill: rgba($ltgreen,0.4);
       &:hover{
         fill: rgba($ltblue,0.4);
