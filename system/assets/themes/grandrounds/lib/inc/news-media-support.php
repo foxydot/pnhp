@@ -12,7 +12,6 @@ function msdlab_news_cleanup()
     remove_action('genesis_entry_content','genesis_do_post_content', 10);
     add_action('genesis_entry_content','msdlab_maybe_do_news_excerpt', 10);
     add_action('genesis_entry_header', 'msdlab_maybe_do_featured_image', 8);
-    add_action('genesis_entry_header', 'genesis_post_info', 12);
 }
 
 function msdlab_multimedia_icons(){
@@ -144,7 +143,7 @@ function msdlab_maybe_do_news_excerpt()
 
 function msdlab_maybe_do_featured_image(){
     global $post;
-    if (has_term('highlighted-research', 'news_category', $post)) {
+    if (has_term('highlighted-research', 'news_category', $post) || has_term('members-in-the-news', 'news_category', $post)) {
         $img = genesis_get_image( array(
             'format'  => 'html',
             'size'    => 'full',
