@@ -145,11 +145,28 @@ function msdlab_mr_challenge(){
                     ),
                 );
                 $subquery{$sc->slug} = new WP_Query($args);
-                //ts_data($subquery{$sc->slug}); //THIS NEEDS WORK
                 if($subquery{$sc->slug}->have_posts()){
-                    //add_action('genesis_entry_content', 'msdlab_mr_content');
+                    add_action('genesis_entry_content', 'msdlab_mr_content');
                     print '<h2>' . $sc->name . '</h2>';
                     while($subquery{$sc->slug}->have_posts()){
+                        $subquery{$sc->slug}->the_post();
+                        do_action( 'genesis_before_entry' );
+                        genesis_markup( array(
+                            'open'    => '<article %s>',
+                            'context' => 'entry',
+                        ) );
+                        do_action( 'genesis_entry_header' );
+                        do_action( 'genesis_before_entry_content' );
+                        printf( '<div %s>', genesis_attr( 'entry-content' ) );
+                        do_action( 'genesis_entry_content' );
+                        echo '</div>';
+                        do_action( 'genesis_after_entry_content' );
+                        do_action( 'genesis_entry_footer' );
+                        genesis_markup( array(
+                            'close'   => '</article>',
+                            'context' => 'entry',
+                        ) );
+                        do_action( 'genesis_after_entry' );
                     }
                 }
 

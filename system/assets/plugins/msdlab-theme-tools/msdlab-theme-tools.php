@@ -24,7 +24,7 @@ if(!class_exists('WPAlchemy_MediaAccess')){
     if(!include_once (WP_CONTENT_DIR.'/wpalchemy/MediaAccess.php'))
     include_once (plugin_dir_path(__FILE__).'/lib/wpalchemy/MediaAccess.php');
 }
-global $msdlab_theme_tools;
+global $msd_genesis_toolkit;
 
 if (!class_exists('MSDLabThemeTools')) {
     class MSDLabThemeTools {
