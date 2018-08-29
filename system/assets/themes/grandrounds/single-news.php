@@ -13,6 +13,7 @@ function msdlab_news_category_banner(){
     $terms = wp_get_post_terms( $post->ID, 'news_category', array() );
     if(count($terms) >= 1){
         $bannerclass = $terms[0]->slug;
+        $page_title = '<h2 class="entry-title" itemprop="headline">'.$terms[0]->name.'</h2>';
     }
     $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-news-category-'.$bannerclass.'.jpg';
     $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
@@ -22,7 +23,8 @@ function msdlab_news_category_banner(){
     print '<div class="gradient">';
     print '<div class="wrap">';
     print '<div class="bannertext">';
-    print genesis_do_post_title();
+    //print genesis_do_post_title();
+    print $page_title;
     print '</div>';
     print '</div>';
     print '</div>';
