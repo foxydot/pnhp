@@ -304,13 +304,20 @@
 
 /* Sidebar nav */
 
-.widget_advanced_menu{
-  .menu{
+.widget_advanced_menu {
+  .menu {
     display: block;
-    >li{
+    > li {
       display: none;
-      &.current-menu-item,&.current-menu-ancestor{
+      &.current-menu-item,&.current-menu-ancestor {
         display: block;
+      }
+    }
+  }
+}
+.widget_advanced_menu,.sidebar_menu{
+  .menu{
+    >li{
         a{
           text-decoration: none;
           font-size: 1em;
@@ -376,7 +383,6 @@
               max-height: 400px;
             }
           }
-        }
       }
     }
   }

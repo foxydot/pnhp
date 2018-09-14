@@ -18,7 +18,7 @@
     visibility: hidden;
   }
 //TODO: add touch test. We do NOT want this to fire on an actual tablet, because the rollovers won't work.
-  .archive,.page.latest-news {
+  .archive,.page.latest-news,.single-chapter {
     .site-inner>.wrap{
       padding-right:0;
     }

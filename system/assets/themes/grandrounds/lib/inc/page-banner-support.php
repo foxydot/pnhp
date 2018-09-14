@@ -41,7 +41,7 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
             (
                 'id' => '_page_banner',
                 'title' => 'Page Banner Area',
-                'types' => array('post','page','event'),
+                'types' => array('post','page','event','chapter'),
                 'context' => 'normal', // same as above, defaults to "normal"
                 'priority' => 'high', // same as above, defaults to "high"
                 'template' => get_stylesheet_directory().'/lib/template/metabox-page_banner.php',
@@ -63,7 +63,7 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
         }
 
         function msdlab_do_page_banner(){
-            if(is_page()){
+            if(is_page() || is_cpt('chapter')){
                 global $post, $page_banner_metabox;
                 $page_banner_metabox->the_meta();
                 $bannerbool = $page_banner_metabox->get_the_value('bannerbool');

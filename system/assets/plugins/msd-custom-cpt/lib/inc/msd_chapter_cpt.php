@@ -397,39 +397,72 @@ jQuery(document).ready(function($){
     $('svg.map g:not(#Layer_1)').each(function(){
         $(this).find('path').append('<text x=\"20\" y=\"20\" font-family=\"sans-serif\" font-size=\"0.8em\" fill=\"white\">' + $(this).attr('id') + '</text>');
     });
+
+    $('#stateInput').change(function(){
+       var stateSelect = document.getElementById('stateInput').value;
+      var url = '/chapter-state/' + stateSelect;
+      //console.log(url);
+      window.location.href = url;
+    });
 });
 
-//Gets and displays the state's ID which is also its name. 
-function getid(obj){
-  var stateId = (obj.id);
-  var stateName = stateId.replace(\"_\",\" \"); //swiches out the dash for a space to display a cleaner state name
-  var stateDisplay = document.getElementById('stateDisplay');
-  stateDisplay.textContent = stateName;
-}
-
-function outmouse(obj){}
-
-//document.getElementById(\"stateInput\").onchange = function() {selectState};
-
-function selectState() {
-  var stateSelect = document.getElementById('stateInput').value;
-  var stateId = document.getElementById(stateSelect);
-  stateId.getElementsByTagName('PATH')[0].className = 'stateSelected';
-}
 </script>";
             $svg = '<div class="chapter-finder">'.file_get_contents(dirname(__FILE__).'/chapter_finder.svg').'</div>';
+            $tax_args = array(
+                'show_option_none'   => 'Select State',
+                'orderby'            => 'Name',
+                'hide_empty'         => 0,
+                'echo'               => 0,
+                'name'               => 'stateInput',
+                'class'              => 'postform hidden-md hidden-lg',
+                'taxonomy'           => 'chapter_state',
+                'value_field'	     => 'slug',
+            );
+            $mobile = wp_dropdown_categories( $tax_args );
             $legend = '<div class="chapter-finder-legend">
     <span class="def"><span class="sample multiple"></span> Multiple PNHP Chapters</span>
     <span class="def"><span class="sample chapter"></span> Active PNHP Chapter</span>
     <span class="def"><span class="sample members"></span> Active PNHP Members</span>
     <span class="def"><span class="sample nope"></span> Email Us for More Information</span>
 </div>';
-            return $javascript.$title.$svg.$legend;
+            return $javascript.$title.$svg.$mobile.$legend;
+        }
+
+        function sidebar_menu(){
+		    global $post;
+		    $theID = $post->ID;
+            $ret = array();
+            $args = array(
+                'post_type' => 'chapter',
+                'orderby' => 'name',
+                'order' => 'ASC',
+                'posts_per_page' => -1,
+            );
+            $chapter_query = new WP_Query($args);
+            if($chapter_query->have_posts()){
+                print '<nav class="widget sidebar_menu">
+<ul class="menu">';
+                while($chapter_query->have_posts()){
+                    $chapter_query->the_post();
+                    $class = array('menu-item','menu-item-' . $post->ID);
+                    if($post->ID == $theID){
+                        $class[] = 'current-menu-item';
+                    };
+                    $classes = implode(' ', $class);
+                    print '<li class="'.$classes.'"><a href="'.get_permalink().'">'.$post->post_title.'</a></li>';
+                }
+                wp_reset_postdata();
+                print '</ul></div>';
+            }
         }
 
         function add_state_news(){
 		    $obj = get_queried_object();
-		    $state = $obj->slug;
+		    if(is_single()) {
+                $state = $obj->post_name;
+            } else {
+                $state = $obj->slug;
+            }
 		    $ret = array();
 		    $args = array(
 		        'post_type' => 'news',
@@ -448,7 +481,11 @@ function selectState() {
                 add_filter('genesis_attr_entry','msdlab_news_entry_attr');
                 add_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
                 add_action('genesis_entry_header','msdlab_multimedia_icons');
-                print '<h2 class="news-title">'.$obj->name.' News</h2>';
+                add_action('genesis_entry_header', 'genesis_post_info');
+                add_action('genesis_entry_footer','msdlab_post_link_block',30);
+                global $subtitle_support;
+                remove_action('genesis_entry_header', array($subtitle_support,'msdlab_do_post_subtitle'), 10);
+                //print '<h2 class="news-title">'.$obj->name.' News</h2>';
                 while($news_query->have_posts()){
                     $news_query->the_post();
                     do_action( 'genesis_before_entry' );
@@ -459,7 +496,7 @@ function selectState() {
                     do_action( 'genesis_entry_header' );
                     do_action( 'genesis_before_entry_content' );
                     printf( '<div %s>', genesis_attr( 'entry-content' ) );
-                    do_action( 'genesis_entry_content' );
+                    //do_action( 'genesis_entry_content' );
                     echo '</div>';
                     do_action( 'genesis_after_entry_content' );
                     do_action( 'genesis_entry_footer' );
@@ -472,7 +509,9 @@ function selectState() {
                 wp_reset_postdata();
                 remove_filter('genesis_attr_entry','msdlab_news_entry_attr');
                 remove_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
-                remove_filter('genesis_entry_header','msdlab_multimedia_icons');
+                remove_action('genesis_entry_header','msdlab_multimedia_icons');
+                remove_action('genesis_entry_header', 'genesis_post_info');
+                add_action('genesis_entry_header', array($subtitle_support,'msdlab_do_post_subtitle'), 10);
             }
 		}
 
