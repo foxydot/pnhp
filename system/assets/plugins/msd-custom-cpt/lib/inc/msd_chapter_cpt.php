@@ -440,15 +440,15 @@ jQuery(document).ready(function($){
             );
             $chapter_query = new WP_Query($args);
             if($chapter_query->have_posts()){
-                print '<nav class="sidebar-menu">
+                print '<nav class="widget sidebar_menu">
 <ul class="menu">';
                 while($chapter_query->have_posts()){
                     $chapter_query->the_post();
-                    $classes[] = 'menu-item';
-                    $classes[] = 'menu-item-' . $post->ID;
+                    $class = array('menu-item','menu-item-' . $post->ID);
                     if($post->ID == $theID){
-                        $classes[] = 'current-menu-item';
+                        $class[] = 'current-menu-item';
                     };
+                    $classes = implode(' ', $class);
                     print '<li class="'.$classes.'"><a href="'.get_permalink().'">'.$post->post_title.'</a></li>';
                 }
                 wp_reset_postdata();
