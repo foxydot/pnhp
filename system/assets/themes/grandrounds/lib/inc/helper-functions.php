@@ -480,3 +480,8 @@ function msdlab_do_parent_sidebar(){
     dynamic_sidebar( 'sidebar' );
     $wp_query = $orig_query;
 }
+
+function msdlab_post_link_block(){
+    global $post;
+    print '<a class="link-block" href="'.get_the_permalink($post->ID).'" title="'.get_the_title($post->ID).'">&nbsp;</a>';
+}

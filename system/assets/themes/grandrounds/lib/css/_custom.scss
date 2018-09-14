@@ -22,7 +22,7 @@
   }
 }
 
-.archive,.news_category_aggregate,.faq-summaries{
+.archive,.news_category_aggregate,.faq-summaries,.single-chapter{
   article.type-news, .summary{
     margin-bottom: 0;
     &:nth-child(4n+1){
@@ -58,6 +58,14 @@
     }
     .entry-footer{
       display: none;
+    }
+    .link-block{
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      text-decoration: none;
     }
   }
 }
