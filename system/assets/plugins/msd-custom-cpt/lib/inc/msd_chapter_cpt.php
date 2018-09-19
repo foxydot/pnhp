@@ -440,8 +440,8 @@ jQuery(document).ready(function($){
             );
             $chapter_query = new WP_Query($args);
             if($chapter_query->have_posts()){
-                print '<nav class="widget sidebar_menu">
-<ul class="menu">';
+                print '<nav class="widget sidebar_menu"><h2 class="widget-title">Select Chapter</h2>
+<select id="chapter-selector" class="menu">';
                 while($chapter_query->have_posts()){
                     $chapter_query->the_post();
                     $class = array('menu-item','menu-item-' . $post->ID);
@@ -449,10 +449,22 @@ jQuery(document).ready(function($){
                         $class[] = 'current-menu-item';
                     };
                     $classes = implode(' ', $class);
-                    print '<li class="'.$classes.'"><a href="'.get_permalink().'">'.$post->post_title.'</a></li>';
+                    if($post->ID == $theID){
+                        print '<option class="'.$classes.'" value="'.get_permalink().'" selected="selected">'.preg_replace('/Information/i','',$post->post_title).'</a></li>';
+                    } else {
+                        print '<option class="'.$classes.'" value="'.get_permalink().'">'.preg_replace('/Information/i','',$post->post_title).'</a></li>';
+                    }
                 }
                 wp_reset_postdata();
-                print '</ul></div>';
+                print '</select></div>';
+                print '<script>
+jQuery(document).ready(function($) {
+    $("#chapter-selector").change(function(){
+        url = $(this).val();
+        window.location.replace(url);
+    });
+});	
+</script>';
             }
         }
 
