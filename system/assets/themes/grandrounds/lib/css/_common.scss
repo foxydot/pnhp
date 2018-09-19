@@ -105,12 +105,12 @@
 .widget-title {
   @include sansserif(1.6);
   margin: 0;
-  padding: 0.5em 1em;
-  color: $white;
-  border-top: 1px solid $white;
-  background-color: $green;
+  padding: 0.5em 1em 0.5em 0;
+  font-size: 1em;
+  color: $dkgrey;
+  display: block;
+  font-weight: 900;
   a{
-    color: $white;
     text-decoration: none;
   }
 }

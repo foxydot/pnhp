@@ -611,12 +611,12 @@ th:first-child {
   font-weight: 400;
   font-size: 1.6em;
   margin: 0;
-  padding: 0.5em 1em;
-  color: #FFF;
-  border-top: 1px solid #FFF;
-  background-color: #149e94; }
+  padding: 0.5em 1em 0.5em 0;
+  font-size: 1em;
+  color: #666;
+  display: block;
+  font-weight: 900; }
   .widget-title a {
-    color: #FFF;
     text-decoration: none; }
 
 /* ## WordPress
