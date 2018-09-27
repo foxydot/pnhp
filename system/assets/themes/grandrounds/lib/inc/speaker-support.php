@@ -93,9 +93,10 @@ function msdlab_speaker_aggregated($options = array()){
     add_filter('genesis_attr_entry','msdlab_speaker_entry_attr');
     add_filter('genesis_post_title_text','msdlab_speaker_link_to_bio');
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_img',8);
+    add_action('genesis_entry_header','genesis_do_post_title',8);
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_cats');
     $regions = array('national','northeast','midwest','south','west');
-    foreach($regions AS $region) {
+    foreach($regions AS $reg) {
         $defaults = array(
             'post_type' => 'speaker',
             'posts-per-page' => -1,
@@ -106,7 +107,7 @@ function msdlab_speaker_aggregated($options = array()){
                 array(
                     'taxonomy' => 'speaker_region',
                     'field'    => 'slug',
-                    'terms'    => $region,
+                    'terms'    => $reg,
                 ),
             ),
         );
@@ -122,7 +123,7 @@ function msdlab_speaker_aggregated($options = array()){
 
         if ($speakers->have_posts()) {
             //if (!$ajax) {
-                $speaker_region = get_term_by('slug',$region,'speaker_region');
+                $speaker_region = get_term_by('slug',$reg,'speaker_region');
                 $title = $speaker_region->name;
                 print '<section class="speaker_aggregate clearfix">
 <h2>'.$title.'</h2>
