@@ -75,7 +75,7 @@ function be_ajax_load_more() {
 add_action('wp_enqueue_scripts','msdlab_add_speaker_scripts',12);
 function msdlab_add_speaker_scripts()
 {
-    if(msdlab_is_speaker_page()) {
+    if(msdlab_is_speaker_page() || is_cpt('speaker')) {
         global $speakers;
         $args = array(
             'url' => admin_url('admin-ajax.php'),
