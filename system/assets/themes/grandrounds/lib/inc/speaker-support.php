@@ -44,7 +44,7 @@ function msdlab_speaker_entry_hdr_img(){
 function msdlab_speaker_entry_hdr_cats(){
     global $post;
     $ret = '';
-    $region = get_the_term_list($post->ID,'speaker_region','<span class="state">Region: ',', ','</span>');
+    $region = get_the_term_list($post->ID,'speaker_region','<span class="state">Region(s): ',', ','</span>');
     $ret .= $region;
     $specialty = get_the_term_list($post->ID,'speaker_specialty','<div class="specialty">Specialty: ',', ','</div>');
     $ret .= $specialty;
@@ -68,8 +68,8 @@ function be_ajax_load_more() {
     wp_send_json_success( $data );
     wp_die();
 }
-add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
-add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );
+//add_action( 'wp_ajax_be_ajax_load_more', 'be_ajax_load_more' );
+//add_action( 'wp_ajax_nopriv_be_ajax_load_more', 'be_ajax_load_more' );
 
 
 add_action('wp_enqueue_scripts','msdlab_add_speaker_scripts',12);
@@ -94,38 +94,51 @@ function msdlab_speaker_aggregated($options = array()){
     add_filter('genesis_post_title_text','msdlab_speaker_link_to_bio');
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_img',8);
     add_action('genesis_entry_header','msdlab_speaker_entry_hdr_cats');
-    $defaults = array(
-        'post_type' => 'speaker',
-        'posts-per-page' => 12,
-        'orderby' => 'meta_value',
-        'order' => 'ASC',
-        'meta_key' => '_speaker_alpha',
-    );
-    $defaults['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-    $args = wp_parse_args($options, $defaults);
-    $ajax = $args['ajax'];
-    unset($args['ajax']);
-    $speakers = new WP_Query($args);
-    // Pagination fix
-    //$temp_query = $wp_query;
-    //$wp_query   = NULL;
-    //$wp_query   = $speakers;
+    $regions = array('national','northeast','midwest','south','west');
+    foreach($regions AS $region) {
+        $defaults = array(
+            'post_type' => 'speaker',
+            'posts-per-page' => -1,
+            'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'meta_key' => '_speaker_alpha',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'speaker_region',
+                    'field'    => 'slug',
+                    'terms'    => $region,
+                ),
+            ),
+        );
+        $defaults['paged'] = get_query_var('paged') ? get_query_var('paged') : 1;
+        $args = wp_parse_args($options, $defaults);
+        //$ajax = $args['ajax'];
+        unset($args['ajax']);
+        $speakers = new WP_Query($args);
+        // Pagination fix
+        //$temp_query = $wp_query;
+        //$wp_query   = NULL;
+        //$wp_query   = $speakers;
 
-    if($speakers->have_posts()) {
-        if(!$ajax) {
-            print '<section class="speaker_aggregate clearfix">
+        if ($speakers->have_posts()) {
+            //if (!$ajax) {
+                $speaker_region = get_term_by('slug',$region,'speaker_region');
+                $title = $speaker_region->name;
+                print '<section class="speaker_aggregate clearfix">
+<h2>'.$title.'</h2>
 <div class="wrap" id="filterArea">';
-        }
-        //start loop
-        while($speakers->have_posts()) {
-            $speakers->the_post();
-            get_template_part('speaker-aggregate-loop');
-        } //end loop
-        if(!$ajax) {
-            print '</div></section>';
-        }
-        //the_posts_pagination();
-    } //end loop check
+            //}
+            //start loop
+            while ($speakers->have_posts()) {
+                $speakers->the_post();
+                get_template_part('speaker-aggregate-loop');
+            } //end loop
+            //if (!$ajax) {
+                print '</div></section>';
+            //}
+            //the_posts_pagination();
+        } //end loop check
+    }
 
 
     wp_reset_postdata();
