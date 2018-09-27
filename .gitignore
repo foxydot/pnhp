@@ -32,13 +32,13 @@ system/wp-content/*
 # specify (see the commented-out examples for hints on how to do this.)
 system/assets/plugins/*
 !system/assets/plugins/msd-bootstrap-tools/
-!system/assets/plugins/msd-custom-cpt/
+!system/assets/plugins/msd-bespoke/
 !system/assets/plugins/msdlab-theme-tools/
 !system/assets/plugins/msdlab_transfer_tools/
 # !system/assets/plugins/my-directory-plugin/
 system/wp-content/plugins/*
 !system/wp-content/plugins/msd-bootstrap-tools/
-!system/wp-content/plugins/msd-custom-cpt/
+!system/wp-content/plugins/msd-bespoke/
 !system/wp-content/plugins/msdlab-theme-tools/
 !system/wp-content/plugins/msdlab_transfer_tools/
 # !system/wp-content/plugins/my-directory-plugin/
