@@ -1,1 +1,5 @@
-jQuery(function($){var e=$(".speaker_aggregate>.wrap").isotope({itemSelector:"article"});$(".speaker_aggregate").append('<span class="load-more"></span>');var a=$(".speaker_aggregate .load-more"),o=2,l=!1,r={allow:!0,reallow:function(){r.allow=!0},delay:400};$(".speaker-filters select").on("change",function(){var e=this.value;window.location.href=e}),$(window).scroll(function(){if(!l&&r.allow){r.allow=!1,setTimeout(r.reallow,r.delay);if(2e3>$(a).offset().top-$(window).scrollTop()){l=!0;var n={action:"be_ajax_load_more",page:o,query:beloadmore.query};$.post(beloadmore.url,n,function(r){if(r.success){var n=$(r.data);e.append(n).imagesLoaded(function(){e.isotope("appended",n)}),$(".speaker_aggregate").append(a),o+=1,l=!1}}).fail(function(e,a,o){})}}})});
+jQuery(function(e){var o=e(".speaker_aggregate>.wrap").isotope({itemSelector:"article"});e(".speaker-filters select").on("change",function(){
+// get filter value from option value
+var e=this.value;
+//$grid.isotope({ filter: filterValue });
+window.location.href=e}),e(window).scroll(function(){o.isotope()})});
