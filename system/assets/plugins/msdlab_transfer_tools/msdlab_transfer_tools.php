@@ -97,8 +97,11 @@ if (!class_exists('MSDTransferTools')) {
             if(class_exists('Convert_Media')){
                 $this->media_class = new Convert_Media();
             }
+            if(class_exists('Convert_News_To_Article')){
+                $this->news_class = new Convert_News_To_Article();
+            }
             if(class_exists('Other_Presentations')){
-                $this->media_class = new Other_Presentations();
+                $this->other_class = new Other_Presentations();
             }
         }
         /**
@@ -242,6 +245,17 @@ if (!class_exists('MSDTransferTools')) {
                             console.log(response);
                         });
                     });
+                    $('.news').click(function(){
+                        var data = {
+                            action: 'convert_news_to_article',
+                            start: $('#news_start').val(),
+                        };
+                        jQuery.post(ajaxurl, data, function(response) {
+                            $('.response1').html(response);
+                            $('#news_start').val(Number($('#news_start').val()) + 500);
+                            console.log(response);
+                        });
+                    });
                     $('.other_presentations').click(function(){
                         var data = {
                             action: 'other_presentations',
@@ -262,6 +276,10 @@ if (!class_exists('MSDTransferTools')) {
                 <dl>
                     <dt>Transfer Media:</dt>
                     <dd><input type="number" id="media_start"></input> <button class="media">Go</button></dd>
+                </dl>
+                <dl>
+                    <dt>Transfer News:</dt>
+                    <dd><input type="number" id="news_start"></input> <button class="news">Go</button></dd>
                 </dl>
                 <dl>
                     <dt>Other Presentations:</dt>

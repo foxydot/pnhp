@@ -175,3 +175,11 @@ function msdlab_maybe_equalize_attr($attr){
     //}
     return $attr;
 }
+
+function msdlab_add_pub_name(){
+    global $post;
+    $articles = get_post_meta($post->ID,'_news_articles',true);
+    if(isset($articles[0]['newspub'])){
+        print '<div class="newspub"><em>'.$articles[0]['newspub'].'</em></div>';
+    }
+}

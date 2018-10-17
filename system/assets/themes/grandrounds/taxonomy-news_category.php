@@ -2,6 +2,7 @@
 remove_all_actions('msdlab_title_area' );
 add_action('msdlab_title_area','msdlab_news_cleanup');
 add_action('msdlab_title_area','msdlab_news_category_banner');
+add_action('genesis_entry_header', 'msdlab_add_pub_name');
 add_action('genesis_entry_header', 'genesis_post_info');
 add_action('genesis_entry_header','msdlab_multimedia_icons');
 
