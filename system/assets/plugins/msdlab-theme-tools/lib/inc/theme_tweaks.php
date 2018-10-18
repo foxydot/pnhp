@@ -32,8 +32,8 @@ class MSDLab_Theme_Tweaks
         }
         if($this->options['shortcut']){
             $ret = '
-            <link rel="shortcut icon" href="'.get_stylesheet_directory_uri().'/lib/img/favicon.ico" type="image/x-icon">
-            <link rel="icon" href="'.get_stylesheet_directory_uri().'/lib/img/favicon.ico" type="image/x-icon">
+            <link rel="shortcut icon" href="'.get_stylesheet_directory_uri().'/lib/images/favicon.ico" type="image/x-icon">
+            <link rel="icon" href="'.get_stylesheet_directory_uri().'/lib/images/favicon.ico" type="image/x-icon">
             ';
         }
         if($this->options['detect_phone']){
