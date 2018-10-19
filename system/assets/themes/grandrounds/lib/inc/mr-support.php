@@ -255,7 +255,7 @@ function msdlab_mr_content(){
         case "webinars":
             print '<div class="row">';
             foreach($mr AS $ctr => $r){
-                print '<div class="webinar-resource_wrapper col-xs-12 col-sm-6">';
+                print '<div class="webinar-resource_wrapper col-xs-12">';
                 if(strstr($r['file'],$_SERVER['SERVER_NAME'])) {
                     print '<h4 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h4>';
                 } else {
