@@ -29,6 +29,8 @@ if (!class_exists('MSDNewsCPT')) {
 			add_action('admin_print_footer_scripts',array(&$this,'print_footer_scripts'),99);
             //add_action('template_redirect', array(&$this,'my_theme_redirect'));
             add_action('admin_head', array(&$this,'codex_custom_help_tab'));
+            add_filter('template_redirect', array(&$this,'my_404_override') );
+
 
 			
 			//Filters
@@ -516,5 +518,13 @@ if (!class_exists('MSDNewsCPT')) {
                 }
             }
         }
+
+        function my_404_override() {
+            global $wp_query;
+            if (strstr($_SERVER['REQUEST_URI'],'/news/') && strstr($_SERVER['REQUEST_URI'],'.php')) {
+                $new_uri = str_replace('_','-',preg_replace('/\/news\/\d{4}\/(?:january|febuary|march|april|may|june|july|august|september|october|november|december)\/(.*?).php$/','/news/$1',$_SERVER['REQUEST_URI']));
+                wp_redirect( home_url( $new_uri ) );
+            }
+}
   } //End Class
 } //End if class exists statement
