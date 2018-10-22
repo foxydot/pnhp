@@ -44,6 +44,7 @@ function msdlab_news_media_runner($atts = array()){
         'count' => 12,
         'perslide' => 3,
         'link' => false,
+        'cat' => false,
     ), $atts ) );
     global $post;
     $id = $post->post_name.'-runner';
@@ -65,6 +66,15 @@ function msdlab_news_media_runner($atts = array()){
             'order_by' => 'post_date',
             'order' => 'DESC',
         );
+        if($cat){
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'news_category',
+                    'field'    => 'slug',
+                    'terms'    => $cat,
+                ),
+            );
+        }
         $recents = new WP_Query($args);
         if($recents->have_posts()) {
             if($link){
