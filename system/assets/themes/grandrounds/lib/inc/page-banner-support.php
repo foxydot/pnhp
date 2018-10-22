@@ -80,6 +80,8 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     if (!$bannerimage) {
                         if (has_post_thumbnail()) {
                             $bannerimage = get_the_post_thumbnail_url();
+                        } else {
+                            $bannerimage = msdlab_get_random_banner_image();
                         }
                     }
                     $bannercontent = apply_filters('the_content', $page_banner_metabox->get_the_value('bannercontent'));

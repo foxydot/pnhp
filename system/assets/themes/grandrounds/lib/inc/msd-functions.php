@@ -228,3 +228,22 @@ add_action('genesis_sidebar','msdlab_add_sidebar_menu_header_bar',6);
 function msdlab_add_sidebar_menu_header_bar(){
     print '<div class="header-bar"> </div>';
 }
+
+function msdlab_get_random_banner_image(){
+    $path = get_stylesheet_directory().'/lib/images/altbanners';
+    $banners = array();
+    if (is_dir($path)) {
+        if ($dh = opendir($path)) {
+            while (($file = readdir($dh)) !== false ){
+                if(($file = readdir($dh)) !== '.' && ($file = readdir($dh)) !== '..') {
+                    $banners[] = $file;
+                }
+            }
+            closedir($dh);
+        }
+    }
+    //randomize array
+    $pick = array_rand($banners);
+    //pop one off the end and return
+    return get_stylesheet_directory_uri().'/lib/images/altbanners/'.$banners[$pick];
+}

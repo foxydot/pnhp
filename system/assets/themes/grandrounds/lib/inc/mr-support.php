@@ -64,10 +64,15 @@ function be_grid_loop_query_args( $query ) {
 add_action( 'pre_get_posts', 'be_grid_loop_query_args');
 
 
-function msdlab_mr_category_banner(){
-    $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
-    $bannerimage = get_stylesheet_directory_uri().'/lib/images/banner-mr-category-'.$bannerclass.'.jpg';
-    $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
+function msdlab_mr_category_banner()
+{
+    $bannerclass = sanitize_title_with_dashes(single_term_title('', false));
+    if (is_file(get_stylesheet_directory().'/lib/images/banner-mr-category-' . $bannerclass . '.jpg')) {
+        $bannerimage = get_stylesheet_directory_uri() . '/lib/images/banner-mr-category-' . $bannerclass . '.jpg';
+    } else {
+        $bannerimage = msdlab_get_random_banner_image();
+    }
+    $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : false;
     add_filter('genesis_post_title_text','msdlab_mr_page_title');
     add_filter('genesis_link_post_title','msdlab_mr_title_unlink');
     print '<div class="banner clearfix '.$bannerclass.'"'.$background.'>';
