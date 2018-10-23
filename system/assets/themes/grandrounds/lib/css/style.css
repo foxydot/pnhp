@@ -2115,6 +2115,10 @@ p.entry-meta {
   .ui-accordion-header.ui-accordion-header-active:after {
     content: '-'; }
 
+.archive.term-members-in-the-news article iframe {
+  width: auto;
+  height: 7em; }
+
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
   --------------------------------------------- */

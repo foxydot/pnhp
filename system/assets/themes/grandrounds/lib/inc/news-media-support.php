@@ -172,6 +172,18 @@ function msdlab_maybe_do_featured_image(){
                 'context' => 'entry-image-link',
             ) );
 
+        } else {
+            if(has_term('members-in-the-news', 'news_category', $post)){
+                global $multimedia_info;
+                $videourl = $multimedia_info->get_the_value('videourl');
+                if(strlen($videourl) > 0){
+                    print wp_oembed_get($videourl);
+                } else {
+                    preg_match('/<iframe.*?>.*?<\/iframe>/i',$post->post_content,$matches);
+                    $videourl = $matches[0];
+                    print $videourl;
+                }
+            }
         }
     }
 }
