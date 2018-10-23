@@ -172,7 +172,7 @@ if (!class_exists('MSDSpeakerCPT')) {
 		        'has_archive' => true,
 		        'query_var' => true,
 		        'can_export' => true,
-		        'rewrite' => array('slug'=>'about/speaker-bureau','with_front'=>false),
+		        'rewrite' => array('slug'=>'about/speakers-bureau','with_front'=>false),
 		        'capability_type' => 'post',
                 'menu_icon' => 'dashicons-microphone',
 		    );
