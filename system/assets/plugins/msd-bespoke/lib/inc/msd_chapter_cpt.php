@@ -481,11 +481,18 @@ jQuery(document).ready(function($) {
                 'orderby' => 'post_date',
                 'order' => 'DESC',
                 'tax_query' => array(
+                    'relation' => 'AND',
                         array(
                             'taxonomy' => 'chapter_state',
                             'terms' => $state,
                             'field' => 'slug',
-                        )
+                        ),
+                        array(
+                            'taxonomy' => 'news_category',
+                            'terms' => array('articles-of-interest','quote-of-the-day'),
+                            'field' => 'sluf',
+                            'operator' => 'NOT IN',
+                        ),
                 ),
             );
 		    $news_query = new WP_Query($args);
