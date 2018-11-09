@@ -490,7 +490,7 @@ jQuery(document).ready(function($) {
                         array(
                             'taxonomy' => 'news_category',
                             'terms' => array('articles-of-interest','quote-of-the-day'),
-                            'field' => 'sluf',
+                            'field' => 'slug',
                             'operator' => 'NOT IN',
                         ),
                 ),
