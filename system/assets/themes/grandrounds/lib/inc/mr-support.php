@@ -39,7 +39,7 @@ function msdlab_mr_cleanup()
     }
 }
 
-function be_grid_loop_query_args( $query ) {
+function mr_grid_loop_query_args( $query ) {
     if(is_admin()) return $query;
     if( $query->is_main_query() && $query->is_archive() ) {
         if($query->query_vars['member_resources_category'] == 'slideshows') {
@@ -61,7 +61,7 @@ function be_grid_loop_query_args( $query ) {
         }
     }
 }
-add_action( 'pre_get_posts', 'be_grid_loop_query_args');
+add_action( 'pre_get_posts', 'mr_grid_loop_query_args');
 
 
 function msdlab_mr_category_banner()

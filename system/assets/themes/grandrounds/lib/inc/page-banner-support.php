@@ -63,16 +63,17 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
         }
 
         function msdlab_do_page_banner(){
-            if(is_page() || is_cpt('chapter')){
+            global $post, $page_banner_metabox;
+            if(is_page() || is_cpt('chapter')) {
                 global $post, $page_banner_metabox;
                 $page_banner_metabox->the_meta();
                 $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
-                if($bannerbool != 'true'){
+                if ($bannerbool != 'true') {
                     return;
                 }
                 $bannerclass = $page_banner_metabox->get_the_value('bannerclass');
                 $bannerslider = $page_banner_metabox->get_the_value('bannerslider');
-                if($bannerslider > 0 && class_exists('LS_Sliders')){ //it's a slider
+                if ($bannerslider > 0 && class_exists('LS_Sliders')) { //it's a slider
                     layerslider($bannerslider);
                 } else { //it's not a slider
                     $banneralign = $page_banner_metabox->get_the_value('banneralign');
@@ -93,9 +94,52 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     print '<div class="wrap">';
                     print '<div class="bannertext">';
                     print '<div class="bannercontent">';
-                    if($bannercontent == ''){
+                    if ($bannercontent == '') {
                         //remove_action('genesis_entry_header','genesis_do_post_title');
                         genesis_do_post_title();
+                    } else {
+                        print $bannercontent;
+                    }
+                    print '</div>';
+                    print '</div>';
+                    print '</div>';
+                    print '</div>';
+                    print '</div>';
+                }
+            } elseif(is_home() || (is_archive() && $post->post_type == "post") || (is_single() && $post->post_type == "post") ) {
+                $blog_id = get_option('page_for_posts');
+                $blog_title = get_the_title($blog_id);
+                $page_banner_metabox->the_meta($blog_id);
+                $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
+                if ($bannerbool != 'true') {
+                    return;
+                }
+                $bannerclass = $page_banner_metabox->get_the_value('bannerclass');
+                $bannerslider = $page_banner_metabox->get_the_value('bannerslider');
+                if ($bannerslider > 0 && class_exists('LS_Sliders')) { //it's a slider
+                    layerslider($bannerslider);
+                } else { //it's not a slider
+                    $banneralign = $page_banner_metabox->get_the_value('banneralign');
+                    $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
+                    if (!$bannerimage) {
+                        if (has_post_thumbnail()) {
+                            $bannerimage = get_the_post_thumbnail_url();
+                        } else {
+                            $bannerimage = msdlab_get_random_banner_image();
+                        }
+                    }
+                    $bannercontent = apply_filters('the_content', $page_banner_metabox->get_the_value('bannercontent'));
+
+                    global $post;
+                    $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : '';
+                    print '<div class="banner clearfix ' . $banneralign . ' ' . $bannerclass . '"' . $background . '>';
+                    print '<div class="gradient">';
+                    print '<div class="wrap">';
+                    print '<div class="bannertext">';
+                    print '<div class="bannercontent">';
+                    if ($bannercontent == '') {
+                        remove_all_actions('genesis_archive_title_descriptions');
+                        print '<h2 class="entry-title" itemprop="headline">'.$blog_title.'</h2>';
                     } else {
                         print $bannercontent;
                     }

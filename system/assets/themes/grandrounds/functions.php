@@ -33,10 +33,11 @@ include_once( get_stylesheet_directory() . '/lib/inc/page-banner-support.php' );
 include_once( get_stylesheet_directory() . '/lib/inc/news-media-support.php' );
 include_once( get_stylesheet_directory() . '/lib/inc/speaker-support.php' );
 include_once( get_stylesheet_directory() . '/lib/inc/mr-support.php' );
+include_once( get_stylesheet_directory() . '/lib/inc/genesis_blog_grid.php' );
 new MSDLab_Page_Banner_Support(array());
 
 // Child theme (do not remove).
-define( 'CHILD_THEME_NAME', 'Deitrich' );
+define( 'CHILD_THEME_NAME', 'GrandRounds' );
 define( 'CHILD_THEME_URL', 'http://msdlab.com/' );
 define( 'CHILD_THEME_VERSION', '2.3.0' );
 
@@ -127,6 +128,7 @@ add_action( 'genesis_header', 'msdlab_do_nav' );
 add_action('genesis_before', 'msdlab_sb_layout_logic'); //This ensures that the primary sidebar is always to the left.
 add_action('after_setup_theme','msdlab_add_extra_theme_sidebars', 4); //creates widget areas for a hero and flexible widget area
 add_filter('widget_text', 'do_shortcode');//shortcodes in widgets
+add_action('genesis_before','msdlab_select_sidebars');
 
 /*** CONTENT ***/
 add_filter('genesis_breadcrumb_args', 'msdlab_breadcrumb_args'); //customize the breadcrumb output

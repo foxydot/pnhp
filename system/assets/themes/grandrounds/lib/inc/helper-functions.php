@@ -466,8 +466,11 @@ function msdlab_do_parent_sidebar(){
             $parent_page = get_page_by_path('/about-pnhp/speaker-bureau/');
             $args['page_id'] = $parent_page->ID;
             break;
-        case 'page':
         case 'post':
+            remove_action('genesis_sidebar', 'genesis_do_sidebar');
+            add_action('genesis_sidebar', 'msdlab_do_blog_sidebar');
+            break;
+        case 'page':
         default:
             return;
     }
@@ -484,4 +487,18 @@ function msdlab_do_parent_sidebar(){
 function msdlab_post_link_block(){
     global $post;
     print '<a class="link-block" href="'.get_the_permalink($post->ID).'" title="'.get_the_title($post->ID).'">&nbsp;</a>';
+}
+
+function msdlab_select_sidebars(){
+    global $post;
+    if((is_home() || is_archive() || is_single()) && $post->post_type == "post" ){
+        remove_action('genesis_sidebar', 'genesis_do_sidebar');
+        add_action('genesis_sidebar', 'msdlab_do_blog_sidebar');
+    }
+}
+
+function msdlab_do_blog_sidebar(){
+    if(is_active_sidebar('blog')){
+        dynamic_sidebar('blog');
+    }
 }
