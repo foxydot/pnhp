@@ -91,12 +91,12 @@ class Convert_Media{
     function convert_medium($post){
         set_time_limit(1);
         $providers = array(
-            'ytembed' => '#(https?://((m|www)\.)?youtube\.com/embed/([=&A-Za-z0-9]*))#i',
-            'ytwatch' => '#(https?://((m|www)\.)?youtube\.com/watch\?([=&A-Za-z0-9]*))#i',
-            'ytplaylist' => '#(https?://((m|www)\.)?youtube\.com/playlist\?([=&A-Za-z0-9]*))#i',
-            'ytshort' => '#(https?://youtu\.be/\?([=&A-Za-z0-9]*))#i',
-            'vimeo' => '#(https?://(.+\.)?vimeo\.com/\?([=&A-Za-z0-9]*))#i',
-            'slideshare' => '#(https?://(.+?\.)?slideshare\.net/\?([=&A-Za-z0-9]*))#i',
+            'ytembed' => '#(https?://((m|www)\.)?youtube\.com/embed/([=&_\-A-Za-z0-9]*))#i',
+            'ytwatch' => '#(https?://((m|www)\.)?youtube\.com/watch\?([=&_\-A-Za-z0-9]*))#i',
+            'ytplaylist' => '#(https?://((m|www)\.)?youtube\.com/playlist\?([=&_\-A-Za-z0-9]*))#i',
+            'ytshort' => '#(https?://youtu\.be/\?([=&_\-A-Za-z0-9]*))#i',
+            'vimeo' => '#(https?://(.+\.)?vimeo\.com/\?([=&_\-A-Za-z0-9]*))#i',
+            'slideshare' => '#(https?://(.+?\.)?slideshare\.net/\?([=&_\-A-Za-z0-9]*))#i',
         );
         foreach($providers AS $k => $pattern){
             if(preg_match($pattern,$post->post_content,$matches)){
@@ -126,8 +126,8 @@ class Convert_Media{
             }
         }
         $audio_providers = array(
-            '#(https?://((m|www)\.)?npr\.org/player/embed/([/=&A-Za-z0-9]*))#i',
-            '#(https?://(www\.)?soundcloud\.com/\?([=&A-Za-z0-9]*))#i',
+            '#(https?://((m|www)\.)?npr\.org/player/embed/([/=&_\-A-Za-z0-9]*))#i',
+            '#(https?://(www\.)?soundcloud\.com/\?([=&_\-A-Za-z0-9]*))#i',
         );
         foreach($audio_providers AS $pattern){
             if(preg_match($pattern,$post->post_content,$matches)){

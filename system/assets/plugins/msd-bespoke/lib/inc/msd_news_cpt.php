@@ -385,6 +385,10 @@ if (!class_exists('MSDNewsCPT')) {
                             echo '<span aria-hidden="true">&#8212;</span><span class="screen-reader-text">' . $taxonomy_object->labels->no_terms . '</span>';
                         }
                     }
+                    if($column == $this->cpt.'_category'){
+                        echo '<br />';
+                        echo $post->post_name;
+                    }
                     break;
                 default :
                     break;

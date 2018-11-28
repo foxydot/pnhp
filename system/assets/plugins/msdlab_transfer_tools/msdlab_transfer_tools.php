@@ -230,7 +230,7 @@ if (!class_exists('MSDTransferTools')) {
                         };
                         jQuery.post(ajaxurl, data, function(response) {
                             $('.response1').html(response);
-                            $('#subtitle_start').val($('#subtitle_start').val() + 500);
+                            $('#subtitle_start').val(Number($('#subtitle_start').val()) + 500);
                             console.log(response);
                         });
                     });
@@ -241,7 +241,7 @@ if (!class_exists('MSDTransferTools')) {
                         };
                         jQuery.post(ajaxurl, data, function(response) {
                             $('.response1').html(response);
-                            $('#media_start').val($('#media_start').val() + 500);
+                            $('#media_start').val(Number($('#media_start').val()) + 500);
                             console.log(response);
                         });
                     });

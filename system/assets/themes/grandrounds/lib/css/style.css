@@ -1784,11 +1784,12 @@ p.entry-meta {
   right: 1em;
   bottom: 1em; }
 
-.news_category_aggregate h3.widget-title, .news_media_runner h3.widget-title {
+.news_category_aggregate h3.widget-title, .news_category_aggregate h3.widget-title a, .news_media_runner h3.widget-title, .news_media_runner h3.widget-title a {
   margin: 0;
   padding: 0.5em 1em;
   color: #FFF;
-  border-top: 1px solid #FFF; }
+  border-top: 0px solid #FFF;
+  text-decoration: none !important; }
 
 .news_category_aggregate article.type-news, .news_media_runner article.type-news {
   max-height: 14em;

@@ -101,7 +101,7 @@ if (!class_exists('MSDChapterCPT')) {
 		        'labels' => $labels,
 		        'hierarchical' => false,
 		        'description' => 'Chapter',
-		        'supports' => array( 'title', 'editor', 'author', 'thumbnail' ),
+		        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
 		        'taxonomies' => array( 'chapter_state' ),
 		        'public' => true,
 		        'show_ui' => true,
@@ -489,7 +489,7 @@ jQuery(document).ready(function($) {
                         ),
                         array(
                             'taxonomy' => 'news_category',
-                            'terms' => array('articles-of-interest','quote-of-the-day'),
+                            'terms' => array('quote-of-the-day'),
                             'field' => 'slug',
                             'operator' => 'NOT IN',
                         ),
