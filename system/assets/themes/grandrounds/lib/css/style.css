@@ -561,8 +561,7 @@ th:first-child {
   background-color: #fff;
   font-size: 18px;
   font-size: 1.8rem;
-  margin-bottom: 40px;
-  padding: 60px; }
+  padding: 2em 1em; }
 
 .archive-description p:last-child,
 .author-box p:last-child {

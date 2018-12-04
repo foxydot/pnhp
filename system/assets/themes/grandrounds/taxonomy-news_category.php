@@ -5,6 +5,7 @@ add_action('msdlab_title_area','msdlab_news_category_banner');
 add_action('genesis_entry_header', 'msdlab_add_pub_name');
 add_action('genesis_entry_header', 'genesis_post_info');
 add_action('genesis_entry_header','msdlab_multimedia_icons');
+add_action('genesis_before_loop','msdlab_do_taxonomy_description',15);
 
 global $subtitle_support;
 remove_action('genesis_entry_header', array($subtitle_support,'msdlab_do_post_subtitle'), 10);
@@ -33,6 +34,43 @@ function msdlab_news_page_title($title){
 }
 function msdlab_news_title_unlink(){
     return false;
+}
+function msdlab_do_taxonomy_description() {
+
+    global $wp_query;
+
+    if ( ! is_category() && ! is_tag() && ! is_tax() ) {
+        return;
+    }
+
+    $term = is_tax() ? get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) : $wp_query->get_queried_object();
+
+    if ( ! $term ) {
+        return;
+    }
+
+    $heading = get_term_meta( $term->term_id, 'headline', true );
+    if ( empty( $heading ) && genesis_a11y( 'headings' ) ) {
+        //$heading = $term->name;
+        $heading = '';
+    }
+
+    $intro_text = get_term_meta( $term->term_id, 'intro_text', true );
+    $intro_text = apply_filters( 'genesis_term_intro_text_output', $intro_text ? $intro_text : '' );
+
+    /**
+     * Fires at end of doing taxonomy archive title and description.
+     *
+     * Allows you to reorganize output of the archive headings.
+     *
+     * @since 2.5.0
+     *
+     * @param string $heading    Archive heading.
+     * @param string $intro_text Archive intro text.
+     * @param string $context    Context.
+     */
+    do_action( 'genesis_archive_title_descriptions', $heading, $intro_text, 'taxonomy-archive-description' );
+
 }
 add_filter('genesis_attr_entry','msdlab_news_entry_attr');
 add_filter('genesis_attr_entry','msdlab_maybe_equalize_attr');
