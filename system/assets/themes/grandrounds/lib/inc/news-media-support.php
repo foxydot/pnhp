@@ -96,14 +96,14 @@ function msdlab_news_media_runner($atts = array()){
             while($recents->have_posts()) {
                 $recents->the_post();
                 $meta = get_post_meta($post->ID);
-                ts_data($meta);
+                //ts_data($meta);
                 $item_class = array(
                     'item',
                 );
                 if($i==0){$item_class[] = 'active';}
 
                 $url = get_post_meta($post->ID,'_news_videourl',true);
-                ts_data($url);
+                //ts_data($url);
                 $bkg = '';
                 if($thumb = get_post_meta($post->ID, '_news_videothumb', true)){
                     $bkg = ' style="background-image:url('.$thumb.')"';
