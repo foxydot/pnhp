@@ -373,7 +373,7 @@ function msdlab_do_social_footer(){
     print '<div class="row">';
     //print '<nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
     //print '<div class="social">'.$msd_social->social_media().'</div>';
-    print '<div class="legal">'.$copyright.'</div> <div class="address">'.$address.'</div> <nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
+    print '<div class="legal">'.$copyright.'</div>  <nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
     print '</div>';
     //print '<div class="backtotop"><a href="#pre-header"><i class="fa fa-angle-up"></i></a></div>';
 }

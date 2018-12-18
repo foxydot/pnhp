@@ -215,3 +215,13 @@ function genesis_msdlab_child_comments_gravatar( $args ) {
 
 remove_theme_support( 'custom-background' );
 remove_theme_support( 'custom-header' );
+
+//add_action('pre_get_posts','msdlab_review_query',1000);
+
+
+function msdlab_review_query($query)
+{
+    if ($query->is_main_query()) {
+        ts_data($query);
+    }
+}

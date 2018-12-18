@@ -142,7 +142,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		        
 		        'show_in_nav_menus' => true,
 		        'publicly_queryable' => true,
-		        'exclude_from_search' => true,
+                'exclude_from_search' => false,
 		        'has_archive' => true,
 		        'query_var' => true,
 		        'can_export' => true,
@@ -295,9 +295,10 @@ if (!class_exists('MSDMemberResourceCPT')) {
                         $post_types = explode(',', $post_types);
 
                     if(empty($post_types))
-                        $post_types = array('post'); // If there are no post types defined, be sure to include posts so that they are not ignored
+                        $post_types = array('post','page'); // If there are no post types defined, be sure to include posts so that they are not ignored
 
                     if ($query->is_search) {
+                        /*
                         $searchterm = $query->query_vars['s'];
                         // we have to remove the "s" parameter from the query, because it will prevent the posts from being found
                         $query->query_vars['s'] = "";
@@ -307,7 +308,7 @@ if (!class_exists('MSDMemberResourceCPT')) {
                             $query->set('meta_compare', 'LIKE');
                         };
                         $post_types[] = $this->cpt;                         // Add your custom post type
-
+*/
                     } elseif ($query->is_archive) {
                         $post_types[] = $this->cpt;                         // Add your custom post type
                     }

@@ -104,9 +104,6 @@ if (!class_exists('MSDCustomCPT')) {
         	//get sub-packages
         	requireDir(plugin_dir_path(__FILE__).'/lib/inc');
             //here are some examples to get started with
-            if(class_exists('MSDQODCPT')){
-                //$this->quote_class = new MSDQODCPT();
-            }
             if(class_exists('MSDNewsCPT')){
                 $this->news_class = new MSDNewsCPT();
             }
@@ -118,9 +115,6 @@ if (!class_exists('MSDCustomCPT')) {
             }
             if(class_exists('MSDSpeakerCPT')){
                 $this->speaker_class = new MSDSpeakerCPT();
-            }
-            if(class_exists('MSDTeamCPT')){
-                //$this->team_class = new MSDTeamCPT();
             }
             if(class_exists('MSDMemberResourceCPT')){
                 $this->resource_class = new MSDMemberResourceCPT();
