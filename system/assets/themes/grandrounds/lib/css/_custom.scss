@@ -436,17 +436,17 @@
     transition: all ease .3s;
     fill-rule:evenodd;
     clip-rule:evenodd;
-    fill:rgba($ltgreen,0.8);
+    fill:rgba($ltgreen,0.66);
     stroke: $white;
   }
 
   .labelbox {
-    fill:rgba($ltgreen,0.8);
+    fill:rgba($ltgreen,0.66);
     stroke: rgba($black,0.4);
   }
 
   .state:hover, .labelbox:hover {
-    fill: rgba($ltblue,0.8);
+    fill: rgba($ltblue,0.66);
     cursor: pointer;
   }
 
@@ -468,17 +468,17 @@
   }
   #alabama, #connecticut, #delaware, #florida, #hawaii, #idaho, #iowa, #mississippi, #utah{
     .state,.labelbox{
-      fill: rgba($ltgreen,0.6);
+      fill: rgba($ltgreen,0.33);
       &:hover{
-        fill: rgba($ltblue,0.6);
+        fill: rgba($ltblue,0.33);
       }
     }
   }
   #arizona, #arkansas, #kansas, #montana, #nebraska, #north-dakota, #oklahoma, #south-dakota, #wyoming{
     .state,.labelbox{
-      fill: rgba($ltgreen,0.4);
+      fill: rgba($ltgreen,0.01);stroke: rgba($ltgreen,0.6);
       &:hover{
-        fill: rgba($ltblue,0.4);
+        fill: rgba($ltblue,0.01);stroke: rgba($ltblue,0.6);
       }
     }
   }
@@ -492,10 +492,10 @@
       height: 1em;
       width: 1em;
       margin-right: 1em;
-      background-color: rgba($ltgreen,0.8);
-      &.nope{background-color: rgba($ltgreen,0.4);}
+      background-color: rgba($ltgreen,0.66);
+      &.nope{background-color: rgba($ltgreen,0.0);border: 1px solid rgba($ltgreen,0.6);}
       &.multiple{background-color: rgba($ltgreen,1);}
-      &.members{background-color: rgba($ltgreen,0.6);}
+      &.members{background-color: rgba($ltgreen,0.33);}
     }
   }
 }

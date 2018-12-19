@@ -2044,15 +2044,15 @@ p.entry-meta {
   transition: all ease .3s;
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: rgba(2, 176, 163, 0.8);
+  fill: rgba(2, 176, 163, 0.66);
   stroke: #FFF; }
 
 .chapter-finder .labelbox {
-  fill: rgba(2, 176, 163, 0.8);
+  fill: rgba(2, 176, 163, 0.66);
   stroke: rgba(0, 0, 0, 0.4); }
 
 .chapter-finder .state:hover, .chapter-finder .labelbox:hover {
-  fill: rgba(175, 210, 240, 0.8);
+  fill: rgba(175, 210, 240, 0.66);
   cursor: pointer; }
 
 .chapter-finder .maplabel {
@@ -2064,14 +2064,16 @@ p.entry-meta {
     fill: #afd2f0; }
 
 .chapter-finder #alabama .state, .chapter-finder #alabama .labelbox, .chapter-finder #connecticut .state, .chapter-finder #connecticut .labelbox, .chapter-finder #delaware .state, .chapter-finder #delaware .labelbox, .chapter-finder #florida .state, .chapter-finder #florida .labelbox, .chapter-finder #hawaii .state, .chapter-finder #hawaii .labelbox, .chapter-finder #idaho .state, .chapter-finder #idaho .labelbox, .chapter-finder #iowa .state, .chapter-finder #iowa .labelbox, .chapter-finder #mississippi .state, .chapter-finder #mississippi .labelbox, .chapter-finder #utah .state, .chapter-finder #utah .labelbox {
-  fill: rgba(2, 176, 163, 0.6); }
+  fill: rgba(2, 176, 163, 0.33); }
   .chapter-finder #alabama .state:hover, .chapter-finder #alabama .labelbox:hover, .chapter-finder #connecticut .state:hover, .chapter-finder #connecticut .labelbox:hover, .chapter-finder #delaware .state:hover, .chapter-finder #delaware .labelbox:hover, .chapter-finder #florida .state:hover, .chapter-finder #florida .labelbox:hover, .chapter-finder #hawaii .state:hover, .chapter-finder #hawaii .labelbox:hover, .chapter-finder #idaho .state:hover, .chapter-finder #idaho .labelbox:hover, .chapter-finder #iowa .state:hover, .chapter-finder #iowa .labelbox:hover, .chapter-finder #mississippi .state:hover, .chapter-finder #mississippi .labelbox:hover, .chapter-finder #utah .state:hover, .chapter-finder #utah .labelbox:hover {
-    fill: rgba(175, 210, 240, 0.6); }
+    fill: rgba(175, 210, 240, 0.33); }
 
 .chapter-finder #arizona .state, .chapter-finder #arizona .labelbox, .chapter-finder #arkansas .state, .chapter-finder #arkansas .labelbox, .chapter-finder #kansas .state, .chapter-finder #kansas .labelbox, .chapter-finder #montana .state, .chapter-finder #montana .labelbox, .chapter-finder #nebraska .state, .chapter-finder #nebraska .labelbox, .chapter-finder #north-dakota .state, .chapter-finder #north-dakota .labelbox, .chapter-finder #oklahoma .state, .chapter-finder #oklahoma .labelbox, .chapter-finder #south-dakota .state, .chapter-finder #south-dakota .labelbox, .chapter-finder #wyoming .state, .chapter-finder #wyoming .labelbox {
-  fill: rgba(2, 176, 163, 0.4); }
+  fill: rgba(2, 176, 163, 0.01);
+  stroke: rgba(2, 176, 163, 0.6); }
   .chapter-finder #arizona .state:hover, .chapter-finder #arizona .labelbox:hover, .chapter-finder #arkansas .state:hover, .chapter-finder #arkansas .labelbox:hover, .chapter-finder #kansas .state:hover, .chapter-finder #kansas .labelbox:hover, .chapter-finder #montana .state:hover, .chapter-finder #montana .labelbox:hover, .chapter-finder #nebraska .state:hover, .chapter-finder #nebraska .labelbox:hover, .chapter-finder #north-dakota .state:hover, .chapter-finder #north-dakota .labelbox:hover, .chapter-finder #oklahoma .state:hover, .chapter-finder #oklahoma .labelbox:hover, .chapter-finder #south-dakota .state:hover, .chapter-finder #south-dakota .labelbox:hover, .chapter-finder #wyoming .state:hover, .chapter-finder #wyoming .labelbox:hover {
-    fill: rgba(175, 210, 240, 0.4); }
+    fill: rgba(175, 210, 240, 0.01);
+    stroke: rgba(175, 210, 240, 0.6); }
 
 .chapter-finder-legend {
   margin-left: 25%; }
@@ -2082,13 +2084,14 @@ p.entry-meta {
       height: 1em;
       width: 1em;
       margin-right: 1em;
-      background-color: rgba(2, 176, 163, 0.8); }
+      background-color: rgba(2, 176, 163, 0.66); }
       .chapter-finder-legend span.def span.sample.nope {
-        background-color: rgba(2, 176, 163, 0.4); }
+        background-color: rgba(2, 176, 163, 0);
+        border: 1px solid rgba(2, 176, 163, 0.6); }
       .chapter-finder-legend span.def span.sample.multiple {
         background-color: #02b0a3; }
       .chapter-finder-legend span.def span.sample.members {
-        background-color: rgba(2, 176, 163, 0.6); }
+        background-color: rgba(2, 176, 163, 0.33); }
 
 .tax-member_resources_category .member_resources_category_header {
   padding: 2em 0; }
