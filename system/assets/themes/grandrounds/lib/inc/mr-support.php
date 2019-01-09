@@ -8,7 +8,9 @@ function msdlab_mr_cookie(){
     if(isset($_POST['member_key'])){
         $expiry = strtotime('+1 month');
         $member_key = md5($_POST['member_key']);
-        $key = 'ccbee73cd81c7f42405e1920409247ec';
+        //$key = 'ccbee73cd81c7f42405e1920409247ec';
+        $keys = get_option('member_key');
+        $key = $keys['member_key_md5'];
         if($member_key === $key){
             $memberpwd = true;
             //set cookie

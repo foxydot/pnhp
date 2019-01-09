@@ -41,6 +41,9 @@ if (!class_exists('MSDMemberResourceCPT')) {
 			//add cols to manage panel
             add_filter( 'manage_edit-'.$this->cpt.'_columns', array(&$this,'my_edit_columns' ));
             add_action( 'manage_'.$this->cpt.'_posts_custom_column', array(&$this,'my_manage_columns'), 10, 2 );
+
+            add_action('admin_menu', array(&$this,'member_resources_options'));
+
         }
 
 
@@ -501,6 +504,31 @@ if (!class_exists('MSDMemberResourceCPT')) {
                     
                 }
             }
+        }
+
+        function member_resources_options(){
+            add_submenu_page('options-general.php',__('Member Resources Settings'),__('Member Resources Settings'),'administrator','member-resources-settings', array(&$this,'member_resources_options_page_content'));
+
+        }
+
+        function member_resources_options_page_content(){
+            $member_key_array = get_option('member_key');
+            if($_POST) {
+                $member_key_array['member_key'] = $_POST['member_key'];
+                $member_key_array['member_key_md5'] = md5($_POST['member_key']);
+                update_option('member_key',$member_key_array);
+            }
+            print '<div class="wrap">';
+            print '<h1 class="wp-heading-inline">Member Resources Settings</h1>     
+            <hr class="wp-header-end">';
+            print '<form method="post">
+<div class="">
+<label>Member Password</label>
+<input type="text" id="member_key" name="member_key" value="'.$member_key_array['member_key'].'" />
+</div>
+<div class="form_footer"><input type="submit" /></div>
+</form>';
+            print '</div>';
         }
   } //End Class
 } //End if class exists statement
