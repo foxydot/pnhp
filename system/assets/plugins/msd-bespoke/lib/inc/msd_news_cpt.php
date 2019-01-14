@@ -499,7 +499,7 @@ if (!class_exists('MSDNewsCPT')) {
                             get_the_term_list($post->ID,$this->cpt.'_category'),
                             get_the_date(),
                             get_the_permalink(),
-                            get_the_title(),
+                            escape_backreference(get_the_title()),
                         );
                         print preg_replace($patterns,$replacements,$item_template);
                     } //end loop

@@ -86,3 +86,10 @@ function ts_var($var){
 	ts_data(var_export( $var , true ));
 }
 endif;
+
+if(! function_exists( 'escape_backreference' )){
+    function escape_backreference($x)
+    {
+        return preg_replace('/\$(\d)/', '\\\$$1', $x);
+    }
+}
