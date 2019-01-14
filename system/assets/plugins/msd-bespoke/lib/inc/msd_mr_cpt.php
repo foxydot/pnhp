@@ -516,6 +516,8 @@ if (!class_exists('MSDMemberResourceCPT')) {
             if($_POST) {
                 $member_key_array['member_key'] = $_POST['member_key'];
                 $member_key_array['member_key_md5'] = md5($_POST['member_key']);
+                $member_key_array['member_key_1'] = $_POST['member_key_1'];
+                $member_key_array['member_key_1_md5'] = md5($_POST['member_key_1']);
                 update_option('member_key',$member_key_array);
             }
             print '<div class="wrap">';
@@ -525,6 +527,10 @@ if (!class_exists('MSDMemberResourceCPT')) {
 <div class="">
 <label>Member Password</label>
 <input type="text" id="member_key" name="member_key" value="'.$member_key_array['member_key'].'" />
+</div>
+<div class="">
+<label>Member Password (old)</label>
+<input type="text" id="member_key_1" name="member_key_1" value="'.$member_key_array['member_key_1'].'" />
 </div>
 <div class="form_footer"><input type="submit" /></div>
 </form>';

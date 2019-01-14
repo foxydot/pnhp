@@ -103,6 +103,9 @@ if (!class_exists('MSDTransferTools')) {
             if(class_exists('Other_Presentations')){
                 $this->other_class = new Other_Presentations();
             }
+            if(class_exists('Define_Media')){
+                $this->define_media_class = new Define_Media();
+            }
         }
         /**
          * @desc Loads the options. Responsible for handling upgrades and default option values.
@@ -288,6 +291,7 @@ if (!class_exists('MSDTransferTools')) {
                 <div class="response1"></div>
             </div>
             <?php
+            print $this->define_media_class->define_media('additional-slideshows','member_resources_category');
         }
     } //End Class
 } //End if class exists statement

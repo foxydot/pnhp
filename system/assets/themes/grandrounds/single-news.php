@@ -78,7 +78,7 @@ function msdlab_news_category_recents(){ //fix to use parent category
         while($recents->have_posts()) {
             $recents->the_post();
             $ret .= '
-            <li><a title = "'.$recents->post->post_title.'" href = "'.$recents->post->permalink.'"> '.$recents->post->post_title.' </a></li>';
+            <li><a title = "'.$recents->post->post_title.'" href = "'.get_the_permalink($recents->post->ID).'"> '.$recents->post->post_title.' </a></li>';
         } //end loop
         $ret .= '</ul></div></section>';
 } //end loop check

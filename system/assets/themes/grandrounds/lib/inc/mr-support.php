@@ -11,7 +11,8 @@ function msdlab_mr_cookie(){
         //$key = 'ccbee73cd81c7f42405e1920409247ec';
         $keys = get_option('member_key');
         $key = $keys['member_key_md5'];
-        if($member_key === $key){
+        $key1 = $keys['member_key_1_md5'];
+        if($member_key === $key || $member_key === $key1){
             $memberpwd = true;
             //set cookie
             setcookie( 'member_login', 'member', $expiry, COOKIEPATH, COOKIE_DOMAIN );
