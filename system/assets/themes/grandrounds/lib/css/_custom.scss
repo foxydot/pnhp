@@ -2,7 +2,7 @@
   color: $white;
   text-shadow: 0 0 .3em $dkgrey;
   line-height: 1.625;
-  .entry-title{
+  .entry-title,.archive-title{
     @include sansserif(2);
     color: $white;
     text-shadow: 0 0 .3em $dkgrey;
@@ -553,5 +553,12 @@
       width: auto;
       height: 7em;
     }
+  }
+}
+
+.search-results{
+  .entry{
+    margin-bottom: 0;
+    border-bottom: 1px solid $ltgrey;
   }
 }

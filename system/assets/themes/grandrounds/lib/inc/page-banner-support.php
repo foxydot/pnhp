@@ -139,7 +139,7 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     print '<div class="bannercontent">';
                     if ($bannercontent == '') {
                         remove_all_actions('genesis_archive_title_descriptions');
-                        print '<h2 class="entry-title" itemprop="headline">'.$blog_title.'</h2>';
+                        print '<h2 class="entry-title" itemprop="headline">' . $blog_title . '</h2>';
                     } else {
                         print $bannercontent;
                     }
@@ -149,6 +149,20 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     print '</div>';
                     print '</div>';
                 }
+            } elseif(is_search()) {
+                $title = sprintf( '<h1 class="archive-title">%s %s</h1>', apply_filters( 'genesis_search_title_text', __( 'Search Results for:', 'genesis' ) ), get_search_query() );
+                $background = ' style="background-image:url('.get_stylesheet_directory_uri().'/lib/images/banner-search.jpg)"';
+                print '<div class="banner clearfix ' . $banneralign . ' ' . $bannerclass . '"' . $background . '>';
+                print '<div class="gradient">';
+                print '<div class="wrap">';
+                print '<div class="bannertext">';
+                print '<div class="bannercontent">';
+                print $title;
+                print '</div>';
+                print '</div>';
+                print '</div>';
+                print '</div>';
+                print '</div>';
             } else {
                 genesis_do_post_title();
             }

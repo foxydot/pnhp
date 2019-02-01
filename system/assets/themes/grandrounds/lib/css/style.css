@@ -1000,7 +1000,7 @@ address {
         .page-title-area .banner .gradient .wrap .bannertext {
           position: absolute;
           bottom: 0; }
-          .page-title-area .banner .gradient .wrap .bannertext h1.entry-title {
+          .page-title-area .banner .gradient .wrap .bannertext h1.entry-title, .page-title-area .banner .gradient .wrap .bannertext h1.archive-title {
             color: #FFF;
             text-shadow: #666 0 0 0.25em; }
     .page-title-area .banner.textleft .bannertext {
@@ -1726,7 +1726,7 @@ p.entry-meta {
   color: #FFF;
   text-shadow: 0 0 0.3em #666;
   line-height: 1.625; }
-  .bannertext .entry-title, .bannertext a .entry-title {
+  .bannertext .entry-title, .bannertext .archive-title, .bannertext a .entry-title, .bannertext a .archive-title {
     font-family: "Raleway", "Trebuchet MS", "Arial", sans-serif;
     font-weight: 400;
     font-size: 2em;
@@ -2128,6 +2128,10 @@ p.entry-meta {
 .archive.term-members-in-the-news article iframe {
   width: auto;
   height: 7em; }
+
+.search-results .entry {
+  margin-bottom: 0;
+  border-bottom: 1px solid #CCC; }
 
 @media only screen and (min-width: 768px) {
   /* Accessible Menu
