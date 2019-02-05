@@ -168,41 +168,59 @@ function msdlab_is_speaker_page($post_id = null){
 function msdlab_speaker_banner(){
     global $page_banner_metabox;
     //default to the image used for the main speaker bureau page
-    $speakers_bureau_page = get_page_by_path('/about-pnhp/speaker-bureau/');
+    $speakers_bureau_page = get_page_by_path('/about/speaker-bureau/');
+    $speaker_title = get_the_title($speakers_bureau_page->ID);
     $page_banner_metabox->the_meta($speakers_bureau_page->ID);
-    $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
-    if(!$bannerimage){
-        if(has_post_thumbnail()){
-            $bannerimage = get_the_post_thumbnail_url();
-        }
+    $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
+    if ($bannerbool != 'true') {
+        return;
     }
-    //check if we should look for a taxonomy banner
-    if(is_archive()){
-        $bannerclass = sanitize_title_with_dashes(single_term_title('',false));
-        if(file_exists(get_stylesheet_directory().'/lib/images/banner-'.$taxonomy.'.png')) {
-            $bannerimage = get_stylesheet_directory_uri() . '/lib/images/banner-' . $taxonomy . '.png';
+    $bannerclass = $page_banner_metabox->get_the_value('bannerclass');
+    $bannerslider = $page_banner_metabox->get_the_value('bannerslider');
+    if ($bannerslider > 0 && class_exists('LS_Sliders')) { //it's a slider
+        layerslider($bannerslider);
+    } else { //it's not a slider
+        $banneralign = $page_banner_metabox->get_the_value('banneralign');
+        $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
+        if (!$bannerimage) {
+            if (has_post_thumbnail()) {
+                $bannerimage = get_the_post_thumbnail_url();
+            } else {
+                $bannerimage = msdlab_get_random_banner_image();
+            }
         }
+        $bannercontent = apply_filters('the_content', $page_banner_metabox->get_the_value('bannercontent'));
+
+        global $post;
+        $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : '';
+        add_filter('genesis_post_title_text','msdlab_speaker_page_title');
+        add_filter('genesis_link_post_title','msdlab_speaker_title_unlink');
+        print '<div class="banner clearfix ' . $banneralign . ' ' . $bannerclass . '"' . $background . '>';
+        print '<div class="gradient">';
+        print '<div class="wrap">';
+        print '<div class="bannertext">';
+        print '<div class="bannercontent">';
+        if ($bannercontent == '') {
+            remove_all_actions('genesis_archive_title_descriptions');
+            print '<h2 class="entry-title" itemprop="headline">' . $speaker_title . '</h2>';
+        } else {
+            print $bannercontent;
+        }
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        remove_filter('genesis_link_post_title','msdlab_speaker_title_unlink');
+        remove_filter('genesis_post_title_text','msdlab_speaker_page_title');
     }
-    $background = strlen($bannerimage)>0?' style="background-image:url('.$bannerimage.')"':'';
-    add_filter('genesis_post_title_text','msdlab_speaker_page_title');
-    add_filter('genesis_link_post_title','msdlab_speaker_title_unlink');
-    print '<div class="banner clearfix '.$bannerclass.'"'.$background.'>';
-    print '<div class="gradient">';
-    print '<div class="wrap">';
-    print '<div class="bannertext">';
-    print genesis_do_post_title();
-    print '</div>';
-    print '</div>';
-    print '</div>';
-    print '</div>';
-    remove_filter('genesis_link_post_title','msdlab_speaker_title_unlink');
-    remove_filter('genesis_post_title_text','msdlab_speaker_page_title');
 }
 function msdlab_speaker_page_title($title){
     if(is_archive()){
     $title = single_term_title('',false);
+    }
+
     return $title;
-}
 }
 function msdlab_speaker_title_unlink(){
     return false;
