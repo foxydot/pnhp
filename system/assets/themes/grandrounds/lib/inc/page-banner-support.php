@@ -109,6 +109,9 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
             } elseif(is_home() || (is_archive() && $post->post_type == "post") || (is_single() && $post->post_type == "post") ) {
                 $blog_id = get_option('page_for_posts');
                 $blog_title = get_the_title($blog_id);
+                if(is_author()){
+                    $blog_title .= ': Posts by '.get_the_author();
+                }
                 $page_banner_metabox->the_meta($blog_id);
                 $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
                 if ($bannerbool != 'true') {
