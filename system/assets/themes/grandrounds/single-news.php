@@ -91,23 +91,29 @@ function msdlab_add_media_coverage(){
     global $post, $news_info, $multimedia_info, $wpalchemy_media_access;
     $news_info->the_meta();
     // loop a set of field groups
-    if($news_info->have_fields('articles')) {
-        $ret[] = '<div class="media-coverage"><h2>Media Coverage</h2>';
-        while ($news_info->have_fields('articles')) {
-            $newsurl = $news_info->get_the_value('newsurl');
-            $newstitle = $news_info->get_the_value('newstitle');
-            $newsauthor = $news_info->get_the_value('newsauthor');
-            $newspub = $news_info->get_the_value('newspub');
-            $newsdate = $news_info->get_the_value('newsdate');
-            $newstease = $news_info->get_the_value('newstease');
-            $ret[] = '<div class="media-article">';
-            $ret[] = '<h3 class="media-title"><a href="'.$newsurl.'" target="_blank">'.$newstitle.'</a></h3>';
-            $ret[] = '<p class="meta">'.$newsauthor.', '.$newspub.', Published: '.$newsdate.'</p>';
-            $ret[] = '<p class="teaser">'.$newstease.' <a href="'.$newsurl.'" target="_blank" class="read-more">Read More</a></p>';
-            $ret[] = '</div>';
-        }
+    while ($news_info->have_fields('articles')) {
+        $newsurl = $news_info->get_the_value('newsurl');
+        $newstitle = $news_info->get_the_value('newstitle');
+        $newsauthor = $news_info->get_the_value('newsauthor');
+        $newspub = $news_info->get_the_value('newspub');
+        $newsdate = $news_info->get_the_value('newsdate');
+        $newstease = $news_info->get_the_value('newstease');
+        $ret[] = '<div class="media-article">';
+        $ret[] = '<h3 class="media-title"><a href="'.$newsurl.'" target="_blank">'.$newstitle.'</a></h3>';
+        $ret[] = '<p class="meta">';
+        if($newsauthor != ''){ $ret[] = $newsauthor; }
+        if($newsauthor != '' && $newspub != ''){ $ret[] = ', '; }
+        if($newspub != ''){ $ret[] = $newspub; }
+        if($newspub != '' && $newsdate != ''){ $ret[] = ', '; }
+        if($newsdate != ''){ $ret[] = 'Published: '.$newsdate; }
+        $ret[] = '</p>';
+        $ret[] = '<p class="teaser">'.$newstease.' <a href="'.$newsurl.'" target="_blank" class="read-more">Read More</a></p>';
         $ret[] = '</div>';
     }
-    print implode("\n",$ret);
+    if(count($ret)>0) {
+            print '<div class="media-coverage"><h2>Media Coverage</h2>';
+            print implode("\n", $ret);
+            print '</div>';
+    }
 }
 genesis();
