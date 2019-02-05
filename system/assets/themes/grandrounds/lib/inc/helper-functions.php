@@ -507,3 +507,13 @@ function msdlab_do_blog_sidebar(){
     }
 }
 
+add_action('pre_get_posts','msdlab_posts_per_query',99);
+if(!function_exists('msdlab_posts_per_query')){
+    function msdlab_posts_per_query($query){
+        if($query->is_main_query() && $query->is_archive()) {
+            $query->set('posts_per_page',12);
+        }
+
+        return $query;
+    }
+}

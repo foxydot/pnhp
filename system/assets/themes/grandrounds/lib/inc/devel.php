@@ -34,7 +34,7 @@ if(!function_exists('my_msdlab_trace_actions')) {
 if(!function_exists('msdlab_view_queries')){
     function msdlab_view_queries($query){
         if($query->is_main_query()) {
-            ts_data($wp_query);
+            ts_data($query);
         }
 
         return $query;
