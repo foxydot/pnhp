@@ -1338,8 +1338,8 @@ address {
 /* ## Entry Meta
 --------------------------------------------- */
 p.entry-meta {
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 14px;
+  font-size: 1.4rem;
   margin-bottom: 0; }
 
 .entry-header .entry-meta {
@@ -1756,7 +1756,7 @@ p.entry-meta {
   .blog article.type-post .entry-header, .blog article.type-news .entry-header, .blog .summary .entry-header, .archive article.type-post .entry-header, .archive article.type-news .entry-header, .archive .summary .entry-header, .news_category_aggregate article.type-post .entry-header, .news_category_aggregate article.type-news .entry-header, .news_category_aggregate .summary .entry-header, .faq-summaries article.type-post .entry-header, .faq-summaries article.type-news .entry-header, .faq-summaries .summary .entry-header, .single-chapter article.type-post .entry-header, .single-chapter article.type-news .entry-header, .single-chapter .summary .entry-header {
     color: #FFF; }
     .blog article.type-post .entry-header .entry-title, .blog article.type-post .entry-header .entry-subtitle, .blog article.type-news .entry-header .entry-title, .blog article.type-news .entry-header .entry-subtitle, .blog .summary .entry-header .entry-title, .blog .summary .entry-header .entry-subtitle, .archive article.type-post .entry-header .entry-title, .archive article.type-post .entry-header .entry-subtitle, .archive article.type-news .entry-header .entry-title, .archive article.type-news .entry-header .entry-subtitle, .archive .summary .entry-header .entry-title, .archive .summary .entry-header .entry-subtitle, .news_category_aggregate article.type-post .entry-header .entry-title, .news_category_aggregate article.type-post .entry-header .entry-subtitle, .news_category_aggregate article.type-news .entry-header .entry-title, .news_category_aggregate article.type-news .entry-header .entry-subtitle, .news_category_aggregate .summary .entry-header .entry-title, .news_category_aggregate .summary .entry-header .entry-subtitle, .faq-summaries article.type-post .entry-header .entry-title, .faq-summaries article.type-post .entry-header .entry-subtitle, .faq-summaries article.type-news .entry-header .entry-title, .faq-summaries article.type-news .entry-header .entry-subtitle, .faq-summaries .summary .entry-header .entry-title, .faq-summaries .summary .entry-header .entry-subtitle, .single-chapter article.type-post .entry-header .entry-title, .single-chapter article.type-post .entry-header .entry-subtitle, .single-chapter article.type-news .entry-header .entry-title, .single-chapter article.type-news .entry-header .entry-subtitle, .single-chapter .summary .entry-header .entry-title, .single-chapter .summary .entry-header .entry-subtitle {
-      font-size: 1.2em;
+      font-size: 1em;
       color: #FFF; }
       .blog article.type-post .entry-header .entry-title a, .blog article.type-post .entry-header .entry-subtitle a, .blog article.type-news .entry-header .entry-title a, .blog article.type-news .entry-header .entry-subtitle a, .blog .summary .entry-header .entry-title a, .blog .summary .entry-header .entry-subtitle a, .archive article.type-post .entry-header .entry-title a, .archive article.type-post .entry-header .entry-subtitle a, .archive article.type-news .entry-header .entry-title a, .archive article.type-news .entry-header .entry-subtitle a, .archive .summary .entry-header .entry-title a, .archive .summary .entry-header .entry-subtitle a, .news_category_aggregate article.type-post .entry-header .entry-title a, .news_category_aggregate article.type-post .entry-header .entry-subtitle a, .news_category_aggregate article.type-news .entry-header .entry-title a, .news_category_aggregate article.type-news .entry-header .entry-subtitle a, .news_category_aggregate .summary .entry-header .entry-title a, .news_category_aggregate .summary .entry-header .entry-subtitle a, .faq-summaries article.type-post .entry-header .entry-title a, .faq-summaries article.type-post .entry-header .entry-subtitle a, .faq-summaries article.type-news .entry-header .entry-title a, .faq-summaries article.type-news .entry-header .entry-subtitle a, .faq-summaries .summary .entry-header .entry-title a, .faq-summaries .summary .entry-header .entry-subtitle a, .single-chapter article.type-post .entry-header .entry-title a, .single-chapter article.type-post .entry-header .entry-subtitle a, .single-chapter article.type-news .entry-header .entry-title a, .single-chapter article.type-news .entry-header .entry-subtitle a, .single-chapter .summary .entry-header .entry-title a, .single-chapter .summary .entry-header .entry-subtitle a {
         color: #FFF; }
@@ -2154,6 +2154,15 @@ p.entry-meta {
       opacity: 0.8; }
   .archive main.content article.type-news .entry-content {
     display: none; }
+  .archive main.content article.type-news.news_category-articles-of-interest .entry-meta {
+    display: none; }
+  .archive main.content article.type-news.news_category-articles-of-interest .entry-content {
+    display: block; }
+    .archive main.content article.type-news.news_category-articles-of-interest .entry-content p {
+      display: none; }
+    .archive main.content article.type-news.news_category-articles-of-interest .entry-content p.first-child {
+      display: block;
+      font-size: 0.7em; }
   .archive main.content article.type-news.news_category-highlighted-research .entry-content {
     display: block; }
   .modal-dialog {

@@ -5,6 +5,7 @@ add_action('msdlab_title_area','msdlab_news_category_banner');
 add_action('genesis_entry_header', 'msdlab_add_pub_name');
 add_action('genesis_entry_header', 'genesis_post_info');
 add_action('genesis_entry_header','msdlab_multimedia_icons');
+add_action('genesis_entry_content','msdlab_news_teaser');
 add_action('genesis_before_loop','msdlab_do_taxonomy_description',15);
 
 global $subtitle_support;
@@ -27,6 +28,24 @@ function msdlab_news_category_banner(){
     print '</div>';
     remove_filter('genesis_link_post_title','msdlab_news_title_unlink');
     remove_filter('genesis_post_title_text','msdlab_news_page_title');
+}
+function msdlab_news_teaser()
+{
+    global $post;
+    $excerpt_length = 25;
+    $trailing_character = '<i class="fa fa-arrow-circle-right"></i>';
+    $the_excerpt = strip_tags(strip_shortcodes($post->post_excerpt), '<i>,<strong>,<bold>,<em>');
+
+    if (empty($the_excerpt))
+        $the_excerpt = strip_tags(strip_shortcodes($post->post_content), '<i>,<strong>,<bold>,<em>');
+
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+    if (count($words) > $excerpt_length)
+        $words = array_slice($words, 0, $excerpt_length);
+
+    $the_excerpt = implode(' ', $words) . ' ' . $trailing_character;
+    print wpautop($the_excerpt);
 }
 function msdlab_news_page_title($title){
     $title = single_term_title('',false);
