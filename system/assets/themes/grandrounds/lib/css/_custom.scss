@@ -23,7 +23,12 @@
 }
 
 .blog,.archive,.news_category_aggregate,.faq-summaries,.single-chapter{
-  article.type-post, article.type-news, .summary{
+  h2.subcat-divider{
+    padding-top: 0.5em;
+    clear: both;
+  }
+  article.type-post, article.type-news, article.member_resources_category-additional-slideshows, .member_resources_category-materials-handouts, .summary{
+    padding: 2em;
     margin-bottom: 0;
     &:nth-child(4n+1){
     background-color: $dkblue;
@@ -57,6 +62,12 @@
       color: $white;
       strong,a{
         color: $white;
+      }
+      .member-resource-teaser{
+        font-size: 0.8em;
+      }
+      .btn-primary{
+        border-color: rgba($white,0.5);
       }
     }
     .entry-footer{
@@ -500,8 +511,8 @@
   }
 }
 .tax-member_resources_category {
-  .member_resources_category_header {
-    padding: 2em 0;
+  main.content {
+    padding-top: 2em;
   }
   article{
     padding: 0;

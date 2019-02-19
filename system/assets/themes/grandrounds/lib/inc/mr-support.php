@@ -155,7 +155,7 @@ function msdlab_mr_challenge(){
                 $subquery{$sc->slug} = new WP_Query($args);
                 if($subquery{$sc->slug}->have_posts()){
                     add_action('genesis_entry_content', 'msdlab_mr_content');
-                    print '<h2>' . $sc->name . '</h2>';
+                    print '<h2 class="subcat-divider">' . $sc->name . '</h2>';
                     while($subquery{$sc->slug}->have_posts()){
                         $subquery{$sc->slug}->the_post();
                         do_action( 'genesis_before_entry' );
@@ -224,11 +224,11 @@ function msdlab_mr_content(){
             break;
         case "materials-handouts":
             foreach($mr AS $ctr => $r){
-                    if ($r['file']) {
-                        print '<h3 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h3>';
-                    } else {
+                    //if ($r['file']) {
+                       // print '<h3 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h3>';
+                    //} else {
                         print '<h3 class="member-resource-title">' . $r['title'] . '</h3>';
-                    }
+                    //}
                     if ($r['file']) {
                         print '<a class="btn btn-primary" href="' . $r['file'] . '">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
                     }
@@ -236,17 +236,28 @@ function msdlab_mr_content(){
             break;
         case "slideshows":
         case "additional-slideshows":
+            $mrcnt = count($mr);
             print '<h3>'.get_the_title().'</h3>';
             if(strlen(get_the_content())>0){
                 print '<div class="entry-content">'.apply_filters('the_content',get_the_content()).'</div>';
             }
-            print '<div class="row">';
+            if($mrcnt==1){
+                print '<div>';
+            } else {
+                print '<div class="row">';
+            }
             foreach($mr AS $ctr => $r){
-                print '<div class="slide_resource_wrapper equalize col-xs-12 col-sm-6 col-md-4">';
-                if($r['file']){
-                    print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
+                if($mrcnt==1){
+                    print '<div class="slide_resource_wrapper">';
                 } else {
-                    print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                    print '<div class="slide_resource_wrapper equalize col-xs-12 col-sm-6 col-md-4">';
+                }
+                if(trim(get_the_title()) != trim($r['title'])){
+                    if($r['file']){
+                        print '<h4 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h4>';
+                    } else {
+                        print '<h4 class="member-resource-title">'.$r['title'].'</h4>';
+                    }
                 }
                 if($r['tease']){
                     print '<div>';
@@ -254,7 +265,7 @@ function msdlab_mr_content(){
                     print '</div>';
                 }
                 if($r['file']){
-                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download Slideshow <i class="fa fa-file-powerpoint-o"></i></a>';
                 }
                 print '</div>';
             }
@@ -275,7 +286,7 @@ function msdlab_mr_content(){
                     print '</div>';
                 }
                 if(strstr($r['file'],$_SERVER['SERVER_NAME'])){
-                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download <i class="fa fa-file-powerpoint-o"></i></a>';
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download Webinar<i class="fa fa-file-powerpoint-o"></i></a>';
                 } elseif ($vid = wp_oembed_get($r['file'])){
                     print $vid;
                 }
@@ -298,6 +309,10 @@ function msdlab_mr_entry_attr($attr){
             }
             break;
         case "slideshows":
+            break;
+        case "additional-slideshows":
+        case "materials-handouts":
+            $attr['class'] .= ' equalize col-xs-12 col-sm-6 col-md-4';
             break;
         case "webinars":
         default:
