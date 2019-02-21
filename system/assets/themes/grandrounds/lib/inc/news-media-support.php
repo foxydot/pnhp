@@ -178,6 +178,7 @@ function msdlab_maybe_do_featured_image(){
         } else {
             if(has_term('members-in-the-news', 'news_category', $post)){
                 global $multimedia_info;
+                $multimedia_info->the_meta($post->ID);
                 $videourl = $multimedia_info->get_the_value('videourl');
                 if(strlen($videourl) > 0){
                     print wp_oembed_get($videourl);
