@@ -2142,7 +2142,8 @@ p.entry-meta {
 
 .archive.term-members-in-the-news article iframe {
   width: auto;
-  height: 7em; }
+  height: 7em;
+  border: 0; }
 
 .search-results .entry {
   margin-bottom: 0;
