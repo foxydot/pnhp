@@ -1981,8 +1981,13 @@ p.entry-meta {
     display: block;
     overflow: hidden;
     border: 0;
-    font-size: 1em;
-    padding: 0.5em; }
+    font-size: 0.8em;
+    padding: 0.5em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5; }
   .multi .carousel-inner .item .video a {
     position: absolute;
     display: block;

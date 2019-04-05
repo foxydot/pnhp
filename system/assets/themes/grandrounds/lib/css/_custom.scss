@@ -355,8 +355,13 @@
           display: block;
           overflow: hidden;
           border: 0;
-          font-size: 1em;
+          font-size: 0.8em;
           padding: 0.5em;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 5;
         }
         a {
           position: absolute;

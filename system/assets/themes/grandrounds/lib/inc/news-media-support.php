@@ -121,7 +121,7 @@ function msdlab_news_media_runner($atts = array()){
                 if($embedded_video = wp_oembed_get( $url, $oembed_args )) {
                     $ret[] =  $embedded_video;
                 } else {
-                    if(strstr($url,'/embed/') || strstr($url,'/standalone/')) {
+                    if(strstr($url,'/embed/') || strstr($url,'/standalone/') || strstr($url,'/viralplayer/')) {
                         $ret[] = '<h3 class="video-title">' . $post->post_title . '</h3>
                         <a href="' . $url . '" target="_blank" title="External Link" class="video-link"><iframe width="350" height="200" src="' . $url . '"></iframe></a>';
                     } elseif(strstr($url,'foxnews.com')){
