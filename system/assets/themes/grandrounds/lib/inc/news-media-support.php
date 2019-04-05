@@ -121,8 +121,22 @@ function msdlab_news_media_runner($atts = array()){
                 if($embedded_video = wp_oembed_get( $url, $oembed_args )) {
                     $ret[] =  $embedded_video;
                 } else {
-                    $ret[] =  '<h3 class="video-title">'.$post->post_title.'</h3>
-                    <a href="'.$url.'" target="_blank" title="External Link" class="video-link"><i class="fa fa-youtube-play"></i></a>';
+                    if(strstr($url,'/embed/') || strstr($url,'/standalone/')) {
+                        $ret[] = '<h3 class="video-title">' . $post->post_title . '</h3>
+                        <a href="' . $url . '" target="_blank" title="External Link" class="video-link"><iframe width="350" height="200" src="' . $url . '"></iframe></a>';
+                    } elseif(strstr($url,'foxnews.com')){
+                        preg_match('/\?(.*)/',$url,$video_params_matches);
+                        $vps = explode('&',$video_params_matches[1]);
+                        foreach($vps AS $vp){
+                            $set = explode('=',$vp);
+                            $video_param[$set[0]] = $set[1];
+                        }
+                        $ret[] = '<h3 class="video-title">' . $post->post_title . '</h3>
+                        <a href="' . $url . '" target="_blank" title="External Link" class="video-link"><iframe width="'.$video_param['w'].'" height="'.$video_param['h'].'" src="https://video.foxnews.com/v/video-embed.html?video_id='.$video_param['id'].'"></iframe></a>';
+                    } else {
+                        $ret[] =  '<h3 class="video-title">'.$post->post_title.'</h3>
+                        <a href="'.$url.'" target="_blank" title="External Link" class="video-link"><i class="fa fa-youtube-play"></i></a>';
+                    }
                 }
                     $ret[] =  '</div>';
                     if($i % $perslide == ($perslide - 1)){

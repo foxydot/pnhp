@@ -21,7 +21,9 @@ if (!class_exists('MSDNewsCPT')) {
             add_action( 'init', array(&$this,'register_taxonomies') );
             add_action( 'init', array(&$this,'register_cpt') );
 			add_action( 'init', array(&$this,'register_metaboxes') );
-			//add_action('admin_head', array(&$this,'plugin_header'));
+            add_action( 'init', array(&$this,'custom_oembed_provider' ));
+
+            //add_action('admin_head', array(&$this,'plugin_header'));
 			add_action('admin_print_scripts', array(&$this,'add_admin_scripts') );
 			add_action('admin_print_styles', array(&$this,'add_admin_styles') );
 			add_action('admin_footer',array(&$this,'info_footer_hook') );
@@ -531,5 +533,12 @@ if (!class_exists('MSDNewsCPT')) {
                 wp_redirect( home_url( $new_uri ) );
             }
 }
+
+// Register oEmbed providers
+        function custom_oembed_provider() {
+
+            wp_oembed_add_provider( 'https://www.democracynow.org/embed/story/*', 'https://www.democracynow.org/embed/story/', false );
+
+        }
   } //End Class
 } //End if class exists statement
