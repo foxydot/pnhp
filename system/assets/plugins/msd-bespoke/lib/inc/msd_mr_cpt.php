@@ -4,11 +4,6 @@ if (!class_exists('MSDMemberResourceCPT')) {
 		//Properties
 		var $cpt = 'member-resources';
 		//Methods
-	    /**
-	    * PHP 4 Compatible Constructor
-	    */
-		public function MSDMemberResourceCPT(){$this->__construct();}
-	
 		/**
 		 * PHP 5 Constructor
 		 */

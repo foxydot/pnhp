@@ -4,11 +4,6 @@ if (!class_exists('MSDSpeakerCPT')) {
 		//Properties
 		var $cpt = 'speaker';
 		//Methods
-	    /**
-	    * PHP 4 Compatible Constructor
-	    */
-		public function MSDSpeakerCPT(){$this->__construct();}
-	
 		/**
 		 * PHP 5 Constructor
 		 */

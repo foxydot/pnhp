@@ -4,11 +4,6 @@ if (!class_exists('MSDNewsCPT')) {
 		//Properties
 		var $cpt = 'news';
 		//Methods
-	    /**
-	    * PHP 4 Compatible Constructor
-	    */
-		public function MSDNewsCPT(){$this->__construct();}
-	
 		/**
 		 * PHP 5 Constructor
 		 */

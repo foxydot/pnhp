@@ -86,11 +86,6 @@ if (!class_exists('MSDCustomCPT')) {
     	var $options = array();
         //Methods
         /**
-        * PHP 4 Compatible Constructor
-        */
-        function MSDCustomCPT(){$this->__construct();}
-        
-        /**
         * PHP 5 Constructor
         */        
         function __construct(){

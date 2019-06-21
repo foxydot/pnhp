@@ -16,11 +16,6 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
 
         //Methods
         /**
-         * PHP 4 Compatible Constructor
-         */
-        public function MSDLab_Page_Banner_Support(){$this->__construct();}
-
-        /**
          * PHP 5 Constructor
          */
         function __construct($options){

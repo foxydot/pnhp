@@ -4,11 +4,6 @@ if (!class_exists('MSDResourceCPT')) {
 		//Properties
 		var $cpt = 'resource';
 		//Methods
-	    /**
-	    * PHP 4 Compatible Constructor
-	    */
-		public function MSDResourceCPT(){$this->__construct();}
-	
 		/**
 		 * PHP 5 Constructor
 		 */

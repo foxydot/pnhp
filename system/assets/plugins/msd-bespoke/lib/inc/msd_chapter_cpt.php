@@ -4,11 +4,6 @@ if (!class_exists('MSDChapterCPT')) {
 		//Properties
 		var $cpt = 'chapter';
 		//Methods
-	    /**
-	    * PHP 4 Compatible Constructor
-	    */
-		public function MSDChapterCPT(){$this->__construct();}
-	
 		/**
 		 * PHP 5 Constructor
 		 */
