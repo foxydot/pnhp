@@ -239,13 +239,14 @@ function msdlab_speaker_aggregate_wrapper_close(){
         $specialties = get_terms(array(
             'taxonomy' => 'speaker_specialty',
         ));
-        $topic = get_terms(array(
+        $topics = get_terms(array(
             'taxonomy' => 'speaker_topic',
         ));
         print '<section class="speaker-filters">
 <h3 class="widget-title">View speakers by:</h3>
         <select id="region-select" class="region">
         <option value="">All Regions</option>';
+        $rs = array();
         foreach($regions AS $region){
             $r = $region;
             $rs[] = '<option value="/speaker-region/'.$r.'">'.ucwords($r).'</option>';
@@ -254,6 +255,7 @@ function msdlab_speaker_aggregate_wrapper_close(){
         print '</select>
         <select id="specialty-select" class="specialty">
         <option value="">All Specialties</option>';
+        $ss = array();
         foreach($specialties AS $specialty){
             $s = $specialty->slug;
             $ss[] = '<option value="/speaker-specialty/'.$s.'">'.ucwords($s).'</option>';
@@ -262,6 +264,7 @@ function msdlab_speaker_aggregate_wrapper_close(){
         print '</select>
         <select id="topic-select" class="topic">
         <option value="">All Topics</option>';
+        $ts = array();
         foreach($topics AS $topic){
             $t = $topic->slug;
             $ts[] = '<option value="/speaker-topic/'.$t.'">'.ucwords($t).'</option>';
