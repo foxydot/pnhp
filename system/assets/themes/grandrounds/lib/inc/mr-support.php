@@ -298,13 +298,13 @@ function msdlab_mr_content(){
 }
 
 function msdlab_mr_entry_attr($attr){
-    global $post;
+    global $wp_query,$post;
     $obj = get_queried_object();
     $cat_slug = $obj->slug;
 
     switch($cat_slug) { // first check for cookie
         case "newsletter":
-            if(strtotime(get_the_date()) > strtotime("-6 month")){
+            if($wp_query->current_post == 0 && !is_paged()){  //highlight the latest edition
                 $attr['class'] .= ' new-item highlight';
             }
             break;
