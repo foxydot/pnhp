@@ -22,6 +22,14 @@
             </td>
         </tr>
         <tr>
+            <?php $mb->the_field('mr_custom_button_text'); ?>
+
+            <th scope="row"><label for="<?php $mb->the_name(); ?>">Custom button text (leave empty for default text)</label></th>
+            <td>
+                <p><input class="large-text" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" placeholder="" /></p>
+            </td>
+        </tr>
+        <tr>
             <?php $mb->the_field('mr_author'); ?>
 
             <th scope="row"><label for="<?php $mb->the_name(); ?>">Author</label></th>

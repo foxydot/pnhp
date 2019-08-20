@@ -198,6 +198,7 @@ function msdlab_mr_content(){
     while ($member_resource_info->have_fields('memberresource')) {
         $mr[$ctr]['title'] = $member_resource_info->get_the_value('mr_title') != '' ? $member_resource_info->get_the_value('mr_title') : get_the_title();
         $mr[$ctr]['file'] = $member_resource_info->get_the_value('mr_file') != '' ? $member_resource_info->get_the_value('mr_file') : false;
+        $mr[$ctr]['custom_button_text'] = $member_resource_info->get_the_value('mr_custom_button_text') != '' ? $member_resource_info->get_the_value('mr_custom_button_text') : false;
         $mr[$ctr]['author'] = $member_resource_info->get_the_value('mr_author') != '' ? $member_resource_info->get_the_value('mr_author') : false;
         $mr[$ctr]['date'] = $member_resource_info->get_the_value('mr_date') != '' ? $member_resource_info->get_the_value('mr_date') : get_the_date();
         $mr[$ctr]['tease'] = $member_resource_info->get_the_value('mr_tease') != '' ? apply_filters('the_content',$member_resource_info->get_the_value('mr_tease')) : false;
@@ -206,6 +207,7 @@ function msdlab_mr_content(){
     switch($cat_slug) {
         case "newsletter":
             foreach($mr AS $ctr => $r){
+                $button_text = strlen($r['custom_button_text']) > 0?$r['custom_button_text']:'Download PDF <i class="fa fa-file-pdf-o"></i>';
                 if($r['file']){
                     print '<h3 class="member-resource-title"><a href="'.$r['file'].'">'.$r['title'].'</a></h3>';
                 } else {
@@ -218,19 +220,21 @@ function msdlab_mr_content(){
                     print '</div>';
                 }
                 if($r['file']){
-                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">'.$button_text.'</a>';
                 }
             }
             break;
         case "materials-handouts":
             foreach($mr AS $ctr => $r){
-                    //if ($r['file']) {
+                $button_text = strlen($r['custom_button_text']) > 0?$r['custom_button_text']:'Download PDF <i class="fa fa-file-pdf-o"></i>';
+
+                //if ($r['file']) {
                        // print '<h3 class="member-resource-title"><a href="' . $r['file'] . '">' . $r['title'] . '</a></h3>';
                     //} else {
                         print '<h3 class="member-resource-title">' . $r['title'] . '</h3>';
                     //}
                     if ($r['file']) {
-                        print '<a class="btn btn-primary" href="' . $r['file'] . '">Download PDF <i class="fa fa-file-pdf-o"></i></a>';
+                        print '<a class="btn btn-primary" href="' . $r['file'] . '">'.$button_text.'</a>';
                     }
             }
             break;
@@ -265,7 +269,8 @@ function msdlab_mr_content(){
                     print '</div>';
                 }
                 if($r['file']){
-                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download Slideshow <i class="fa fa-file-powerpoint-o"></i></a>';
+                    $button_text = strlen($r['custom_button_text']) > 0?$r['custom_button_text']:'Download Slideshow <i class="fa fa-file-powerpoint-o"></i>';
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">'.$button_text.'</a>';
                 }
                 print '</div>';
             }
@@ -286,7 +291,8 @@ function msdlab_mr_content(){
                     print '</div>';
                 }
                 if(strstr($r['file'],$_SERVER['SERVER_NAME'])){
-                    print '<a class="btn btn-primary" href="'.$r['file'].'">Download Webinar<i class="fa fa-file-powerpoint-o"></i></a>';
+                    $button_text = strlen($r['custom_button_text']) > 0?$r['custom_button_text']:'Download Webinar<i class="fa fa-file-powerpoint-o"></i>';
+                    print '<a class="btn btn-primary" href="'.$r['file'].'">'.$button_text.'</a>';
                 } elseif ($vid = wp_oembed_get($r['file'])){
                     print $vid;
                 }
