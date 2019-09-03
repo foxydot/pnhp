@@ -36,7 +36,7 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
             (
                 'id' => '_page_banner',
                 'title' => 'Page Banner Area',
-                'types' => array('post','page','event','chapter'),
+                'types' => array('post','page','event','chapter','news'),
                 'context' => 'normal', // same as above, defaults to "normal"
                 'priority' => 'high', // same as above, defaults to "high"
                 'template' => get_stylesheet_directory().'/lib/template/metabox-page_banner.php',

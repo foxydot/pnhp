@@ -2,7 +2,13 @@
 remove_all_actions('msdlab_title_area' );
 add_action('msdlab_title_area','msdlab_news_category_banner');
 function msdlab_news_category_banner(){
-    global $post;
+    global $post,$page_banner_metabox;
+    $page_banner_metabox->the_meta();
+    $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
+    if ($bannerbool == 'true') {
+        msdlab_news_single_banner();
+        return;
+    }
     remove_action('genesis_before_loop','genesis_do_cpt_archive_title_description');
     remove_action('genesis_before_loop','genesis_do_date_archive_title');
     remove_action('genesis_before_loop','genesis_do_blog_template_heading');
@@ -42,6 +48,57 @@ function msdlab_news_page_title($title){
 }
 function msdlab_news_title_unlink(){
     return false;
+}
+
+function msdlab_news_single_banner(){
+    global $post, $page_banner_metabox;
+    $page_banner_metabox->the_meta();
+    $bannerbool = $page_banner_metabox->get_the_value('bannerbool');
+    if ($bannerbool != 'true') {
+        return;
+    }
+    $bannerclass = $page_banner_metabox->get_the_value('bannerclass');
+    $bannerslider = $page_banner_metabox->get_the_value('bannerslider');
+    if ($bannerslider > 0 && class_exists('LS_Sliders')) { //it's a slider
+        layerslider($bannerslider);
+    } else { //it's not a slider
+        $banneralign = $page_banner_metabox->get_the_value('banneralign');
+        $bannerimage = $page_banner_metabox->get_the_value('bannerimage');
+        if (!$bannerimage) {
+            if (has_post_thumbnail()) {
+                $bannerimage = get_the_post_thumbnail_url();
+            } else {
+                $bannerimage = msdlab_get_random_banner_image();
+            }
+        }
+        $bannercontent = do_shortcode($page_banner_metabox->get_the_value('bannercontent'));
+
+        global $post;
+        $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : '';
+        print '<div class="banner clearfix ' . $banneralign . ' ' . $bannerclass . '"' . $background . '>';
+        print '<div class="gradient">';
+        print '<div class="wrap">';
+        print '<div class="bannertext">';
+        print '<div class="bannercontent">';
+        if ($bannercontent == '') {
+            $terms = wp_get_post_terms( $post->ID, 'news_category', array() );
+            if(count($terms) >= 1){
+                $page_title = '<h2 class="entry-title" itemprop="headline">'.$terms[0]->name.'</h2>';
+            } else {
+                $page_title = '<h2 class="entry-title" itemprop="headline">News</h2>';
+            }
+            //remove_action('genesis_entry_header','genesis_do_post_title');
+            //genesis_do_post_title();
+            print $page_title;
+        } else {
+            print $bannercontent;
+        }
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
+        print '</div>';
+    }
 }
 
 
