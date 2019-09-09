@@ -84,8 +84,6 @@ function msdlab_news_single_banner(){
             $terms = wp_get_post_terms( $post->ID, 'news_category', array() );
             if(count($terms) >= 1){
                 $page_title = '<h2 class="entry-title" itemprop="headline">'.$terms[0]->name.'</h2>';
-            } else {
-                $page_title = '<h2 class="entry-title" itemprop="headline">News</h2>';
             }
             //remove_action('genesis_entry_header','genesis_do_post_title');
             //genesis_do_post_title();
