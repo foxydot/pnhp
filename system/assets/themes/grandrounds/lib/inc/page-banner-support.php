@@ -81,6 +81,9 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                         }
                     }
                     $bannercontent = apply_filters('the_content', $page_banner_metabox->get_the_value('bannercontent'));
+                    $bannertitleinbanner = $page_banner_metabox->get_the_value('bannertitleinbanner');
+                    $bannertitleincontent = $page_banner_metabox->get_the_value('bannertitleincontent');
+
 
                     global $post;
                     $background = strlen($bannerimage) > 0 ? ' style="background-image:url(' . $bannerimage . ')"' : '';
@@ -89,10 +92,9 @@ if (!class_exists('MSDLab_Page_Banner_Support')) {
                     print '<div class="wrap">';
                     print '<div class="bannertext">';
                     print '<div class="bannercontent">';
+                    if($bannertitleinbanner != 'true'){ genesis_do_post_title(); }
+                    if($bannertitleincontent == 'true'){ remove_action('genesis_entry_header','genesis_do_post_title'); }
                     if ($bannercontent == '') {
-                        //remove_action('genesis_entry_header','genesis_do_post_title');
-                        genesis_do_post_title();
-                    } else {
                         print $bannercontent;
                     }
                     print '</div>';

@@ -55,6 +55,20 @@
             <?php echo $wpalchemy_media_access->getButton(array('label' => $img_btn_label)); ?>
         </td>
     </tr>
+    <?php $mb->the_field('bannertitleinbanner'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="bannertitleinbanner"></label></th>
+        <td>
+            <p><input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/> Hide title in banner?</p>
+        </td>
+    </tr>
+    <?php $mb->the_field('bannertitleincontent'); ?>
+    <tr valign="top">
+        <th scope="row"><label for="bannertitleincontent"></label></th>
+        <td>
+            <p><input type="checkbox" name="<?php $mb->the_name(); ?>" value="true"<?php $mb->the_checkbox_state('true'); ?>/> Hide title in content?</p>
+        </td>
+    </tr>
     <?php $mb->the_field('bannercontent'); ?>
     <tr valign="top">
         <th scope="row"><label for="bannercontent">Banner Content</label></th>
