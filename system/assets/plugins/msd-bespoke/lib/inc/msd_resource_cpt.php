@@ -381,21 +381,32 @@ if (!class_exists('MSDResourceCPT')) {
 		        $i=1;
 		        while($temp_query->have_posts()){
 		            $temp_query->the_post();
+		            $files = get_post_meta(get_post_field('ID'),'_resource_pdfs');
 		            $t = $b = array();
 		            $t[] = '<article id="'.get_post_field('post_name').'-anchor" class="'.implode(' ',get_post_class()).' summary col-xs-12 col-md-6 col-sm-6">';
 		            $t[] = '<header class="entry-header"><h1 class="entry-title faq-title">'.get_the_title().'</h1>';
-		            $t[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
-		            $t[] = '<a href="#'.get_post_field('post_name').'" class="button btn">learn more</a>';
+                    if(count($files)>0){
+                        foreach($files AS $file) {
+                            $info = $file[0];
+                            $t[] = '<p><a href="' . $info['file'] . '" class="button btn">download</a></p>';
+                        }
+                    }
+                    if(strlen(apply_filters('the_content',get_the_content()))>0){
+                        $t[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
+                        $t[] = '<a href="#'.get_post_field('post_name').'" class="button btn">learn more</a>';
+                    }
 		            $t[] = '</header></article>';
 		            $top[] = implode("\n", $t);
-		            $b[] = '<article class="entry">';
-		            $b[] = '<a id="'.get_post_field('post_name').'"></a>';
-                    $b[] = '<h3 class="faq-title">'.get_the_title().'</h3>';
-                    $b[] = '<p class="faq-summary">'.get_the_excerpt().'</p>';
-                    $b[] = apply_filters('the_content',get_the_content());
-                    $b[] = '<a href="#faq-top" class="button btn">back to top</a>';
-                    $b[] = '</article>';
-		            $btm[] = implode("\n", $b);
+                    if(strlen(apply_filters('the_content',get_the_content()))>0) {
+                        $b[] = '<article class="entry">';
+                        $b[] = '<a id="' . get_post_field('post_name') . '"></a>';
+                        $b[] = '<h3 class="faq-title">' . get_the_title() . '</h3>';
+                        $b[] = '<p class="faq-summary">' . get_the_excerpt() . '</p>';
+                        $b[] = apply_filters('the_content', get_the_content());
+                        $b[] = '<a href="#faq-top" class="button btn">back to top</a>';
+                        $b[] = '</article>';
+                        $btm[] = implode("\n", $b);
+                    }
                 }
             }
             wp_reset_postdata();
